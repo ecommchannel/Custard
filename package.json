@@ -1,0 +1,44 @@
+{
+
+    "dependencies": {
+
+        "@discolabs/custard-js": "^0.1.3",
+
+        "lodash.debounce": "^4.0.8"
+
+    },
+
+    "scripts": {
+
+        "build": "webpack",
+
+        "deploy": "webpack && theme deploy",
+
+        "start": "webpack && theme deploy && theme watch",
+
+        "staging": "webpack && theme deploy --env=staging --allow-live",
+
+        "od_test": "webpack && theme deploy --env=od_test --allow-live",
+
+        "open": "theme open"
+
+    },
+
+    "devDependencies": {
+
+        "@babel/cli": "^7.16.0",
+
+        "@babel/core": "^7.16.5",
+
+        "@babel/preset-env": "^7.16.5",
+
+        "babel-loader": "^8.2.3",
+
+        "webpack": "^5.65.0",
+
+        "webpack-cli": "^4.10.0"
+
+    }
+
+}
+

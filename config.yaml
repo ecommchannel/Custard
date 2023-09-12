@@ -1,0 +1,13 @@
+development:
+
+  password: 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
+
+  theme_id: 137077162222
+
+  store: penshoppe-test-store.myshopify.com
+
+  ignore_files:
+
+    - '*.gif'
+
+    - '*.jpg'
