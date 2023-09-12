@@ -10,6 +10,6 @@ export class changeMarketingText extends CustardModule {
         return '[data-buyer-accepts-marketing]'; 
     } 
     setup() {
-        this.$element.find('.checkbox__label').append(this.options.html_templates.marketing_text);
+        this.$element.find('.checkbox__label').html(this.options.html_templates.marketing_text);
     }
 }
