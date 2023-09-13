@@ -53,7 +53,7 @@
     padding: 12px;
   margin:2px 0;
   background-color: mintcream;"
-  id="long" placeholder="Zip"
+  id="zip" placeholder="Zip"
   readonly />
  </div>
 <div class="nearBy"></div>
@@ -154,10 +154,7 @@
       return null; // Return null if location is not found
     }
 
-
-    const barangay = findValueForLocation(barangay);
-      const lat = findValueForLat(barangay);
-      const long = findValueForLong(barangay);
-    $("#zip").val(barangay);
+    const value = findValueForLocation(barangay);
+    $("#zip").val(value);
   }
 </script>
