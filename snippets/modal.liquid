@@ -216,7 +216,6 @@
       const Title = arr[i].Title;
       const Latitude = arr[i].Latitude;
       const Longitude = arr[i].Longitude;
-       console.log(Longitude)
       const listStore = nearbydata(lat1, lon1, Latitude, Longitude);
       const listaddress = `${arr[i].Street} ${arr[i].City} ${arr[i].Country}`;
  
@@ -242,7 +241,7 @@
         }
       }
     }
-   
+   console.log(arr_data)
     const locationData = arr_data.map((htmlString) => {
     const tempDiv = document.createElement('div');
     tempDiv.innerHTML = htmlString;
