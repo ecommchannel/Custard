@@ -129,4 +129,54 @@
     const value = findValueForLocation(barangay);
     $("#zip").val(value);
   }
+
+  // Give a StoreLocationss Data
+
+  $( document ).ready(function() {
+  var arr = JSON.parse(localStorage.getItem("arrProvince"));
+
+  if (arr != null) {
+      console.log('working')
+    updateHelperLinkText();
+    province = [];
+    var data = JSON.parse(window.localStorage.arrProvince);
+    for (let i = 0; i < data.province.length; i++) {
+      const arrP = `${data.province[i]}`;
+      province.push(arrP);
+    }
+    $("#province").html(province.join(""));
+  } else {
+    updateHelperLinkText();
+      console.log('working')
+    url = "https://tools.gabcgfs.com/address_finder.php";
+    province = [];
+    province.push('<option value="" Selected>Select Province Address</option>');
+    jQuery
+      .ajax({
+        url: url,
+        type: "GET",
+        dataType: "jsonp",
+        contentType: "application/json; charset=UTF-8",
+      })
+      .done(function (json) {
+        for (let i = 0; i < json.length; i++) {
+          const arrP = `<option value="${json[i].PROVINCE}">${json[i].PROVINCE}</option>`;
+          province.push(arrP);
+        }
+
+        $("#province").html(province.join(""));
+        window.localStorage.setItem("arrProvince", JSON.stringify({ province }));
+      });
+  }
+
+ 
+  function openModalContainer() {
+     
+    const helperLink = document.getElementById('helper-link')
+    if(helperLink) {
+      helperLink.innerHTML = text;
+
+    }
+  }
+});
 </script>
