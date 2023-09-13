@@ -242,7 +242,7 @@
         }
       }
     }
-   
+   console.log(arr_data.join(''))
     const locationData = arr_data.map((htmlString) => {
     const tempDiv = document.createElement('div');
     tempDiv.innerHTML = htmlString;
@@ -250,13 +250,13 @@
     const distanceKm = parseFloat(distanceText.replace(' Km', ''));
     return { html: htmlString, distance: distanceKm };
     });
-    
+     
       // Sort the location data by distance
       locationData.sort((a, b) => a.distance - b.distance);
       // Rebuild the sorted HTML elements
       const sortedLocationElements = locationData.map((data) => data.html);
       // Now you can use sortedLocationElements to update your HTML container
-       console.log(sortedLocationElements.join(''))
+      
       document.querySelector(".nearBy").innerHTML = sortedLocationElements.join('');
 
   
