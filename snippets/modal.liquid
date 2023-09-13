@@ -154,7 +154,29 @@
       return null; // Return null if location is not found
     }
 
-    const value = findValueForLocation(barangay);
-    $("#zip").val(value);
+        function findValueForLat(locationName) {
+      for (let i = 0; i < ZipBarangay.length; i++) {
+        if (ZipBarangay[i][0] === locationName) {
+          return ZipBarangay[i][2];
+        }
+      }
+      return null; // Return null if location is not found
+    }
+
+           function findValueForLong(locationName) {
+      for (let i = 0; i < ZipBarangay.length; i++) {
+        if (ZipBarangay[i][0] === locationName) {
+          return ZipBarangay[i][3];
+        }
+      }
+      return null; // Return null if location is not found
+    }
+
+    const barangay = findValueForLocation(barangay);
+      const lat = findValueForLat(barangay);
+      const long = findValueForLong(barangay);
+    $("#zip").val(barangay);
+      $("#lat").val(lat);
+      $("#long").val(long);
   }
 </script>
