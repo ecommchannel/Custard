@@ -35,116 +35,117 @@
       id="zip"
       readonly />
   </div>
-{% endcapture %}
 
-<script>
-  var arr = JSON.parse(localStorage.getItem("arrProvince"));
 
-  if (arr != null) {
-    province = [];
-    var data = JSON.parse(localStorage.arrProvince);
-    for (let i = 0; i < data.province.length; i++) {
-      const arrP = `${
-        data.province[i]
-      }`;
-      province.push(arrP);
-    }
-    $("#province").html(province.join(""));
-  } else {
-    url = "https://tools.gabcgfs.com/address_finder.php";
-    province = [];
-    province.push('<option value="" Selected>Select Province Address</option>');
-    jQuery.ajax({url: url, type: "GET", dataType: "jsonp", contentType: "application/json; charset=UTF-8"}).done(function(json) {
-      for (let i = 0; i < json.length; i++) {
-        const arrP = `<option value="${
-          json[i].PROVINCE
-        }">${
-          json[i].PROVINCE
-        }</option>`;
+  <script>
+    var arr = JSON.parse(localStorage.getItem("arrProvince"));
+
+    if (arr != null) {
+      province = [];
+      var data = JSON.parse(localStorage.arrProvince);
+      for (let i = 0; i < data.province.length; i++) {
+        const arrP = `${
+          data.province[i]
+        }`;
         province.push(arrP);
       }
-
       $("#province").html(province.join(""));
-      localStorage.setItem("arrProvince", JSON.stringify({province}));
-    });
-  }
-
-  function getProvince() {
-    $("#zip").val("");
-    $("#barangay").html('<option value="" Selected>Select Barangay</option>');
-    let province = $("#province").val();
-    url = `https://tools.gabcgfs.com/address_finder.php?PROVINCE=${province}`;
-    City = [];
-    City.push('<option value="" Selected>Select Town / City</option>');
-    jQuery.ajax({url: url, type: "GET", dataType: "jsonp", contentType: "application/json; charset=UTF-8"}).done(function(json) {
-      if (json != "") {
-        for (let i = 0; i < json[0].CITY.length; i++) {
-          const arrC = `<option value="${
-            json[0].CITY[i].CITY
+    } else {
+      url = "https://tools.gabcgfs.com/address_finder.php";
+      province = [];
+      province.push('<option value="" Selected>Select Province Address</option>');
+      jQuery.ajax({url: url, type: "GET", dataType: "jsonp", contentType: "application/json; charset=UTF-8"}).done(function(json) {
+        for (let i = 0; i < json.length; i++) {
+          const arrP = `<option value="${
+            json[i].PROVINCE
           }">${
-            json[0].CITY[i].CITY
+            json[i].PROVINCE
           }</option>`;
-          City.push(arrC);
+          province.push(arrP);
         }
-      } else {
-        City.push();
-      }
 
-      $("#city").html(City.join(""));
-    });
-  }
-  ZipBarangay = [];
-  function getCity() {
-    $("#zip").val("");
-    let city = $("#city").val();
-    url = `https://tools.gabcgfs.com/address_finder.php?CITY=${city}`;
-    Brgy = [];
-
-    Brgy.push('<option value="" Selected>Select Barangay</option>');
-    jQuery.ajax({url: url, type: "GET", dataType: "jsonp", contentType: "application/json; charset=UTF-8"}).done(function(json) {
-      for (let i = 0; i < json[0].CITY[0].BARANGAY.length; i++) {
-        const arrC = `<option value="${
-          json[0].CITY[0].BARANGAY[i].BARANGAY
-        }">${
-          json[0].CITY[0].BARANGAY[i].BARANGAY
-        }</option>`;
-        const arrZ = [
-          json[0].CITY[0].BARANGAY[i].BARANGAY,
-          json[0].CITY[0].BARANGAY[i].ZIP
-        ];
-        Brgy.push(arrC);
-        ZipBarangay.push(arrZ);
-      }
-
-      $("#barangay").html(Brgy.join(""));
-    });
-  }
-
-  function getBarangay() {
-    let barangay = $("#barangay").val();
-
-// Function to find the value for a given location
-    function findValueForLocation(locationName) {
-      for (let i = 0; i < ZipBarangay.length; i++) {
-        if (ZipBarangay[i][0] === locationName) {
-          return ZipBarangay[i][1];
-        }
-      }
-      return null; // Return null if location is not found
+        $("#province").html(province.join(""));
+        localStorage.setItem("arrProvince", JSON.stringify({province}));
+      });
     }
 
-    const value = findValueForLocation(barangay);
-    $("#zip").val(value);
-  }
-</script>
+    function getProvince() {
+      $("#zip").val("");
+      $("#barangay").html('<option value="" Selected>Select Barangay</option>');
+      let province = $("#province").val();
+      url = `https://tools.gabcgfs.com/address_finder.php?PROVINCE=${province}`;
+      City = [];
+      City.push('<option value="" Selected>Select Town / City</option>');
+      jQuery.ajax({url: url, type: "GET", dataType: "jsonp", contentType: "application/json; charset=UTF-8"}).done(function(json) {
+        if (json != "") {
+          for (let i = 0; i < json[0].CITY.length; i++) {
+            const arrC = `<option value="${
+              json[0].CITY[i].CITY
+            }">${
+              json[0].CITY[i].CITY
+            }</option>`;
+            City.push(arrC);
+          }
+        } else {
+          City.push();
+        }
+
+        $("#city").html(City.join(""));
+      });
+    }
+    ZipBarangay = [];
+    function getCity() {
+      $("#zip").val("");
+      let city = $("#city").val();
+      url = `https://tools.gabcgfs.com/address_finder.php?CITY=${city}`;
+      Brgy = [];
+
+      Brgy.push('<option value="" Selected>Select Barangay</option>');
+      jQuery.ajax({url: url, type: "GET", dataType: "jsonp", contentType: "application/json; charset=UTF-8"}).done(function(json) {
+        for (let i = 0; i < json[0].CITY[0].BARANGAY.length; i++) {
+          const arrC = `<option value="${
+            json[0].CITY[0].BARANGAY[i].BARANGAY
+          }">${
+            json[0].CITY[0].BARANGAY[i].BARANGAY
+          }</option>`;
+          const arrZ = [
+            json[0].CITY[0].BARANGAY[i].BARANGAY,
+            json[0].CITY[0].BARANGAY[i].ZIP
+          ];
+          Brgy.push(arrC);
+          ZipBarangay.push(arrZ);
+        }
+
+        $("#barangay").html(Brgy.join(""));
+      });
+    }
+
+    function getBarangay() {
+      let barangay = $("#barangay").val();
+
+// Function to find the value for a given location
+      function findValueForLocation(locationName) {
+        for (let i = 0; i < ZipBarangay.length; i++) {
+          if (ZipBarangay[i][0] === locationName) {
+            return ZipBarangay[i][1];
+          }
+        }
+        return null; // Return null if location is not found
+      }
+
+      const value = findValueForLocation(barangay);
+      $("#zip").val(value);
+    }
+  </script>
 
 
-<script type="text/javascript">
-  window.custard.init(jQuery || Checkout.jQuery, Shopify.Checkout.step || (Shopify.Checkout.OrderStatus ? 'order_status' : null),
-  {    
-                                                  html_templates: {
-                                                    marketing_text: {{ labelMarketing | json }},
-  pickup_list: {{ pickUpList | json }}
-  }  
-  });
-</script>
+  <script type="text/javascript">
+    window.custard.init(jQuery || Checkout.jQuery, Shopify.Checkout.step || (Shopify.Checkout.OrderStatus ? 'order_status' : null),
+    {    
+                                                      html_templates: {
+                                                        marketing_text: {{ labelMarketing | json }},
+    pickup_list: {{ pickUpList | json }}
+    }  
+    });
+  </script>
+{% endcapture %}
