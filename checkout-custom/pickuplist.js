@@ -10,6 +10,6 @@ export class pickUpList extends CustardModule {
         return '[data-pickup-tab-content]';
     }
     setup() {
-        this.$element.find('[data-pickup-tab-no-location]').html(this.options.html_templates.pickup_list);
+        this.$element.find('.radio-wrapper').html(this.options.html_templates.pickup_list);
     }
 }
