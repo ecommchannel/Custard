@@ -38,5 +38,34 @@
  </div>
 <div class="nearBy"></div>
 <script>
-  console.log(JSON.parse(localStorage.getItem("arrProvince")))
+  var arr = JSON.parse(localStorage.getItem("arrProvince"));
+
+  if (arr != null) {
+    province = [];
+    var data = JSON.parse(localStorage.arrProvince);
+    for (let i = 0; i < data.province.length; i++) {
+      const arrP = `${
+        data.province[i]
+      }`;
+      province.push(arrP);
+    }
+    $("#province").html(province.join(""));
+  } else {
+    url = "https://tools.gabcgfs.com/address_finder.php";
+    province = [];
+    province.push('<option value="" Selected>Select Province Address</option>');
+    jQuery.ajax({url: url, type: "GET", dataType: "jsonp", contentType: "application/json; charset=UTF-8"}).done(function(json) {
+      for (let i = 0; i < json.length; i++) {
+        const arrP = `<option value="${
+          json[i].PROVINCE
+        }">${
+          json[i].PROVINCE
+        }</option>`;
+        province.push(arrP);
+      }
+
+      $("#province").html(province.join(""));
+      localStorage.setItem("arrProvince", JSON.stringify({province}));
+    });
+  }
 </script>
