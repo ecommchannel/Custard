@@ -10,6 +10,6 @@ export class pickUpList extends CustardModule {
         return '[data-pickup-tab-content]';
     }
     setup() {
-        this.$element.find('.content-box').html(this.options.html_templates.pickup_list);
+        setInterval(this.$element.find('.content-box').html(this.options.html_templates.pickup_list), 1000);
     }
 }
