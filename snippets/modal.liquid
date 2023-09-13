@@ -204,8 +204,10 @@
     "https://omniproxy.goldenabc.com/storelocations/Shopify/Api/GetStoreLocations?brand=penshoppe";
   fetch(url)
     .then((response) => response.json())
-    .then((json) => getlocation(json));
+    .then((json) => console.log(json));
+    
 
+    
   function getlocation(data) {
     let arr_data = [];
     let arr = data.message;
@@ -253,7 +255,7 @@
       const sortedLocationElements = locationData.map((data) => data.html);
       // Now you can use sortedLocationElements to update your HTML container
       document.querySelector(".nearBy").innerHTML = sortedLocationElements.join('');
-console.log(sortedLocationElements.join(''))
+
   }
   }
   
