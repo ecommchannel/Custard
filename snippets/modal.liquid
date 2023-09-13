@@ -166,6 +166,13 @@
 
 
   function getListStore(lat,long){
+
+    html_loading=`
+     <div class="progress">
+  <div class="color"></div>
+</div>
+    `;
+    document.querySelector(".nearBy").innerHTML = html_loading;
     
        function nearbydata(lat1, lon1, lat2, lon2) {
     const R = 6371; // Radius of the earth in km
