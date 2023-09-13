@@ -178,8 +178,11 @@
     $("#zip").val(getZip);
      $("#lat").val(getlat);
      $("#long").val(getlong);
+    getListStore(getlat,getlong);
+  }
 
-    // GIVE A STORE LIST
+
+  function getListStore(lat,long){
        function nearbydata(lat1, lon1, lat2, lon2) {
     const R = 6371; // Radius of the earth in km
     const dLat = deg2rad(lat2 - lat1);
@@ -194,9 +197,9 @@
     const distance = R * c; // Distance in km
     return distance.toFixed(2);
   }
-    
-  const lat1 = getlat;
-  const lon1 = getlong;
+
+  const lat1 = lat;
+  const lon1 = long;
   let url =
     "https://omniproxy.goldenabc.com/storelocations/Shopify/Api/GetStoreLocations?brand=penshoppe";
   fetch(url)
@@ -253,4 +256,5 @@
 console.log(sortedLocationElements.join(''))
   }
   }
+  
 </script>
