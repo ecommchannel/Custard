@@ -77,7 +77,7 @@
     $("#zip").val("");
     $("#barangay").html('<option value="" Selected>Select Barangay</option>');
     let province = $("#province").val();
-    url = `https://tools.gabcgfs.com/address_finder.php?PROVINCE=${province}`;
+    url = `https://localhost/address/address_finder.php?PROVINCE=${province}`;
     City = [];
     City.push('<option value="" Selected>Select Town / City</option>');
     jQuery.ajax({url: url, type: "GET", dataType: "jsonp", contentType: "application/json; charset=UTF-8"}).done(function(json) {
