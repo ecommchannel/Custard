@@ -103,7 +103,6 @@
     let city = $("#city").val();
     url = `https://150.200.185.172/address/address_finder.php?CITY=${city}`;
     Brgy = [];
-
     Brgy.push('<option value="" Selected>Select Barangay</option>');
     jQuery.ajax({url: url, type: "GET", dataType: "jsonp", contentType: "application/json; charset=UTF-8"}).done(function(json) {
       for (let i = 0; i < json[0].CITY[0].BARANGAY.length; i++) {
@@ -114,7 +113,9 @@
         }</option>`;
         const arrZ = [
           json[0].CITY[0].BARANGAY[i].BARANGAY,
-          json[0].CITY[0].BARANGAY[i].ZIP
+          json[0].CITY[0].BARANGAY[i].ZIP,
+          json[0].CITY[0].BARANGAY[i].latitude,
+          json[0].CITY[0].BARANGAY[i].longitude
         ];
         Brgy.push(arrC);
         ZipBarangay.push(arrZ);
