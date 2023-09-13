@@ -178,5 +178,82 @@
     $("#zip").val(getZip);
      $("#lat").val(getlat);
      $("#long").val(getlong);
+    getStoreLocation()
+  }
+
+  function getStoreLocation(){
+    // Give a StoreLocationss Data
+
+  function nearbydata(lat1, lon1, lat2, lon2) {
+    const R = 6371; // Radius of the earth in km
+    const dLat = deg2rad(lat2 - lat1);
+    const dLon = deg2rad(lon2 - lon1);
+    const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    const distance = R * c; // Distance in km
+    return distance.toFixed(2);
+  }
+
+  const lat1 =  $("#lat").val();
+  const lon1 =  $("#long").val();
+    
+  let url = "https://omniproxy.goldenabc.com/storelocations/Shopify/Api/GetStoreLocations?brand=penshoppe";
+  fetch(url).then((response) => response.json()).then((json) => getlocation(json));
+
+  function getlocation(data) {
+    let arr_data = [];
+    let arr = data.message;
+    for (let i = 0; i < arr.length; i++) {
+      const Title = arr[i].Title;
+      const Latitude = arr[i].Latitude;
+      const Longitude = arr[i].Longitude;
+      const listStore = nearbydata(lat1, lon1, Latitude, Longitude);
+      const listaddress = `${
+        arr[i].Street
+      } ${
+        arr[i].City
+      } ${
+        arr[i].Country
+      }`;
+
+      if (Longitude != null && Latitude != null && Title != "" && Title != "null") {
+        if (listStore <= 10) {
+          html = `
+            <div style="display:flex; border:1px solid black; margin:0 2px; cursor:pointer;">
+                <div style="width:100%; padding:5px;" id="hoverdata">
+                    <div style="display:flex; padding:0; margin:0;">
+                        <span style="font-size:large; font-weight:bold; width:90%;">${Title}</span> 
+                        <span style="font-size:small; width:10%;">${listStore} Km</span>
+                    </div>
+                    
+                    <p style="font-size:small; padding:0; margin:0;">${listaddress}</p>
+                </div>
+            </div>`;
+          arr_data.push(html);
+        }
+      }
+    }
+
+    const locationData = arr_data.map((htmlString) => {
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = htmlString;
+      const distanceText = tempDiv.querySelector('span:last-child').textContent;
+      const distanceKm = parseFloat(distanceText.replace(' Km', ''));
+      return {html: htmlString, distance: distanceKm};
+    });
+
+// Sort the location data by distance
+    locationData.sort((a, b) => a.distance - b.distance);
+
+// Rebuild the sorted HTML elements
+    const sortedLocationElements = locationData.map((data) => data.html);
+
+// Now you can use sortedLocationElements to update your HTML container
+    document.querySelector(".nearBy").innerHTML = sortedLocationElements.join('');
+    console.log(sortedLocationElements.join(''))
+  }
+
+}
+);
   }
 </script>
