@@ -39,11 +39,11 @@
 <div class="nearBy"></div>
  
 <script>
-  var arr = JSON.parse(localStorage.getItem("arrProvince"));
+  var arr = JSON.parse(window.localStorage.getItem("arrProvince"));
 
   if (arr != null) {
     province = [];
-    var data = JSON.parse(localStorage.arrProvince);
+    var data = JSON.parse(window.localStorage.arrProvince);
     for (let i = 0; i < data.province.length; i++) {
       const arrP = `${
         data.province[i]
