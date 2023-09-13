@@ -1,34 +1,60 @@
-<select
-  class="form-control w-50"
-  name=""
-  id="province"
-  onchange="getProvince()">
-  <option value="">Select Province Address</option>
-</select>
+<div class="content-box">
+  <div class="content-box__row">
+    <select
+      class="form-control w-50"
+      name=""
+      id="province"
+      onchange="getProvince()">
+      <option value="">Select Province Address</option>
+    </select>
 
-<select
-  class="form-control w-50"
-  name=""
-  id="city"
-  onchange="getCity()">
-  <option value="">Select Town / City</option>
-</select>
+    <select
+      class="form-control w-50"
+      name=""
+      id="city"
+      onchange="getCity()">
+      <option value="">Select Town / City</option>
+    </select>
 
-<select
-  class="form-control w-50"
-  name=""
-  id="barangay"
-  onchange="getBarangay()">
-  <option value="">Select Barangay</option>
-</select>
+    <select
+      class="form-control w-50"
+      name=""
+      id="barangay"
+      onchange="getBarangay()">
+      <option value="">Select Barangay</option>
+    </select>
 
-<input
-  type="text"
-  class="form-control w-50"
-  id="zip"
-  readonly />
+    <input
+      type="text"
+      class="form-control w-50"
+      id="zip"
+      readonly />
 
-<div class="nearBy"></div>
+    <div class="nearBy"></div>
+    {% comment %} <div class="radio-wrapper">
+    <div class="radio__input"><input
+    class="input-radio"
+    type="radio"
+    value="65625203dc4bf25a47865adc66f3892b"
+    name="checkout[pick_up_in_store][handle]"
+    id="checkout_delivery_option_id_65625203dc4bf25a47865adc66f3892b"
+    checked=""
+    data-checkout-total-shipping="Free"
+    data-checkout-total-shipping-cents="0"></div>
+    <label class="radio__label" for="checkout_delivery_option_id_65625203dc4bf25a47865adc66f3892b">
+    <div class="radio__label__primary">
+    <div>1155 EDSA, Balintawak</div>
+    <div class="small-text">1155 EDSA, Balintawak, Quezon City, 00</div>
+    <div class="small-text pickup-instructions show-on-mobile">Usually ready in 24 hours</div>
+    </div>
+    <div class="radio__label__accessory">
+    <div class="content-box__emphasis">Free</div>
+    <div class="small-text pickup-instructions hide-on-mobile">Usually ready in 24 hours</div>
+    </div>
+    </label>
+    </div> {% endcomment %}</div>
+</div>
+
 <script>
   var arr = JSON.parse(localStorage.getItem("arrProvince"));
 
