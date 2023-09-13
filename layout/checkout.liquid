@@ -57,11 +57,11 @@
   </body>
 
   <script>
-      var arr = JSON.parse(window.localStorage.getItem("arrProvince"));
+      var arr = JSON.parse(localStorage.getItem("arrProvince"));
 console.log(arr)
   if (arr != null) {
     province = [];
-    var data = JSON.parse(window.localStorage.arrProvince);
+    var data = JSON.parse(localStorage.arrProvince);
     for (let i = 0; i < data.province.length; i++) {
       const arrP = `${
         data.province[i]
