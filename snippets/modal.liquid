@@ -29,3 +29,177 @@
   readonly />
 
 <div class="nearBy"></div>
+<script>
+  var arr = JSON.parse(localStorage.getItem("arrProvince"));
+
+  if (arr != null) {
+    province = [];
+    var data = JSON.parse(localStorage.arrProvince);
+    for (let i = 0; i < data.province.length; i++) {
+      const arrP = `${
+        data.province[i]
+      }`;
+      province.push(arrP);
+    }
+    $("#province").html(province.join(""));
+  } else {
+    url = "https://tools.gabcgfs.com/address_finder.php";
+    province = [];
+    province.push('<option value="" Selected>Select Province Address</option>');
+    jQuery.ajax({url: url, type: "GET", dataType: "jsonp", contentType: "application/json; charset=UTF-8"}).done(function(json) {
+      for (let i = 0; i < json.length; i++) {
+        const arrP = `<option value="${
+          json[i].PROVINCE
+        }">${
+          json[i].PROVINCE
+        }</option>`;
+        province.push(arrP);
+      }
+
+      $("#province").html(province.join(""));
+      localStorage.setItem("arrProvince", JSON.stringify({province}));
+    });
+  }
+
+  function getProvince() {
+    $("#zip").val("");
+    $("#barangay").html('<option value="" Selected>Select Barangay</option>');
+    let province = $("#province").val();
+    url = `https://tools.gabcgfs.com/address_finder.php?PROVINCE=${province}`;
+    City = [];
+    City.push('<option value="" Selected>Select Town / City</option>');
+    jQuery.ajax({url: url, type: "GET", dataType: "jsonp", contentType: "application/json; charset=UTF-8"}).done(function(json) {
+      if (json != "") {
+        for (let i = 0; i < json[0].CITY.length; i++) {
+          const arrC = `<option value="${
+            json[0].CITY[i].CITY
+          }">${
+            json[0].CITY[i].CITY
+          }</option>`;
+          City.push(arrC);
+        }
+      } else {
+        City.push();
+      }
+
+      $("#city").html(City.join(""));
+    });
+  }
+  ZipBarangay = [];
+  function getCity() {
+    $("#zip").val("");
+    let city = $("#city").val();
+    url = `https://tools.gabcgfs.com/address_finder.php?CITY=${city}`;
+    Brgy = [];
+
+    Brgy.push('<option value="" Selected>Select Barangay</option>');
+    jQuery.ajax({url: url, type: "GET", dataType: "jsonp", contentType: "application/json; charset=UTF-8"}).done(function(json) {
+      for (let i = 0; i < json[0].CITY[0].BARANGAY.length; i++) {
+        const arrC = `<option value="${
+          json[0].CITY[0].BARANGAY[i].BARANGAY
+        }">${
+          json[0].CITY[0].BARANGAY[i].BARANGAY
+        }</option>`;
+        const arrZ = [
+          json[0].CITY[0].BARANGAY[i].BARANGAY,
+          json[0].CITY[0].BARANGAY[i].ZIP
+        ];
+        Brgy.push(arrC);
+        ZipBarangay.push(arrZ);
+      }
+
+      $("#barangay").html(Brgy.join(""));
+    });
+  }
+
+  function getBarangay() {
+    let barangay = $("#barangay").val();
+
+// Function to find the value for a given location
+    function findValueForLocation(locationName) {
+      for (let i = 0; i < ZipBarangay.length; i++) {
+        if (ZipBarangay[i][0] === locationName) {
+          return ZipBarangay[i][1];
+        }
+      }
+      return null; // Return null if location is not found
+    }
+
+    const value = findValueForLocation(barangay);
+    $("#zip").val(value);
+  }
+
+// Give a StoreLocationss Data
+
+  function nearbydata(lat1, lon1, lat2, lon2) {
+    const R = 6371; // Radius of the earth in km
+    const dLat = deg2rad(lat2 - lat1);
+    const dLon = deg2rad(lon2 - lon1);
+    const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    const distance = R * c; // Distance in km
+    return distance.toFixed(2);
+  }
+
+  var address = JSON.parse(localStorage.getItem('address'));
+  const lat1 = address.lat;
+  const lon1 = address.long;
+  let url = "https://omniproxy.goldenabc.com/storelocations/Shopify/Api/GetStoreLocations?brand=penshoppe";
+  fetch(url).then((response) => response.json()).then((json) => getlocation(json));
+
+  function getlocation(data) {
+    let arr_data = [];
+    let arr = data.message;
+    for (let i = 0; i < arr.length; i++) {
+      const Title = arr[i].Title;
+      const Latitude = arr[i].Latitude;
+      const Longitude = arr[i].Longitude;
+      const listStore = nearbydata(lat1, lon1, Latitude, Longitude);
+      const listaddress = `${
+        arr[i].Street
+      } ${
+        arr[i].City
+      } ${
+        arr[i].Country
+      }`;
+
+      if (Longitude != null && Latitude != null && Title != "" && Title != "null") {
+        if (listStore <= 10) {
+          html = `
+            <div style="display:flex; border:1px solid black; margin:0 2px; cursor:pointer;">
+                <div style="width:100%; padding:5px;" id="hoverdata">
+                    <div style="display:flex; padding:0; margin:0;">
+                        <span style="font-size:large; font-weight:bold; width:90%;">${Title}</span> 
+                        <span style="font-size:small; width:10%;">${listStore} Km</span>
+                    </div>
+                    
+                    <p style="font-size:small; padding:0; margin:0;">${listaddress}</p>
+                </div>
+            </div>`;
+          arr_data.push(html);
+        }
+      }
+    }
+
+    const locationData = arr_data.map((htmlString) => {
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = htmlString;
+      const distanceText = tempDiv.querySelector('span:last-child').textContent;
+      const distanceKm = parseFloat(distanceText.replace(' Km', ''));
+      return {html: htmlString, distance: distanceKm};
+    });
+
+// Sort the location data by distance
+    locationData.sort((a, b) => a.distance - b.distance);
+
+// Rebuild the sorted HTML elements
+    const sortedLocationElements = locationData.map((data) => data.html);
+
+// Now you can use sortedLocationElements to update your HTML container
+    document.querySelector(".nearBy").innerHTML = sortedLocationElements.join('');
+    console.log(sortedLocationElements.join(''))
+  }
+
+}
+);
+</script>
