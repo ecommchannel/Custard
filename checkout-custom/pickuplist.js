@@ -7,7 +7,7 @@ export class pickUpList extends CustardModule {
         return [STEP_CONTACT_INFORMATION];
     }
     selector() {
-        return '[data-pickup-tab-content]';
+        return '[data-delivery-pickup-info]';
     }
     setup() {
         this.$element.find('.section__content').html(this.options.html_templates.pickup_list);
