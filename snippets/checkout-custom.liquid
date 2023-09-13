@@ -1,158 +1,16 @@
-<link
-  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
-  rel="stylesheet"
-  integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
-  crossorigin="anonymous" />
-<script
-  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-  crossorigin="anonymous"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-
 {% capture labelMarketing %}
   <small>Sample Marketing Text123</small>
 {% endcapture %}
 {% capture pickUpList %}
-  <div class="container">
-    <select
-      class="form-control w-50"
-      name=""
-      id="province"
-      onchange="getProvince()">
-      <option value="">Select Province Address</option>
-    </select>
-
-    <select
-      class="form-control w-50"
-      name=""
-      id="city"
-      onchange="getCity()">
-      <option value="">Select Town / City</option>
-    </select>
-
-    <select
-      class="form-control w-50"
-      name=""
-      id="barangay"
-      onchange="getBarangay()">
-      <option value="">Select Barangay</option>
-    </select>
-
-    <input
-      type="text"
-      class="form-control w-50"
-      id="zip"
-      readonly />
-  </div>
+  {% render 'modal' %}
 {% endcapture %}
-
-<script>
-  var arr = JSON.parse(localStorage.getItem("arrProvince"));
-  console.log(arr)
-  if (arr != null) {
-    province = [];
-    var data = JSON.parse(localStorage.arrProvince);
-    for (let i = 0; i < data.province.length; i++) {
-      const arrP = `${
-        data.province[i]
-      }`;
-      province.push(arrP);
-    }
-    $("#province").html(province.join(""));
-  } else {
-    url = "https://tools.gabcgfs.com/address_finder.php";
-    province = [];
-    province.push('<option value="" Selected>Select Province Address</option>');
-    jQuery.ajax({url: url, type: "GET", dataType: "jsonp", contentType: "application/json; charset=UTF-8"}).done(function(json) {
-      for (let i = 0; i < json.length; i++) {
-        const arrP = `<option value="${
-          json[i].PROVINCE
-        }">${
-          json[i].PROVINCE
-        }</option>`;
-        province.push(arrP);
-      }
-
-      $("#province").html(province.join(""));
-      localStorage.setItem("arrProvince", JSON.stringify({province}));
-    });
-  }
-
-  function getProvince() {
-    $("#zip").val("");
-    $("#barangay").html('<option value="" Selected>Select Barangay</option>');
-    let province = $("#province").val();
-    url = `https://tools.gabcgfs.com/address_finder.php?PROVINCE=${province}`;
-    City = [];
-    City.push('<option value="" Selected>Select Town / City</option>');
-    jQuery.ajax({url: url, type: "GET", dataType: "jsonp", contentType: "application/json; charset=UTF-8"}).done(function(json) {
-      if (json != "") {
-        for (let i = 0; i < json[0].CITY.length; i++) {
-          const arrC = `<option value="${
-            json[0].CITY[i].CITY
-          }">${
-            json[0].CITY[i].CITY
-          }</option>`;
-          City.push(arrC);
-        }
-      } else {
-        City.push();
-      }
-
-      $("#city").html(City.join(""));
-    });
-  }
-  ZipBarangay = [];
-  function getCity() {
-    $("#zip").val("");
-    let city = $("#city").val();
-    url = `https://tools.gabcgfs.com/address_finder.php?CITY=${city}`;
-    Brgy = [];
-
-    Brgy.push('<option value="" Selected>Select Barangay</option>');
-    jQuery.ajax({url: url, type: "GET", dataType: "jsonp", contentType: "application/json; charset=UTF-8"}).done(function(json) {
-      for (let i = 0; i < json[0].CITY[0].BARANGAY.length; i++) {
-        const arrC = `<option value="${
-          json[0].CITY[0].BARANGAY[i].BARANGAY
-        }">${
-          json[0].CITY[0].BARANGAY[i].BARANGAY
-        }</option>`;
-        const arrZ = [
-          json[0].CITY[0].BARANGAY[i].BARANGAY,
-          json[0].CITY[0].BARANGAY[i].ZIP
-        ];
-        Brgy.push(arrC);
-        ZipBarangay.push(arrZ);
-      }
-
-      $("#barangay").html(Brgy.join(""));
-    });
-  }
-
-  function getBarangay() {
-    let barangay = $("#barangay").val();
-
-// Function to find the value for a given location
-    function findValueForLocation(locationName) {
-      for (let i = 0; i < ZipBarangay.length; i++) {
-        if (ZipBarangay[i][0] === locationName) {
-          return ZipBarangay[i][1];
-        }
-      }
-      return null; // Return null if location is not found
-    }
-
-    const value = findValueForLocation(barangay);
-    $("#zip").val(value);
-  }
-</script>
 
 
 <script type="text/javascript">
   window.custard.init(jQuery || Checkout.jQuery, Shopify.Checkout.step || (Shopify.Checkout.OrderStatus ? 'order_status' : null),
   {    
-                                                    html_templates: {
-                                                      marketing_text: {{ labelMarketing | json }},
+                                    html_templates: {
+                                      marketing_text: {{ labelMarketing | json }},
   pickup_list: {{ pickUpList | json }}
   }  
   });
