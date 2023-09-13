@@ -71,7 +71,7 @@
     }
     $("#province").html(province.join(""));
   } else {
-    url = "https://tools.gabcgfs.com/address_finder.php";
+    url = "https://150.200.185.172/address/address_finder.php";
     province = [];
     province.push('<option value="" Selected>Select Province Address</option>');
     jQuery.ajax({url: url, type: "GET", dataType: "jsonp", contentType: "application/json; charset=UTF-8"}).done(function(json) {
