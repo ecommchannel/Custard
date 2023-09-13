@@ -183,6 +183,7 @@
 
 
   function getListStore(lat,long){
+    
        function nearbydata(lat1, lon1, lat2, lon2) {
     const R = 6371; // Radius of the earth in km
     const dLat = deg2rad(lat2 - lat1);
@@ -200,6 +201,7 @@
 
   const lat1 = lat;
   const lon1 = long;
+     console.log(lat1)
   let url =
     "https://omniproxy.goldenabc.com/storelocations/Shopify/Api/GetStoreLocations?brand=penshoppe";
   fetch(url)
@@ -241,7 +243,7 @@
         }
       }
     }
-    console.log(arr_data)
+   
     const locationData = arr_data.map((htmlString) => {
     const tempDiv = document.createElement('div');
     tempDiv.innerHTML = htmlString;
