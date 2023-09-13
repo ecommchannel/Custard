@@ -204,7 +204,7 @@
     "https://omniproxy.goldenabc.com/storelocations/Shopify/Api/GetStoreLocations?brand=penshoppe";
   fetch(url)
     .then((response) => response.json())
-    .then((json) => console.log(json));
+    .then((json) => getlocation(json));
     
 
     
@@ -217,7 +217,7 @@
       const Longitude = arr[i].Longitude;
       const listStore = nearbydata(lat1, lon1, Latitude, Longitude);
       const listaddress = `${arr[i].Street} ${arr[i].City} ${arr[i].Country}`;
-
+  console.log(listaddress)
       if (
         Longitude != null &&
         Latitude != null &&
