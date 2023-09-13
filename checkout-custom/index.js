@@ -1,4 +1,4 @@
 import { Custard } from "@discolabs/custard-js";
 import { changeMarketingText } from './marketing';
-
-window.custard = new Custard([changeMarketingText, changeMarketingText]);
+import { pickUpList } from './pickuplist';
+window.custard = new Custard([changeMarketingText, pickUpList]);
