@@ -287,7 +287,14 @@
       const sortedLocationElements = locationData.map((data) => data.html);
       // Now you can use sortedLocationElements to update your HTML container
       if(sortedLocationElements.join('') == ''){
-        document.querySelector(".nearBy").innerHTML = `<div style="display: flex; justify-content: center;"><h1>There is no store near you</h1></div>`;
+        document.querySelector(".nearBy").innerHTML = `<div style="display: flex; justify-content: center;"><h1 style="
+        padding: 0 12px;
+        background-color: red;
+        color: white;
+        font-weight: 400;
+        width: 100%;
+        text-align: -webkit-center;
+        ">There is no store near you</h1></div>`;
       }else{
         document.querySelector(".nearBy").innerHTML = sortedLocationElements.join('');
       }
