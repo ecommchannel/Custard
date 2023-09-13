@@ -48,7 +48,7 @@
 
 <script>
   var arr = JSON.parse(localStorage.getItem("arrProvince"));
-
+  console.log(arr)
   if (arr != null) {
     province = [];
     var data = JSON.parse(localStorage.arrProvince);
@@ -151,8 +151,8 @@
 <script type="text/javascript">
   window.custard.init(jQuery || Checkout.jQuery, Shopify.Checkout.step || (Shopify.Checkout.OrderStatus ? 'order_status' : null),
   {    
-                                                  html_templates: {
-                                                    marketing_text: {{ labelMarketing | json }},
+                                                    html_templates: {
+                                                      marketing_text: {{ labelMarketing | json }},
   pickup_list: {{ pickUpList | json }}
   }  
   });
