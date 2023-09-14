@@ -2,7 +2,7 @@
   <small>Sample Marketing Text123</small>
 {% endcapture %}
 {% capture removeExisting %}
-  <small>For quicker shipping address entry, find your area from the drop down fields.</small>
+  <small>For quicker pickup address entry, find your area from the drop down fields.</small>
 {% endcapture %}
 {% capture pickUpList %}
   {% render 'modal' %}
@@ -13,10 +13,10 @@
 <script type="text/javascript">
   window.custard.init(jQuery || Checkout.jQuery, Shopify.Checkout.step || (Shopify.Checkout.OrderStatus ? 'order_status' : null),
   {    
-                                                                          html_templates: {
-                                                                            marketing_text: {{ labelMarketing | json }},
-  remove_existing: {{ removeExisting | json }},
-  pickup_list: {{ pickUpList | json }}
+   html_templates: {
+            marketing_text: {{ labelMarketing | json }},
+            remove_existing: {{ removeExisting | json }},
+            pickup_list: {{ pickUpList | json }}
   }  
   });
 </script>
