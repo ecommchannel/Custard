@@ -10,6 +10,6 @@ export class deliveryMethod extends CustardModule {
         return '[data-shipping-address]';
     }
     setup() {
-        this.$element.find('.delivery-method-list').html(this.options.html_templates.delivery_method);
+        this.$element.find('.section__content').html(this.options.html_templates.delivery_method);
     }
 }
