@@ -1,7 +1,7 @@
 import { CustardModule, STEP_CONTACT_INFORMATION } from "@discolabs/custard-js";
-export class pickUpList extends CustardModule {
+export class removeExisting extends CustardModule {
     id() {
-        return 'pickup-list';
+        return 'remove-existing';
     }
     steps() {
         return [STEP_CONTACT_INFORMATION];
@@ -10,7 +10,9 @@ export class pickUpList extends CustardModule {
         return '[data-delivery-pickup-info]';
     }
     setup() {
-        this.$element.find('.content-box').html(this.options.html_templates.pickup_list);
+        setInterval(() => {
+            this.$element.find('.content-box .content-box__row').html(this.options.html_templates.remove_existing);
+        }, 1000);
 
     }
 }
