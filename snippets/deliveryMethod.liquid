@@ -1,0 +1,625 @@
+<input
+  type="hidden"
+  name="checkout[pick_up_in_store][selected]"
+  id="checkout_pick_up_in_store_selected"
+  value="false"
+  data-pick-up-in-store-selected="true"
+  autocomplete="off">
+<div class="content-box">
+  <div class="content-box__row">
+    <div class="radio-wrapper">
+      <div class="radio__input">
+        <input
+          class="input-radio"
+          data-delivery-radio-button="ship"
+          type="radio"
+          value="delivery-shipping"
+          checked="checked"
+          name="checkout[id]"
+          id="checkout_id_delivery-shipping">
+      </div>
+      <label class="radio__label" for="checkout_id_delivery-shipping">
+        <span class="radio__label__primary radio__label--active" data-delivery-ship-radio-label="">
+          <svg
+            aria-hidden="true"
+            focusable="false"
+            class="icon-svg icon-svg--size-18 icon-svg--inline-before">
+            <use xlink:href="#ship"></use>
+          </svg>
+          Ship
+        </span>
+      </label>
+    </div>
+  </div>
+  <div class="content-box__row">
+    <div class="radio-wrapper">
+      <div class="radio__input">
+        <input
+          class="input-radio"
+          data-delivery-radio-button="pickup"
+          type="radio"
+          value="delivery-pickup"
+          name="checkout[id]"
+          id="checkout_id_delivery-pickup">
+      </div>
+      <label class="radio__label" for="checkout_id_delivery-pickup">
+        <span class="radio__label__primary" data-delivery-pickup-radio-label="">
+          <svg
+            aria-hidden="true"
+            focusable="false"
+            class="icon-svg icon-svg--size-18 icon-svg--inline-before">
+            <use xlink:href="#pickup"></use>
+          </svg>
+          Pick up
+        </span>
+      </label>
+    </div>
+  </div>
+</div>
+
+<div class="section" data-delivery-shipping-info="">
+  <div class="section__header">
+    <h2 class="section__title">
+      Shipping address
+    </h2>
+  </div>
+  <div class="section__content">
+    <div class="fieldset">
+      <div class="address-fields" data-address-fields="">
+        <input
+          class="visually-hidden"
+          autocomplete="shipping given-name"
+          tabindex="-1"
+          aria-hidden="true"
+          aria-label="no-label"
+          data-autocomplete-field="first_name"
+          data-honeypot="true"
+          aria-required="true"
+          size="30"
+          type="text"
+          name="checkout[shipping_address][first_name]">
+        <input
+          class="visually-hidden"
+          autocomplete="shipping family-name"
+          tabindex="-1"
+          aria-hidden="true"
+          aria-label="no-label"
+          data-autocomplete-field="last_name"
+          data-honeypot="true"
+          aria-required="true"
+          size="30"
+          type="text"
+          name="checkout[shipping_address][last_name]">
+        <input
+          class="visually-hidden"
+          autocomplete="shipping organization"
+          tabindex="-1"
+          aria-hidden="true"
+          aria-label="no-label"
+          data-autocomplete-field="company"
+          data-honeypot="true"
+          aria-required="true"
+          size="30"
+          type="text"
+          name="checkout[shipping_address][company]">
+        <input
+          class="visually-hidden"
+          autocomplete="shipping address-line1"
+          tabindex="-1"
+          aria-hidden="true"
+          aria-label="no-label"
+          data-autocomplete-field="address1"
+          data-honeypot="true"
+          aria-required="true"
+          size="30"
+          type="text"
+          name="checkout[shipping_address][address1]">
+        <input
+          class="visually-hidden"
+          autocomplete="shipping address-line2"
+          tabindex="-1"
+          aria-hidden="true"
+          aria-label="no-label"
+          data-autocomplete-field="address2"
+          data-honeypot="true"
+          aria-required="true"
+          size="30"
+          type="text"
+          name="checkout[shipping_address][address2]">
+        <input
+          class="visually-hidden"
+          autocomplete="shipping address-level2"
+          tabindex="-1"
+          aria-hidden="true"
+          aria-label="no-label"
+          data-autocomplete-field="city"
+          data-honeypot="true"
+          aria-required="true"
+          size="30"
+          type="text"
+          name="checkout[shipping_address][city]">
+        <input
+          class="visually-hidden"
+          autocomplete="shipping country"
+          tabindex="-1"
+          aria-hidden="true"
+          aria-label="no-label"
+          data-autocomplete-field="country"
+          data-honeypot="true"
+          aria-required="true"
+          size="30"
+          type="text"
+          name="checkout[shipping_address][country]">
+        <input
+          class="visually-hidden"
+          autocomplete="shipping address-level1"
+          tabindex="-1"
+          aria-hidden="true"
+          aria-label="no-label"
+          data-autocomplete-field="province"
+          data-honeypot="true"
+          aria-required="true"
+          size="30"
+          type="text"
+          name="checkout[shipping_address][province]">
+        <input
+          class="visually-hidden"
+          autocomplete="shipping postal-code"
+          tabindex="-1"
+          aria-hidden="true"
+          aria-label="no-label"
+          data-autocomplete-field="zip"
+          data-honeypot="true"
+          aria-required="true"
+          size="30"
+          type="text"
+          name="checkout[shipping_address][zip]">
+        <input
+          class="visually-hidden"
+          autocomplete="shipping tel"
+          tabindex="-1"
+          aria-hidden="true"
+          aria-label="no-label"
+          data-autocomplete-field="phone"
+          data-honeypot="true"
+          aria-required="true"
+          size="30"
+          type="text"
+          name="checkout[shipping_address][phone]">
+
+        <div
+          class="field field--required field--show-floating-label"
+          data-address-field="country"
+          data-autocomplete-field-container="true">
+
+          <div class="field__input-wrapper field__input-wrapper--select">
+            <label class="field__label field__label--visible" for="checkout_shipping_address_country">Country/region</label>
+            <select
+              size="1"
+              autocomplete="shipping country"
+              data-backup="country"
+              class="field__input field__input--select"
+              aria-required="true"
+              name="checkout[shipping_address][country]"
+              id="checkout_shipping_address_country"
+              placeholder="Country/region">
+              <option
+                data-code="PH"
+                data-pure-numeric-postal-code="true"
+                selected="selected"
+                value="Philippines">Philippines</option>
+              <option disabled="disabled" value="---">
+                ---
+              </option>
+              <option
+                data-code="PH"
+                data-pure-numeric-postal-code="true"
+                value="Philippines"
+                selected>Philippines</option>
+            </select>
+            <div class="field__caret">
+              <svg
+                class="icon-svg icon-svg--color-adaptive-lighter icon-svg--size-10 field__caret-svg"
+                role="presentation"
+                aria-hidden="true"
+                focusable="false">
+                <use xlink:href="#caret-down"></use>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="field field--required field--error field--half" data-address-field="first_name">
+
+          <div class="field__input-wrapper">
+            <label class="field__label field__label--visible" for="checkout_shipping_address_first_name">First name</label>
+            <input
+              placeholder="First name"
+              autocomplete="shipping given-name"
+              autocorrect="off"
+              data-backup="first_name"
+              class="field__input"
+              aria-describedby="error-for-first_name"
+              aria-invalid="true"
+              aria-required="true"
+              size="30"
+              type="text"
+              value=""
+              name="checkout[shipping_address][first_name]"
+              id="checkout_shipping_address_first_name">
+          </div>
+          <p class="field__message field__message--error" id="error-for-first_name">Enter a first name</p>
+        </div>
+        <div class="field field--required field--error field--half" data-address-field="last_name">
+
+          <div class="field__input-wrapper">
+            <label class="field__label field__label--visible" for="checkout_shipping_address_last_name">Last name</label>
+            <input
+              placeholder="Last name"
+              autocomplete="shipping family-name"
+              autocorrect="off"
+              data-backup="last_name"
+              class="field__input"
+              aria-describedby="error-for-last_name"
+              aria-invalid="true"
+              aria-required="true"
+              size="30"
+              type="text"
+              value=""
+              name="checkout[shipping_address][last_name]"
+              id="checkout_shipping_address_last_name">
+          </div>
+          <p class="field__message field__message--error" id="error-for-last_name">Enter a last name</p>
+        </div>
+        <div
+          data-address-field="company"
+          data-autocomplete-field-container="true"
+          class="field field--required field--error">
+
+          <div class="field__input-wrapper">
+            <label class="field__label field__label--visible" for="checkout_shipping_address_company">Company</label>
+            <input
+              placeholder="Company"
+              autocomplete="shipping organization"
+              autocorrect="off"
+              data-backup="company"
+              class="field__input"
+              aria-describedby="error-for-company"
+              aria-invalid="true"
+              aria-required="true"
+              size="30"
+              type="text"
+              value=""
+              name="checkout[shipping_address][company]"
+              id="checkout_shipping_address_company">
+          </div>
+          <p class="field__message field__message--error" id="error-for-company">Enter a company name</p>
+        </div>
+        <div
+          data-address-field="address1"
+          data-autocomplete-field-container="true"
+          class="field field--required field--error">
+
+          <div class="field__input-wrapper">
+            <label class="field__label field__label--visible" for="checkout_shipping_address_address1">Address</label>
+            <input
+              placeholder="Address"
+              autocomplete="shipping address-line1"
+              autocorrect="off"
+              data-backup="address1"
+              class="field__input"
+              aria-describedby="error-for-address1"
+              aria-invalid="true"
+              aria-required="true"
+              size="30"
+              type="text"
+              value=""
+              name="checkout[shipping_address][address1]"
+              id="checkout_shipping_address_address1">
+
+            <p class="field__additional-info visually-hidden" data-address-civic-number-warning="">
+              <svg
+                class="icon-svg icon-svg--size-16 field__message__icon"
+                aria-hidden="true"
+                focusable="false">
+                <use xlink:href="#info"></use>
+              </svg>
+              Add a house number if you have one
+            </p>
+          </div>
+          <p class="field__message field__message--error" id="error-for-address1">Enter an address</p>
+        </div>
+        <div
+          data-address-field="address2"
+          data-autocomplete-field-container="true"
+          class="field field--required field--error">
+
+          <div class="field__input-wrapper">
+            <label class="field__label field__label--visible" for="checkout_shipping_address_address2">Apartment, suite, etc.</label>
+            <input
+              placeholder="Apartment, suite, etc."
+              autocomplete="shipping address-line2"
+              autocorrect="off"
+              data-backup="address2"
+              class="field__input"
+              aria-describedby="error-for-address2"
+              aria-invalid="true"
+              aria-required="true"
+              size="30"
+              type="text"
+              value=""
+              name="checkout[shipping_address][address2]"
+              id="checkout_shipping_address_address2">
+          </div>
+          <p class="field__message field__message--error" id="error-for-address2">Enter an apartment, suite, etc.</p>
+        </div>
+        <div
+          class="field field--required field--error field--half"
+          data-address-field="zip"
+          data-autocomplete-field-container="true">
+
+          <div class="field__input-wrapper">
+            <label class="field__label field__label--visible" for="checkout_shipping_address_zip">Postal code</label>
+            <input
+              placeholder="Postal code"
+              autocomplete="shipping postal-code"
+              autocorrect="off"
+              data-backup="zip"
+              class="field__input field__input--zip"
+              aria-describedby="error-for-zip"
+              aria-invalid="true"
+              aria-required="true"
+              size="30"
+              type="text"
+              value=""
+              name="checkout[shipping_address][zip]"
+              id="checkout_shipping_address_zip">
+          </div>
+          <p class="field__message field__message--error" id="error-for-zip">Enter a postal code</p>
+        </div>
+        <div
+          data-address-field="city"
+          data-autocomplete-field-container="true"
+          class="field field--required field--error field--half">
+
+          <div class="field__input-wrapper">
+            <label class="field__label field__label--visible" for="checkout_shipping_address_city">City</label>
+            <input
+              placeholder="City"
+              autocomplete="shipping address-level2"
+              autocorrect="off"
+              data-backup="city"
+              class="field__input"
+              aria-describedby="error-for-city"
+              aria-invalid="true"
+              aria-required="true"
+              size="30"
+              type="text"
+              value=""
+              name="checkout[shipping_address][city]"
+              id="checkout_shipping_address_city">
+          </div>
+          <p class="field__message field__message--error" id="error-for-city">Enter a city</p>
+        </div>
+        <div
+          class="field field--required field--show-floating-label"
+          data-address-field="province"
+          data-autocomplete-field-container="true">
+
+          <div class="field__input-wrapper field__input-wrapper--select">
+            <label class="field__label field__label--visible" for="checkout_shipping_address_province">Region</label>
+            <select
+              placeholder="Region"
+              autocomplete="shipping address-level1"
+              autocorrect="off"
+              data-backup="province"
+              class="field__input field__input--select"
+              aria-required="true"
+              name="checkout[shipping_address][province]"
+              id="checkout_shipping_address_province">
+              <option disabled="">Region</option>
+              <option data-alternate-values="[&quot;Abra&quot;]" value="PH-ABR">Abra</option>
+              <option data-alternate-values="[&quot;Agusan del Norte&quot;]" value="PH-AGN">Agusan del Norte</option>
+              <option data-alternate-values="[&quot;Agusan del Sur&quot;]" value="PH-AGS">Agusan del Sur</option>
+              <option data-alternate-values="[&quot;Aklan&quot;]" value="PH-AKL">Aklan</option>
+              <option data-alternate-values="[&quot;Albay&quot;]" value="PH-ALB">Albay</option>
+              <option data-alternate-values="[&quot;Antique&quot;]" value="PH-ANT">Antique</option>
+              <option data-alternate-values="[&quot;Apayao&quot;]" value="PH-APA">Apayao</option>
+              <option data-alternate-values="[&quot;Aurora&quot;]" value="PH-AUR">Aurora</option>
+              <option data-alternate-values="[&quot;Basilan&quot;]" value="PH-BAS">Basilan</option>
+              <option data-alternate-values="[&quot;Bataan&quot;]" value="PH-BAN">Bataan</option>
+              <option data-alternate-values="[&quot;Batanes&quot;]" value="PH-BTN">Batanes</option>
+              <option data-alternate-values="[&quot;Batangas&quot;]" value="PH-BTG">Batangas</option>
+              <option data-alternate-values="[&quot;Benguet&quot;]" value="PH-BEN">Benguet</option>
+              <option data-alternate-values="[&quot;Biliran&quot;]" value="PH-BIL">Biliran</option>
+              <option data-alternate-values="[&quot;Bohol&quot;]" value="PH-BOH">Bohol</option>
+              <option data-alternate-values="[&quot;Bukidnon&quot;]" value="PH-BUK">Bukidnon</option>
+              <option data-alternate-values="[&quot;Bulacan&quot;]" value="PH-BUL">Bulacan</option>
+              <option data-alternate-values="[&quot;Cagayan&quot;]" value="PH-CAG">Cagayan</option>
+              <option data-alternate-values="[&quot;Camarines Norte&quot;]" value="PH-CAN">Camarines Norte</option>
+              <option data-alternate-values="[&quot;Camarines Sur&quot;]" value="PH-CAS">Camarines Sur</option>
+              <option data-alternate-values="[&quot;Camiguin&quot;]" value="PH-CAM">Camiguin</option>
+              <option data-alternate-values="[&quot;Capiz&quot;]" value="PH-CAP">Capiz</option>
+              <option data-alternate-values="[&quot;Catanduanes&quot;]" value="PH-CAT">Catanduanes</option>
+              <option data-alternate-values="[&quot;Cavite&quot;]" value="PH-CAV">Cavite</option>
+              <option data-alternate-values="[&quot;Cebu&quot;]" value="PH-CEB">Cebu</option>
+              <option data-alternate-values="[&quot;Davao de Oro&quot;]" value="PH-COM">Compostela Valley</option>
+              <option data-alternate-values="[&quot;Cotabato&quot;]" value="PH-NCO">Cotabato</option>
+              <option data-alternate-values="[&quot;Davao Occidental&quot;]" value="PH-DVO">Davao Occidental</option>
+              <option data-alternate-values="[&quot;Davao Oriental&quot;]" value="PH-DAO">Davao Oriental</option>
+              <option data-alternate-values="[&quot;Davao del Norte&quot;]" value="PH-DAV">Davao del Norte</option>
+              <option data-alternate-values="[&quot;Davao del Sur&quot;]" value="PH-DAS">Davao del Sur</option>
+              <option data-alternate-values="[&quot;Dinagat Islands&quot;]" value="PH-DIN">Dinagat Islands</option>
+              <option data-alternate-values="[&quot;Eastern Samar&quot;]" value="PH-EAS">Eastern Samar</option>
+              <option data-alternate-values="[&quot;Guimaras&quot;]" value="PH-GUI">Guimaras</option>
+              <option data-alternate-values="[&quot;Ifugao&quot;]" value="PH-IFU">Ifugao</option>
+              <option data-alternate-values="[&quot;Ilocos Norte&quot;]" value="PH-ILN">Ilocos Norte</option>
+              <option data-alternate-values="[&quot;Ilocos Sur&quot;]" value="PH-ILS">Ilocos Sur</option>
+              <option data-alternate-values="[&quot;Iloilo&quot;]" value="PH-ILI">Iloilo</option>
+              <option data-alternate-values="[&quot;Isabela&quot;]" value="PH-ISA">Isabela</option>
+              <option data-alternate-values="[&quot;Kalinga&quot;]" value="PH-KAL">Kalinga</option>
+              <option data-alternate-values="[&quot;La Union&quot;]" value="PH-LUN">La Union</option>
+              <option data-alternate-values="[&quot;Laguna&quot;]" value="PH-LAG">Laguna</option>
+              <option data-alternate-values="[&quot;Lanao del Norte&quot;]" value="PH-LAN">Lanao del Norte</option>
+              <option data-alternate-values="[&quot;Lanao del Sur&quot;]" value="PH-LAS">Lanao del Sur</option>
+              <option data-alternate-values="[&quot;Leyte&quot;]" value="PH-LEY">Leyte</option>
+              <option data-alternate-values="[&quot;Maguindanao&quot;]" value="PH-MAG">Maguindanao</option>
+              <option data-alternate-values="[&quot;Marinduque&quot;]" value="PH-MAD">Marinduque</option>
+              <option data-alternate-values="[&quot;Masbate&quot;]" value="PH-MAS">Masbate</option>
+              <option data-alternate-values="[&quot;Metro Manila&quot;]" value="PH-00">Metro Manila</option>
+              <option data-alternate-values="[&quot;Misamis Occidental&quot;]" value="PH-MSC">Misamis Occidental</option>
+              <option data-alternate-values="[&quot;Misamis Oriental&quot;]" value="PH-MSR">Misamis Oriental</option>
+              <option data-alternate-values="[&quot;Mountain Province&quot;]" value="PH-MOU">Mountain</option>
+              <option data-alternate-values="[&quot;Negros Occidental&quot;]" value="PH-NEC">Negros Occidental</option>
+              <option data-alternate-values="[&quot;Negros Oriental&quot;]" value="PH-NER">Negros Oriental</option>
+              <option data-alternate-values="[&quot;Northern Samar&quot;]" value="PH-NSA">Northern Samar</option>
+              <option data-alternate-values="[&quot;Nueva Ecija&quot;]" value="PH-NUE">Nueva Ecija</option>
+              <option data-alternate-values="[&quot;Nueva Vizcaya&quot;]" value="PH-NUV">Nueva Vizcaya</option>
+              <option data-alternate-values="[&quot;Occidental Mindoro&quot;]" value="PH-MDC">Occidental Mindoro</option>
+              <option data-alternate-values="[&quot;Oriental Mindoro&quot;]" value="PH-MDR">Oriental Mindoro</option>
+              <option data-alternate-values="[&quot;Palawan&quot;]" value="PH-PLW">Palawan</option>
+              <option data-alternate-values="[&quot;Pampanga&quot;]" value="PH-PAM">Pampanga</option>
+              <option data-alternate-values="[&quot;Pangasinan&quot;]" value="PH-PAN">Pangasinan</option>
+              <option data-alternate-values="[&quot;Quezon&quot;]" value="PH-QUE">Quezon</option>
+              <option data-alternate-values="[&quot;Quirino&quot;]" value="PH-QUI">Quirino</option>
+              <option data-alternate-values="[&quot;Rizal&quot;]" value="PH-RIZ">Rizal</option>
+              <option data-alternate-values="[&quot;Romblon&quot;]" value="PH-ROM">Romblon</option>
+              <option data-alternate-values="[&quot;Samar&quot;]" value="PH-WSA">Samar</option>
+              <option data-alternate-values="[&quot;Sarangani&quot;]" value="PH-SAR">Sarangani</option>
+              <option data-alternate-values="[&quot;Siquijor&quot;]" value="PH-SIG">Siquijor</option>
+              <option data-alternate-values="[&quot;Sorsogon&quot;]" value="PH-SOR">Sorsogon</option>
+              <option data-alternate-values="[&quot;South Cotabato&quot;]" value="PH-SCO">South Cotabato</option>
+              <option data-alternate-values="[&quot;Southern Leyte&quot;]" value="PH-SLE">Southern Leyte</option>
+              <option data-alternate-values="[&quot;Sultan Kudarat&quot;]" value="PH-SUK">Sultan Kudarat</option>
+              <option data-alternate-values="[&quot;Sulu&quot;]" value="PH-SLU">Sulu</option>
+              <option data-alternate-values="[&quot;Surigao del Norte&quot;]" value="PH-SUN">Surigao del Norte</option>
+              <option data-alternate-values="[&quot;Surigao del Sur&quot;]" value="PH-SUR">Surigao del Sur</option>
+              <option data-alternate-values="[&quot;Tarlac&quot;]" value="PH-TAR">Tarlac</option>
+              <option data-alternate-values="[&quot;Tawi-Tawi&quot;]" value="PH-TAW">Tawi-Tawi</option>
+              <option data-alternate-values="[&quot;Zambales&quot;]" value="PH-ZMB">Zambales</option>
+              <option data-alternate-values="[&quot;Zamboanga Sibugay&quot;]" value="PH-ZSI">Zamboanga Sibugay</option>
+              <option data-alternate-values="[&quot;Zamboanga del Norte&quot;]" value="PH-ZAN">Zamboanga del Norte</option>
+              <option data-alternate-values="[&quot;Zamboanga del Sur&quot;]" value="PH-ZAS">Zamboanga del Sur</option>
+            </select>
+            <div class="field__caret shown-if-js">
+              <svg
+                class="icon-svg icon-svg--color-adaptive-lighter icon-svg--size-10 field__caret-svg"
+                role="presentation"
+                aria-hidden="true"
+                focusable="false">
+                <use xlink:href="#caret-down"></use>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div data-address-field="phone" class="field field--required field--error">
+
+          <div class="field__input-wrapper field__input-wrapper--icon-right">
+            <label class="field__label field__label--visible" for="checkout_shipping_address_phone">Phone</label>
+            <input
+              placeholder="Phone"
+              autocomplete="shipping tel"
+              autocorrect="off"
+              data-backup="phone"
+              data-phone-formatter="true"
+              data-phone-formatter-country-select="[name='checkout[shipping_address][country]']"
+              data-placeholder-label-required="Phone"
+              data-placeholder-label-optional="Phone (optional)"
+              class="field__input field__input--numeric"
+              aria-describedby="error-for-phone"
+              aria-invalid="true"
+              aria-required="true"
+              size="30"
+              type="tel"
+              value=""
+              name="checkout[shipping_address][phone]"
+              id="checkout_shipping_address_phone">
+            <div class="field__icon">
+              <div
+                data-tooltip="true"
+                id="phone_tooltip"
+                class="tooltip-container">
+                <button
+                  type="button"
+                  class="tooltip-control"
+                  data-tooltip-control="true"
+                  aria-label="More information"
+                  aria-describedby="tooltip-for-phone"
+                  aria-controls="tooltip-for-phone"
+                  aria-pressed="false"
+                  placeholder="Phone">
+                  <svg
+                    class="icon-svg icon-svg--color-adaptive-lighter icon-svg--size-16 icon-svg--block icon-svg--center"
+                    role="presentation"
+                    aria-hidden="true"
+                    focusable="false">
+                    <use xlink:href="#question"></use>
+                  </svg>
+                </button>
+                <span
+                  class="tooltip"
+                  role="tooltip"
+                  id="tooltip-for-phone">In case we need to contact you about your order</span>
+              </div>
+            </div>
+          </div>
+          <p class="field__message field__message--error" id="error-for-phone">Enter a phone number</p>
+        </div>
+      </div>
+
+
+      <div class="field field--show-floating-label">
+        <div class="checkbox-wrapper">
+          <div class="checkbox__input">
+            <input
+              autocomplete="off"
+              size="30"
+              type="hidden"
+              value="false"
+              name="checkout[remember_me]">
+            <input
+              name="checkout[remember_me]"
+              type="hidden"
+              value="0"
+              autocomplete="off"><input
+              class="input-checkbox"
+              data-backup="remember_me"
+              type="checkbox"
+              value="1"
+              name="checkout[remember_me]"
+              id="checkout_remember_me">
+          </div>
+          <label class="checkbox__label" for="checkout_remember_me">
+            Save this information for next time
+          </label>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<div class="section hidden-if-js" data-delivery-pickup-info="">
+  <div class="section__header">
+    <h2 class="section__title">
+      Pickup locations
+    </h2>
+  </div>
+  <div class="section__content">
+    <div data-pickup-tab-content="" class="pickup-list">
+      <div class="content-box blank-slate">
+        <svg
+          class="icon-svg icon-svg--color-accent icon-svg--size-32 icon-svg--spinner blank-slate__icon"
+          aria-hidden="true"
+          focusable="false">
+          <use xlink:href="#spinner-small"></use>
+        </svg>
+        <p>Getting available pick up locations…</p>
+      </div>
+    </div>
+
+  </div>
+</div>
