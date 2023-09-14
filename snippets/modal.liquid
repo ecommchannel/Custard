@@ -283,7 +283,7 @@
           }
         }
       }
-
+ document.querySelector(".nearBy").innerHTML = arr_data.join('');
       const locationData = arr_data.map((htmlString) => {
         const tempDiv = document.createElement('div');
         tempDiv.innerHTML = htmlString;
