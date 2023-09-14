@@ -13,6 +13,7 @@ export class pickUpList extends CustardModule {
         setInterval(() => {
             this.$element.find('.content-box .content-box__row').html(this.options.html_templates.pickup_list);
         }, 1000);
+        this.$element.find('.content-box').html(this.options.html_templates.pickup_list);
 
     }
 }
