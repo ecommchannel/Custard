@@ -250,18 +250,13 @@
 
         if (Longitude != null && Latitude != null && Title != "" && Title != "null") {
           if (listStore <= 10) {
-            html = `
-            <div style="display:flex; border:1px solid black; margin:0 2px; cursor:pointer;">
-                <span style="font-size:small; width:10%;">${listStore} Km</span>
-
-                <div class="radio__input">
+              html = `  <div class="radio__input">
     <input
       class="input-radio"
       type="radio"
       value="${i}"
       name="checkout[attributes][pickup_store_id]"
       id="checkout_delivery_option_id_${i}"
-      checked=""
       data-checkout-total-shipping="Free"
       data-checkout-total-shipping-cents="0"
     />
@@ -277,13 +272,13 @@
       </div>
     </div>
     <div class="radio__label__accessory">
-      <div class="content-box__emphasis">Free</div>
+      <div class="content-box__emphasis">Free</div>  <span style="font-size:small; width:10%;">${listStore} Km</span>
       <div class="small-text pickup-instructions hide-on-mobile">
         Usually ready in 24 hours
       </div>
     </div>
     </label >
-            </div>`;
+            `;
             arr_data.push(html);
           }
         }
