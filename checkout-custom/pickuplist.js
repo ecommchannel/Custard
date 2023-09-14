@@ -11,7 +11,7 @@ export class pickUpList extends CustardModule {
     }
     setup() {
 
-        this.$element.find('.content-box__row').append(this.options.html_templates.pickup_list);
+        this.$element.find('.content-box').append(this.options.html_templates.pickup_list);
 
 
     }
