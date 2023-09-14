@@ -10,10 +10,9 @@ export class pickUpList extends CustardModule {
         return '[data-delivery-pickup-info]';
     }
     setup() {
-        showVal()
-        async function showVal() {
-            await this.$element.find('.section__content').html(this.options.html_templates.pickup_list);
-        }
+
+        await this.$element.find('.section__content').html(this.options.html_templates.pickup_list);
+
 
     }
 }
