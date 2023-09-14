@@ -253,38 +253,35 @@
         if (Longitude != null && Latitude != null && Title != "" && Title != "null") {
           if (listStore <= 10) {
      
-            html = ` <div class="radio__input">
-          
-    <input
-      class="input-radio"
-      type="radio"
-      value="${i}"
-      name="checkout[attributes][pickup_store_id]"
-      id="checkout_delivery_option_id_${i}"
-      checked=""
-      data-checkout-total-shipping="Free"
-      data-checkout-total-shipping-cents="0"
-    />
-  </div>
-  <label
-    class="radio__label"
-    for="checkout_delivery_option_id_${i}"
-    ><div class="radio__label__primary">
-   
-      <div>${Title}</div>
-      <div class="small-text">${listaddress}</div>
-      <div class="small-text pickup-instructions show-on-mobile">
-        Usually ready in 24 hours
-      </div>
+            html = `
+            <div class="radio__input">
+  <input
+    class="input-radio"
+    type="radio"
+    value="${i}"
+    name="checkout[attributes][pickup_store_id]"
+    id="checkout_delivery_option_id_${i}"
+    data-checkout-total-shipping="Free"
+    data-checkout-total-shipping-cents="0"
+  />
+</div>
+<label class="radio__label" for="checkout_delivery_option_id_${i}"
+  ><div class="radio__label__primary">
+    <div>${Title}</div>
+    <div class="small-text">${listaddress}</div>
+    <div class="small-text pickup-instructions show-on-mobile">
+      Usually ready in 24 hours
     </div>
-    <div class="radio__label__accessory">
-      <div class="content-box__emphasis">Free</div>
-      <div class="small-text pickup-instructions hide-on-mobile">
-        Usually ready in 24 hours
-      </div>
-        <span style="font-size:small; width:10%;">${listStore} Km</span>
-    </div></label
-  >
+  </div>
+  <div class="radio__label__accessory">
+    <div class="content-box__emphasis">Free</div>
+    <div class="small-text pickup-instructions hide-on-mobile">
+      Usually ready in 24 hours
+    </div>
+    <span style="font-size: small; width: 10%">${listStore} Km</span>
+  </div></label
+>
+
             `;
             arr_data.push(html);
           }
