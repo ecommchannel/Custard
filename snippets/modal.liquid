@@ -30,17 +30,17 @@
       left: 0;
       height: 43px;
       width: 15px;
-      transform: translateX(0)
+      transform: translateX(0);
     }
     50% {
       height: 10px;
-      width: 40px
+      width: 40px;
     }
     100% {
       left: 100%;
       height: 43px;
       width: 15px;
-      transform: translateX(-100%)
+      transform: translateX(-100%);
     }
   }
 
@@ -56,15 +56,12 @@
     class="form-control w-50"
     name=""
     id="province"
-    onchange="getProvince()">
+    onchange="getProvince()"
+  >
     <option value="">Select Province Address</option>
   </select>
 
-  <select
-    class="form-control w-50"
-    name=""
-    id="city"
-    onchange="getCity()">
+  <select class="form-control w-50" name="" id="city" onchange="getCity()">
     <option value="">Select Town / City</option>
   </select>
 
@@ -72,25 +69,56 @@
     class="form-control w-50"
     name=""
     id="barangay"
-    onchange="getBarangay()">
+    onchange="getBarangay()"
+  >
     <option value="">Select Barangay</option>
   </select>
 
   <input
     type="text"
-    style=" width: 95.5%;
-                                  border: 1px solid;
-                                  padding: 12px;
-                                margin:2px 0;
-                                background-color: mintcream;"
+    style="
+      width: 95.5%;
+      border: 1px solid;
+      padding: 12px;
+      margin: 2px 0;
+      background-color: mintcream;
+    "
     id="zip"
     placeholder="Zip"
-    readonly />
+    readonly
+  />
 </div>
+<div class="radio__input">
+  <input
+    class="input-radio"
+    type="radio"
+    value="65625203dc4bf25a47865adc66f3892b"
+    name="checkout[pick_up_in_store][handle]"
+    id="checkout_delivery_option_id_65625203dc4bf25a47865adc66f3892b"
+    checked=""
+    data-checkout-total-shipping="Free"
+    data-checkout-total-shipping-cents="0"
+  />
+</div>
+<label
+  class="radio__label"
+  for="checkout_delivery_option_id_65625203dc4bf25a47865adc66f3892b"
+  ><div class="radio__label__primary">
+    <div>1155 EDSA, Balintawak</div>
+    <div class="small-text">1155 EDSA, Balintawak, Quezon City, 00</div>
+    <div class="small-text pickup-instructions show-on-mobile">
+      Usually ready in 24 hours
+    </div>
+  </div>
+  <div class="radio__label__accessory">
+    <div class="content-box__emphasis">Free</div>
+    <div class="small-text pickup-instructions hide-on-mobile">
+      Usually ready in 24 hours
+    </div>
+  </div></label
+>
 
-<div class="nearBy" style="display:grid;">
-
- </div>
+<div class="nearBy" style="display: grid"></div>
 <script>
   var arr = JSON.parse(localStorage.getItem("arrProvince"));
 
@@ -98,9 +126,7 @@
     province = [];
     var data = JSON.parse(localStorage.arrProvince);
     for (let i = 0; i < data.province.length; i++) {
-      const arrP = `${
-        data.province[i]
-      }`;
+      const arrP = `${data.province[i]}`;
       province.push(arrP);
     }
     $("#province").html(province.join(""));
@@ -108,19 +134,22 @@
     url = "https://tools.gabcgfs.com/address_finder.php";
     province = [];
     province.push('<option value="" Selected>Select Province Address</option>');
-    jQuery.ajax({url: url, type: "GET", dataType: "jsonp", contentType: "application/json; charset=UTF-8"}).done(function(json) {
-      for (let i = 0; i < json.length; i++) {
-        const arrP = `<option value="${
-          json[i].PROVINCE
-        }">${
-          json[i].PROVINCE
-        }</option>`;
-        province.push(arrP);
-      }
+    jQuery
+      .ajax({
+        url: url,
+        type: "GET",
+        dataType: "jsonp",
+        contentType: "application/json; charset=UTF-8",
+      })
+      .done(function (json) {
+        for (let i = 0; i < json.length; i++) {
+          const arrP = `<option value="${json[i].PROVINCE}">${json[i].PROVINCE}</option>`;
+          province.push(arrP);
+        }
 
-      $("#province").html(province.join(""));
-      localStorage.setItem("arrProvince", JSON.stringify({province}));
-    });
+        $("#province").html(province.join(""));
+        localStorage.setItem("arrProvince", JSON.stringify({ province }));
+      });
   }
 
   function getProvince() {
@@ -130,22 +159,25 @@
     url = `https://150.200.185.172/address/address_finder.php?PROVINCE=${province}`;
     City = [];
     City.push('<option value="" Selected>Select Town / City</option>');
-    jQuery.ajax({url: url, type: "GET", dataType: "jsonp", contentType: "application/json; charset=UTF-8"}).done(function(json) {
-      if (json != "") {
-        for (let i = 0; i < json[0].CITY.length; i++) {
-          const arrC = `<option value="${
-            json[0].CITY[i].CITY
-          }">${
-            json[0].CITY[i].CITY
-          }</option>`;
-          City.push(arrC);
+    jQuery
+      .ajax({
+        url: url,
+        type: "GET",
+        dataType: "jsonp",
+        contentType: "application/json; charset=UTF-8",
+      })
+      .done(function (json) {
+        if (json != "") {
+          for (let i = 0; i < json[0].CITY.length; i++) {
+            const arrC = `<option value="${json[0].CITY[i].CITY}">${json[0].CITY[i].CITY}</option>`;
+            City.push(arrC);
+          }
+        } else {
+          City.push();
         }
-      } else {
-        City.push();
-      }
 
-      $("#city").html(City.join(""));
-    });
+        $("#city").html(City.join(""));
+      });
   }
   ZipBarangay = [];
   function getCity() {
@@ -154,31 +186,34 @@
     url = `https://150.200.185.172/address/address_finder.php?CITY=${city}`;
     Brgy = [];
     Brgy.push('<option value="" Selected>Select Barangay</option>');
-    jQuery.ajax({url: url, type: "GET", dataType: "jsonp", contentType: "application/json; charset=UTF-8"}).done(function(json) {
-      for (let i = 0; i < json[0].CITY[0].BARANGAY.length; i++) {
-        const arrC = `<option value="${
-          json[0].CITY[0].BARANGAY[i].BARANGAY
-        }">${
-          json[0].CITY[0].BARANGAY[i].BARANGAY
-        }</option>`;
-        const arrZ = [
-          json[0].CITY[0].BARANGAY[i].BARANGAY,
-          json[0].CITY[0].BARANGAY[i].ZIP,
-          json[0].CITY[0].BARANGAY[i].latitude,
-          json[0].CITY[0].BARANGAY[i].longitude
-        ];
-        Brgy.push(arrC);
-        ZipBarangay.push(arrZ);
-      }
+    jQuery
+      .ajax({
+        url: url,
+        type: "GET",
+        dataType: "jsonp",
+        contentType: "application/json; charset=UTF-8",
+      })
+      .done(function (json) {
+        for (let i = 0; i < json[0].CITY[0].BARANGAY.length; i++) {
+          const arrC = `<option value="${json[0].CITY[0].BARANGAY[i].BARANGAY}">${json[0].CITY[0].BARANGAY[i].BARANGAY}</option>`;
+          const arrZ = [
+            json[0].CITY[0].BARANGAY[i].BARANGAY,
+            json[0].CITY[0].BARANGAY[i].ZIP,
+            json[0].CITY[0].BARANGAY[i].latitude,
+            json[0].CITY[0].BARANGAY[i].longitude,
+          ];
+          Brgy.push(arrC);
+          ZipBarangay.push(arrZ);
+        }
 
-      $("#barangay").html(Brgy.join(""));
-    });
+        $("#barangay").html(Brgy.join(""));
+      });
   }
 
   function getBarangay() {
     let barangay = $("#barangay").val();
 
-// Function to find the value for a given location
+    // Function to find the value for a given location
     function findValueForLocation(locationName) {
       for (let i = 0; i < ZipBarangay.length; i++) {
         if (ZipBarangay[i][0] === locationName) {
@@ -186,14 +221,16 @@
         }
       }
       return null; // Return null if location is not found
-    }function findValueForlat(locationName) {
+    }
+    function findValueForlat(locationName) {
       for (let i = 0; i < ZipBarangay.length; i++) {
         if (ZipBarangay[i][0] === locationName) {
           return ZipBarangay[i][2];
         }
       }
       return null; // Return null if location is not found
-    }function findValueForlong(locationName) {
+    }
+    function findValueForlong(locationName) {
       for (let i = 0; i < ZipBarangay.length; i++) {
         if (ZipBarangay[i][0] === locationName) {
           return ZipBarangay[i][3];
@@ -209,9 +246,7 @@
     getListStore(getlat, getlong);
   }
 
-
   function getListStore(lat, long) {
-
     html_loading = `<div style="display: flex; justify-content: center;"><span class="loader">Loading</span></div>`;
     document.querySelector(".nearBy").innerHTML = html_loading;
 
@@ -219,7 +254,12 @@
       const R = 6371; // Radius of the earth in km
       const dLat = deg2rad(lat2 - lat1);
       const dLon = deg2rad(lon2 - lon1);
-      const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+      const a =
+        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(deg2rad(lat1)) *
+          Math.cos(deg2rad(lat2)) *
+          Math.sin(dLon / 2) *
+          Math.sin(dLon / 2);
       const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
       const distance = R * c; // Distance in km
       return distance.toFixed(2);
@@ -227,10 +267,11 @@
 
     const lat1 = lat;
     const lon1 = long;
-    let url = "https://omniproxy.goldenabc.com/storelocations/Shopify/Api/GetStoreLocations?brand=penshoppe";
-    fetch(url).then((response) => response.json()).then((json) => getlocation(json));
-
-
+    let url =
+      "https://omniproxy.goldenabc.com/storelocations/Shopify/Api/GetStoreLocations?brand=penshoppe";
+    fetch(url)
+      .then((response) => response.json())
+      .then((json) => getlocation(json));
 
     function getlocation(data) {
       let arr_data = [];
@@ -241,82 +282,80 @@
         const Latitude = arr[i].Latitude;
         const Longitude = arr[i].Longitude;
         const listStore = nearbydata(lat1, lon1, Latitude, Longitude);
-        const listaddress = `${
-          arr[i].Street
-        } ${
-          arr[i].City
-        } ${
-          arr[i].Country
-        }`;
+        const listaddress = `${arr[i].Street} ${arr[i].City} ${arr[i].Country}`;
 
-        if (Longitude != null && Latitude != null && Title != "" && Title != "null") {
+        if (
+          Longitude != null &&
+          Latitude != null &&
+          Title != "" &&
+          Title != "null"
+        ) {
           if (listStore <= 10) {
-     
             html = `
-            <div class="radio__input">
-  <input
-    class="input-radio"
-    type="radio"
-    value="${i}"
-    name="checkout[attributes][pickup_store_id]"
-    id="checkout_delivery_option_id_${i}"
-    data-checkout-total-shipping="Free"
-    data-checkout-total-shipping-cents="0"
-  />
-</div>
-<label class="radio__label" for="checkout_delivery_option_id_${i}"
-  ><div class="radio__label__primary">
-    <div>${Title}</div>
-    <div class="small-text">${listaddress}</div>
-    <div class="small-text pickup-instructions show-on-mobile">
-      Usually ready in 24 hours
-    </div>
+              <div class="radio__input">
+    <input
+      class="input-radio"
+      type="radio"
+      value="${i}"
+      name="checkout[attributes][pickup_store_id]"
+      id="checkout_delivery_option_id_${i}"
+      data-checkout-total-shipping="Free"
+      data-checkout-total-shipping-cents="0"
+    />
   </div>
-  <div class="radio__label__accessory">
-    <div class="content-box__emphasis">Free</div>
-    <div class="small-text pickup-instructions hide-on-mobile">
-      Usually ready in 24 hours
+  <label class="radio__label" for="checkout_delivery_option_id_${i}"
+    ><div class="radio__label__primary">
+      <div>${Title}</div>
+      <div class="small-text">${listaddress}</div>
+      <div class="small-text pickup-instructions show-on-mobile">
+        Usually ready in 24 hours
+      </div>
     </div>
-    <span style="font-size: small; width: 10%">${listStore} Km</span>
-  </div></label
->
-
-            `;
+    <div class="radio__label__accessory">
+      <div class="content-box__emphasis">Free</div>
+      <div class="small-text pickup-instructions hide-on-mobile">
+        Usually ready in 24 hours
+      </div>
+      <span style="font-size: small; width: 10%">${listStore} Km</span>
+    </div></label
+  >
+  
+              `;
             arr_data.push(html);
           }
         }
       }
 
       const locationData = arr_data.map((htmlString) => {
-        const tempDiv = document.createElement('div');
+        const tempDiv = document.createElement("div");
         tempDiv.innerHTML = htmlString;
-        const distanceText = tempDiv.querySelector('span:last-child').textContent;
-        const distanceKm = parseFloat(distanceText.replace(' Km', ''));
-        return {html: htmlString, distance: distanceKm};
+        const distanceText =
+          tempDiv.querySelector("span:last-child").textContent;
+        const distanceKm = parseFloat(distanceText.replace(" Km", ""));
+        return { html: htmlString, distance: distanceKm };
       });
 
-// Sort the location data by distance
+      // Sort the location data by distance
       locationData.sort((a, b) => a.distance - b.distance);
 
-// Rebuild the sorted HTML elements
+      // Rebuild the sorted HTML elements
       const sortedLocationElements = locationData.map((data) => data.html);
 
-// Now you can use sortedLocationElements to update your HTML container
-      if (sortedLocationElements.join('') == '') {
-        document.querySelector(".nearBy").innerHTML = `<div style="display: flex; justify-content: center;"><h1 style="
-        padding: 0 12px;
-        background-color: red;
-        color: white;
-        font-weight: 400;
-        width: 100%;
-        text-align: -webkit-center;
-        ">There is no store near you</h1></div>`;
+      // Now you can use sortedLocationElements to update your HTML container
+      if (sortedLocationElements.join("") == "") {
+        document.querySelector(
+          ".nearBy"
+        ).innerHTML = `<div style="display: flex; justify-content: center;"><h1 style="
+          padding: 0 12px;
+          background-color: red;
+          color: white;
+          font-weight: 400;
+          width: 100%;
+          text-align: -webkit-center;
+          ">There is no store near you</h1></div>`;
       } else {
         // document.querySelector(".nearBy").innerHTML = sortedLocationElements.join('');
       }
-
-
-
     }
   }
 </script>
