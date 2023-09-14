@@ -90,12 +90,12 @@
 </div>
 <div class="radio__input">
   <input
-    class="input-radio"
+    class="input-radio active-radio"
     type="radio"
     value="65625203dc4bf25a47865adc66f3892b"
     name="checkout[pick_up_in_store][handle]"
     id="checkout_delivery_option_id_65625203dc4bf25a47865adc66f3892b"
-    checked
+    
     data-checkout-total-shipping="Free"
     data-checkout-total-shipping-cents="0"
   />
@@ -120,6 +120,7 @@
 
 <div class="nearBy" style="display: grid"></div>
 <script>
+  $('.active-radio').click();
   var arr = JSON.parse(localStorage.getItem("arrProvince"));
 
   if (arr != null) {
