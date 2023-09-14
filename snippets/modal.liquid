@@ -1,90 +1,93 @@
 <style>
-.loader{
-        display: inline-block;
-        text-align: center;
-        line-height: 86px;
-        text-align: center;
-        position: relative;
-        padding: 0 48px;
-        font-size: 48px;
-        font-family: Arial, Helvetica, sans-serif;
-        color: black;
-        }
-        .loader:before, .loader:after {
-          content: "";
-          display: block;
-          width: 15px;
-          height: 15px;
-          background: currentColor;
-          position: absolute;
-          animation: load .7s infinite alternate ease-in-out;
-          top: 0;
-        }
-        .loader:after {
-          top: auto;
-          bottom: 0;
-        }
-      @keyframes load {
-        0% {
-          left: 0;
-          height: 43px;
-          width: 15px;
-          transform: translateX(0)
-        }
-        50% {
-          height: 10px;
-          width: 40px
-        }
-        100% {
-          left: 100%;
-          height: 43px;
-          width: 15px;
-          transform: translateX(-100%)
-        }
-      }
-  
-  .form-control{
-        width: 100%;
+  .loader {
+    display: inline-block;
+    text-align: center;
+    line-height: 86px;
+    text-align: center;
+    position: relative;
+    padding: 0 48px;
+    font-size: 48px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+  }
+  .loader:before,
+  .loader:after {
+    content: "";
+    display: block;
+    width: 15px;
+    height: 15px;
+    background: currentColor;
+    position: absolute;
+    animation: load 0.7s infinite alternate ease-in-out;
+    top: 0;
+  }
+  .loader:after {
+    top: auto;
+    bottom: 0;
+  }
+  @keyframes load {
+    0% {
+      left: 0;
+      height: 43px;
+      width: 15px;
+      transform: translateX(0)
+    }
+    50% {
+      height: 10px;
+      width: 40px
+    }
+    100% {
+      left: 100%;
+      height: 43px;
+      width: 15px;
+      transform: translateX(-100%)
+    }
+  }
+
+  .form-control {
+    width: 100%;
     border: 1px solid;
     padding: 12px;
-    margin:2px 0;
+    margin: 2px 0;
   }
 </style>
 <div class="form-group">
-<select
-  class="form-control w-50"
-  name=""
-  id="province"
-  onchange="getProvince()">
-  <option value="">Select Province Address</option>
-</select>
+  <select
+    class="form-control w-50"
+    name=""
+    id="province"
+    onchange="getProvince()">
+    <option value="">Select Province Address</option>
+  </select>
 
-<select
-  class="form-control w-50"
-  name=""
-  id="city"
-  onchange="getCity()">
-  <option value="">Select Town / City</option>
-</select>
+  <select
+    class="form-control w-50"
+    name=""
+    id="city"
+    onchange="getCity()">
+    <option value="">Select Town / City</option>
+  </select>
 
-<select
-  class="form-control w-50"
-  name=""
-  id="barangay"
-  onchange="getBarangay()">
-  <option value="">Select Barangay</option>
-</select>
+  <select
+    class="form-control w-50"
+    name=""
+    id="barangay"
+    onchange="getBarangay()">
+    <option value="">Select Barangay</option>
+  </select>
 
-<input
-  type="text" style=" width: 95.5%;
-    border: 1px solid;
-    padding: 12px;
-  margin:2px 0;
-  background-color: mintcream;"
-  id="zip" placeholder="Zip"
-  readonly />
- </div>
- 
+  <input
+    type="text"
+    style=" width: 95.5%;
+                border: 1px solid;
+                padding: 12px;
+              margin:2px 0;
+              background-color: mintcream;"
+    id="zip"
+    placeholder="Zip"
+    readonly />
+</div>
+
 <div class="nearBy"></div>
 <script>
   var arr = JSON.parse(localStorage.getItem("arrProvince"));
@@ -118,7 +121,7 @@
     });
   }
 
-   function getProvince() {
+  function getProvince() {
     $("#zip").val("");
     $("#barangay").html('<option value="" Selected>Select Barangay</option>');
     let province = $("#province").val();
@@ -181,18 +184,14 @@
         }
       }
       return null; // Return null if location is not found
-    }
-
-      function findValueForlat(locationName) {
+    }function findValueForlat(locationName) {
       for (let i = 0; i < ZipBarangay.length; i++) {
         if (ZipBarangay[i][0] === locationName) {
           return ZipBarangay[i][2];
         }
       }
       return null; // Return null if location is not found
-    }
-
-      function findValueForlong(locationName) {
+    }function findValueForlong(locationName) {
       for (let i = 0; i < ZipBarangay.length; i++) {
         if (ZipBarangay[i][0] === locationName) {
           return ZipBarangay[i][3];
@@ -202,62 +201,55 @@
     }
 
     const getZip = findValueForLocation(barangay);
-     const getlat = findValueForlat(barangay);
-     const getlong = findValueForlong(barangay);
+    const getlat = findValueForlat(barangay);
+    const getlong = findValueForlong(barangay);
     $("#zip").val(getZip);
-    getListStore(getlat,getlong);
+    getListStore(getlat, getlong);
   }
 
 
-  function getListStore(lat,long){
+  function getListStore(lat, long) {
 
-    html_loading=`<div style="display: flex; justify-content: center;"><span class="loader">Loading</span></div>`;
+    html_loading = `<div style="display: flex; justify-content: center;"><span class="loader">Loading</span></div>`;
     document.querySelector(".nearBy").innerHTML = html_loading;
-    
-       function nearbydata(lat1, lon1, lat2, lon2) {
-    const R = 6371; // Radius of the earth in km
-    const dLat = deg2rad(lat2 - lat1);
-    const dLon = deg2rad(lon2 - lon1);
-    const a =
-      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-      Math.cos(deg2rad(lat1)) *
-        Math.cos(deg2rad(lat2)) *
-        Math.sin(dLon / 2) *
-        Math.sin(dLon / 2);
-    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    const distance = R * c; // Distance in km
-    return distance.toFixed(2);
-  }
 
-  const lat1 = lat;
-  const lon1 = long;
-  let url =
-    "https://omniproxy.goldenabc.com/storelocations/Shopify/Api/GetStoreLocations?brand=penshoppe";
-  fetch(url)
-    .then((response) => response.json())
-    .then((json) => getlocation(json));
-    
+    function nearbydata(lat1, lon1, lat2, lon2) {
+      const R = 6371; // Radius of the earth in km
+      const dLat = deg2rad(lat2 - lat1);
+      const dLon = deg2rad(lon2 - lon1);
+      const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+      const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+      const distance = R * c; // Distance in km
+      return distance.toFixed(2);
+    }
 
-    
-  function getlocation(data) {
-    let arr_data = [];
-    let arr = data.message;
-    
-    for (let i = 0; i < arr.length; i++) {
-      const Title = arr[i].Title;
-      const Latitude = arr[i].Latitude;
-      const Longitude = arr[i].Longitude;
-      const listStore = nearbydata(lat1, lon1, Latitude, Longitude);
-      const listaddress = `${arr[i].Street} ${arr[i].City} ${arr[i].Country}`;
- 
-      if (
-        Longitude != null &&
-        Latitude != null &&
-        Title != "" &&
-        Title != "null"
-      ) {
-        if (listStore <= 10) {
-          html = `
+    const lat1 = lat;
+    const lon1 = long;
+    let url = "https://omniproxy.goldenabc.com/storelocations/Shopify/Api/GetStoreLocations?brand=penshoppe";
+    fetch(url).then((response) => response.json()).then((json) => getlocation(json));
+
+
+
+    function getlocation(data) {
+      let arr_data = [];
+      let arr = data.message;
+
+      for (let i = 0; i < arr.length; i++) {
+        const Title = arr[i].Title;
+        const Latitude = arr[i].Latitude;
+        const Longitude = arr[i].Longitude;
+        const listStore = nearbydata(lat1, lon1, Latitude, Longitude);
+        const listaddress = `${
+          arr[i].Street
+        } ${
+          arr[i].City
+        } ${
+          arr[i].Country
+        }`;
+
+        if (Longitude != null && Latitude != null && Title != "" && Title != "null") {
+          if (listStore <= 10) {
+            html = `
             <div style="display:flex; border:1px solid black; margin:0 2px; cursor:pointer;">
                 <div style="width:100%; padding:5px;" id="hoverdata">
                     <div style="display:flex; padding:0; margin:0;">
@@ -268,25 +260,27 @@
                     <p style="font-size:small; padding:0; margin:0;">${listaddress}</p>
                 </div>
             </div>`;
-          arr_data.push(html);
+            arr_data.push(html);
+          }
         }
       }
-    }
-    
-    const locationData = arr_data.map((htmlString) => {
-    const tempDiv = document.createElement('div');
-    tempDiv.innerHTML = htmlString;
-    const distanceText = tempDiv.querySelector('span:last-child').textContent;
-    const distanceKm = parseFloat(distanceText.replace(' Km', ''));
-    return { html: htmlString, distance: distanceKm };
-    });
-     
-      // Sort the location data by distance
+
+      const locationData = arr_data.map((htmlString) => {
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = htmlString;
+        const distanceText = tempDiv.querySelector('span:last-child').textContent;
+        const distanceKm = parseFloat(distanceText.replace(' Km', ''));
+        return {html: htmlString, distance: distanceKm};
+      });
+
+// Sort the location data by distance
       locationData.sort((a, b) => a.distance - b.distance);
-      // Rebuild the sorted HTML elements
+
+// Rebuild the sorted HTML elements
       const sortedLocationElements = locationData.map((data) => data.html);
-      // Now you can use sortedLocationElements to update your HTML container
-      if(sortedLocationElements.join('') == ''){
+
+// Now you can use sortedLocationElements to update your HTML container
+      if (sortedLocationElements.join('') == '') {
         document.querySelector(".nearBy").innerHTML = `<div style="display: flex; justify-content: center;"><h1 style="
         padding: 0 12px;
         background-color: red;
@@ -295,13 +289,12 @@
         width: 100%;
         text-align: -webkit-center;
         ">There is no store near you</h1></div>`;
-      }else{
+      } else {
         document.querySelector(".nearBy").innerHTML = sortedLocationElements.join('');
       }
-      
 
-  
+
+
+    }
   }
-  }
-  
 </script>
