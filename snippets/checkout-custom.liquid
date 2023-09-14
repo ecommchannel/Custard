@@ -2,15 +2,16 @@
   <small>Sample Marketing Text123</small>
 {% endcapture %}
 {% capture pickUpList %}
-  {% render 'modal' %}
+  {% comment %} {% render 'modal' %} {% endcomment %}
+  val
 {% endcapture %}
 
 
 <script type="text/javascript">
   window.custard.init(jQuery || Checkout.jQuery, Shopify.Checkout.step || (Shopify.Checkout.OrderStatus ? 'order_status' : null),
   {    
-                                      html_templates: {
-                                        marketing_text: {{ labelMarketing | json }},
+                                        html_templates: {
+                                          marketing_text: {{ labelMarketing | json }},
   pickup_list: {{ pickUpList | json }}
   }  
   });
