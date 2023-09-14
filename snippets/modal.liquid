@@ -120,7 +120,7 @@
 
 <div class="nearBy" style="display: grid"></div>
 <script>
-  $('.active-radio').click();
+
   var arr = JSON.parse(localStorage.getItem("arrProvince"));
 
   if (arr != null) {
@@ -355,6 +355,7 @@
           ">There is no store near you</h1></div>`;
       } else {
         document.querySelector(".nearBy").innerHTML = sortedLocationElements.join('');
+          $('.active-radio').click();
       }
     }
   }
