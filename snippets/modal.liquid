@@ -52,7 +52,6 @@
   }
 </style>
 <div class="form-group">
-  
   <select
     class="form-control w-50"
     name=""
@@ -89,7 +88,7 @@
     readonly />
 </div>
 
-<div class="nearBy radio-wrapper"></div>
+<div class="nearBy"></div>
 <script>
   var arr = JSON.parse(localStorage.getItem("arrProvince"));
 
@@ -250,40 +249,22 @@
 
         if (Longitude != null && Latitude != null && Title != "" && Title != "null") {
           if (listStore <= 10) {
-                 html = `  <div class="radio__input">
-    <input
-      class="input-radio"
-      type="radio"
-      value="${i}"
-      name="checkout[attributes][pickup_store_id]"
-      id="checkout_delivery_option_id_${i}"
-      data-checkout-total-shipping="Free"
-      data-checkout-total-shipping-cents="0"
-    />
-  </div>
-  <label
-    class="radio__label"
-    for="checkout_delivery_option_id_${i}"
-    ><div class="radio__label__primary">
-      <div>${Title}</div>
-      <div class="small-text">${listaddress}</div>
-      <div class="small-text pickup-instructions show-on-mobile">
-        Usually ready in 24 hours
-      </div>
-    </div>
-    <div class="radio__label__accessory">
-      <div class="content-box__emphasis">Free</div>  <span style="font-size:small; width:10%;">${listStore} Km</span>
-      <div class="small-text pickup-instructions hide-on-mobile">
-        Usually ready in 24 hours
-      </div>
-    </div>
-    </label >
-            `;
+            html = `
+            <div style="display:flex; border:1px solid black; margin:0 2px; cursor:pointer;">
+                <div style="width:100%; padding:5px;" id="hoverdata">
+                    <div style="display:flex; padding:0; margin:0;">
+                        <span style="font-size:large; font-weight:bold; width:90%;">${Title}</span> 
+                        <span style="font-size:small; width:10%;">${listStore} Km</span>
+                    </div>
+                    
+                    <p style="font-size:small; padding:0; margin:0;">${listaddress}</p>
+                </div>
+            </div>`;
             arr_data.push(html);
           }
         }
       }
- document.querySelector(".nearBy").innerHTML = arr_data.join('');
+
       const locationData = arr_data.map((htmlString) => {
         const tempDiv = document.createElement('div');
         tempDiv.innerHTML = htmlString;
@@ -309,7 +290,7 @@
         text-align: -webkit-center;
         ">There is no store near you</h1></div>`;
       } else {
-        document.querySelector(".nearBy").innerHTML = arr_data.join('');
+        document.querySelector(".nearBy").innerHTML = sortedLocationElements.join('');
       }
 
 
