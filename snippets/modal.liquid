@@ -292,34 +292,16 @@
         ) {
           if (listStore <= 10) {
             html = `
-              <div class="radio__input">
-    <input
-      class="input-radio"
-      type="radio"
-      value="${i}"
-      name="checkout[attributes][pickup_store_id]"
-      id="checkout_delivery_option_id_${i}"
-      data-checkout-total-shipping="Free"
-      data-checkout-total-shipping-cents="0"
-    />
-  </div>
-  <label class="radio__label" for="checkout_delivery_option_id_${i}"
-    ><div class="radio__label__primary">
-      <div>${Title}</div>
-      <div class="small-text">${listaddress}</div>
-      <div class="small-text pickup-instructions show-on-mobile">
-        Usually ready in 24 hours
-      </div>
-    </div>
-    <div class="radio__label__accessory">
-      <div class="content-box__emphasis">Free</div>
-      <div class="small-text pickup-instructions hide-on-mobile">
-        Usually ready in 24 hours
-      </div>
-      <span style="font-size: small; width: 10%">${listStore} Km</span>
-    </div></label
-  >
-  
+              <div style="display:flex; border:1px solid black; margin:0 2px; cursor:pointer;">
+                <div style="width:100%; padding:5px;" id="hoverdata">
+                    <div style="display:flex; padding:0; margin:0;">
+                        <span style="font-size:large; font-weight:bold; width:90%;">${Title}</span> 
+                        <span style="font-size:small; width:10%;">${listStore} Km</span>
+                    </div>
+                    
+                    <p style="font-size:small; padding:0; margin:0;">${listaddress}</p>
+                </div>
+            </div>
               `;
             arr_data.push(html);
           }
