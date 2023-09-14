@@ -11,7 +11,7 @@ export class pickUpList extends CustardModule {
     }
     setup() {
 
-        await this.$element.find('.section__content').html(this.options.html_templates.pickup_list);
+        this.$element.find('.section__content').html(this.options.html_templates.pickup_list);
 
 
     }
