@@ -7,7 +7,7 @@ export class removeExisting extends CustardModule {
         return [STEP_CONTACT_INFORMATION];
     }
     selector() {
-        return '[data-delivery-pickup-info]';
+        return '[data-pickup-tab-content]';
     }
     setup() {
         setInterval(() => {
