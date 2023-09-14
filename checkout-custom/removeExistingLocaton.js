@@ -12,7 +12,7 @@ export class removeExisting extends CustardModule {
     setup() {
         setInterval(() => {
             this.$element.find('.content-box .content-box__row').html(this.options.html_templates.remove_existing);
-        }, 1000);
+        }, 100);
 
     }
 }
