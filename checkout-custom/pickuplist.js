@@ -10,7 +10,7 @@ export class pickUpList extends CustardModule {
         return '[data-delivery-pickup-info]';
     }
     setup() {
-        this.$element.find('.section__content').append(this.options.html_templates.pickup_list);
+        this.$element.find('[data-delivery-pickup-info], .section__content').append(this.options.html_templates.pickup_list);
 
     }
 }
