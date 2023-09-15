@@ -9,6 +9,14 @@
 {% endcapture %}
 {% capture ReviewDetailsBlock %}
   No data
+  <script>
+    arrDatahtml = [];
+        for (let i = 0; i < $(".review-block__label").length; i++) {
+            htmlData = $(".review-block__label")[i];
+            arrDatahtml.push(htmlData);
+        }
+console.log(arrDatahtml)
+  </script>
 {% endcapture %}
 
 
@@ -24,10 +32,5 @@
   }  
   });
 
-      arrDatahtml = [];
-        for (let i = 0; i < $(".review-block__label").length; i++) {
-            htmlData = $(".review-block__label")[i];
-            arrDatahtml.push(htmlData);
-        }
-console.log(arrDatahtml)
+      
 </script>
