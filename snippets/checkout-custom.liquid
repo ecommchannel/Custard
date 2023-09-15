@@ -16,12 +16,12 @@
             arrDatahtml.push(htmlData);
         }
 if(arrDatahtml[1].innerText != 'Ship to'){
-  changeShippingMethod=` OXGN Promo
+  changeShippingMethod=` <div id="titleShippingMethod"></div>
         ·
         <strong class="emphasis">
           <span class="skeleton-while-loading--inline">₱14.00</span>
         </strong>`;
-  $('.review-block__content')[2].innerText=changeShippingMethod;
+  $('.review-block__content')[1].innerText=changeShippingMethod;
 }
   </script>
 {% endcapture %}
