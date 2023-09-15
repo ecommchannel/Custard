@@ -10,7 +10,7 @@ export class Payment extends CustardModule {
         return '[data-step="' + STEP_PAYMENT_METHOD + '"]';
     }
     setup() {
-        this.$element.find('.review-block__content').html(this.options.html_templates.pickupReviewDetailsBlock);
+        this.$element.find('.review-block__content').append(this.options.html_templates.pickupReviewDetailsBlock);
 
     }
 }
