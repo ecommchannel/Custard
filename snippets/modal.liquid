@@ -132,6 +132,8 @@
            <input type="hidden" value="${Zipcode}" name="checkout[attributes][pickup_store_zip]"/>
      `;
     $('.attr_data').html(resOutput)
+     setShippingMethod=`Pick up in store · <strong>${Title}</strong><br><p class="small-text">${listaddress} ${Zipcode}</p>`;
+     localStorage.setItem('ShippingMethod', setShippingMethod)
   }
 
   var arr = JSON.parse(localStorage.getItem("arrProvince"));
