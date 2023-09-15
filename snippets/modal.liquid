@@ -281,6 +281,9 @@
 
       for (let i = 0; i < arr.length; i++) {
         const Title = arr[i].Title;
+        const City = arr[i].City;
+        const Province = arr[i].Province;
+        const Zipcode = arr[i].Zipcode;
         const Latitude = arr[i].Latitude;
         const Longitude = arr[i].Longitude;
         const listStore = nearbydata(lat1, lon1, Latitude, Longitude);
@@ -296,7 +299,7 @@
             html = `
            <div class="radio__input">
     <input
-      class="input-radio"
+      class="input-radio" onclick="getStoreListData(${Title},${listaddress},${City},${Province},${Zipcode})"
       type="radio"
       value="${i}"
       name="checkout[attributes][pickup_store_id]"
