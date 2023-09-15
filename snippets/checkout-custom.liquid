@@ -8,21 +8,11 @@
   {% render 'modal' %}
 {% endcapture %}
 {% capture ReviewDetailsBlock %}
-  No data
+ <div id="ShippingMethodVal"></div>
   <script>
-    arrDatahtml = [];
-        for (let i = 0; i < $(".review-block__label").length; i++) {
-            htmlData = $(".review-block__label")[i].innerText;
-            arrDatahtml.push(htmlData);
-        }
-// if(arrDatahtml[1].innerText != 'Ship to'){
-//   changeShippingMethod=` <div id="titleShippingMethod"></div>
-//         ·
-//         <strong class="emphasis">
-//           <span class="skeleton-while-loading--inline">₱14.00</span>
-//         </strong>`;
-//   $('.review-block__content')[1].innerText=changeShippingMethod;
-// }
+if($('.review-block__label')[1].innerText != 'Ship to'){
+ $('.review-block__content')[1].innerText="Ayala Trinoma"   
+}
   </script>
 {% endcapture %}
 
