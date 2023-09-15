@@ -299,7 +299,7 @@
             html = `
            <div class="radio__input">
     <input
-      class="input-radio" onclick="getStoreListData(${Title},${listaddress})"
+      class="input-radio" onclick="getStoreListData(${Title})"
       type="radio"
       value="${i}"
       name="checkout[attributes][pickup_store_id]"
@@ -364,7 +364,7 @@
     }
   }
 
-  function getStoreListData(Title,listaddress){
-    console.log(Title, listaddress);
+  function getStoreListData(Title){
+    console.log(Title);
   }
 </script>
