@@ -124,17 +124,12 @@
 <script>
 
    function getStoreListData(Title,listaddress,City,Province,Zipcode){
-    console.log(Title);
-     console.log(listaddress);
-     console.log(City);
-     console.log(Province);
-     console.log(Zipcode);
      resOutput=`
-       <input type="text" value="${Title}" name="checkout[attributes][pickup_store_title]"/>
-        <input type="text" value="${listaddress}" name="checkout[attributes][pickup_store_street]"/>
-         <input type="text" value="${City}" name="checkout[attributes][pickup_store_city]"/>
-          <input type="text" value="${Province}" name="checkout[attributes][pickup_store_province]"/>
-           <input type="text" value="${Zipcode}" name="checkout[attributes][pickup_store_zip]"/>
+       <input type="hidden" value="${Title}" name="checkout[attributes][pickup_store_title]"/>
+        <input type="hidden" value="${listaddress}" name="checkout[attributes][pickup_store_street]"/>
+         <input type="hidden" value="${City}" name="checkout[attributes][pickup_store_city]"/>
+          <input type="hidden" value="${Province}" name="checkout[attributes][pickup_store_province]"/>
+           <input type="hidden" value="${Zipcode}" name="checkout[attributes][pickup_store_zip]"/>
      `;
     $('.attr_data').html(resOutput)
   }
