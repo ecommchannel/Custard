@@ -136,7 +136,7 @@
           <input type="text" value="${Province}" name="checkout[attributes][pickup_store_province]"/>
            <input type="text" value="${Zipcode}" name="checkout[attributes][pickup_store_zip]"/>
      `;
-    $('.attr_data').html()
+    $('.attr_data').html(resOutput)
   }
 
   var arr = JSON.parse(localStorage.getItem("arrProvince"));
