@@ -10,7 +10,15 @@ export class Payment extends CustardModule {
         return '[data-step="' + STEP_PAYMENT_METHOD + '"]';
     }
     setup() {
-        this.$element.find('.review-block__content').append(this.options.html_templates.pickupReviewDetailsBlock);
+        arrData = [];
+        for (let i = 0; i < document.getElementsByClassName("review-block__label").length; i++) {
+            htmlData = document.getElementsByClassName("review-block__label")[i].innerText;
+            arrData.push(htmlData);
+        }
+
+        if (array.includes('Ship to') == true) {
+            this.$element.find('.review-block__content').append(this.options.html_templates.pickupReviewDetailsBlock);
+        }
 
     }
 }
