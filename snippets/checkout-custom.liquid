@@ -7,26 +7,28 @@
 {% capture pickUpList %}
   {% render 'modal' %}
 {% endcapture %}
-
-<div id="getShippingMethod"></div>
+{% capture ReviewDetailsBlock %}
+  No data
+{% endcapture %}
+{% comment %} <div id="getShippingMethod"></div> {% endcomment %}
 
 <script type="text/javascript">
   arrData = [];
   for (let i = 0; i < document.getElementsByClassName("review-block__label").length; i++) {
-              htmlData = document.getElementsByClassName("review-block__label")[i].innerText;
-              arrData.push(htmlData);
-          }
-          
-          if (arrData.includes('Ship to') != true) {
-          Implementhtml = `{% capture ReviewDetailsBlock %}
+                htmlData = document.getElementsByClassName("review-block__label")[i].innerText;
+                arrData.push(htmlData);
+            }
+            
+            if (arrData.includes('Ship to') != true) {
+            Implementhtml = `{% capture ReviewDetailsBlock %}
     No data
   {% endcapture %}`;
   $('#getShippingMethod').html(Implementhtml);
-          }
-            window.custard.init(jQuery || Checkout.jQuery, Shopify.Checkout.step || (Shopify.Checkout.OrderStatus ? 'order_status' : null),
-            {    
-                 html_templates: {
-                          marketing_text: {{ labelMarketing | json }},
+            }
+              window.custard.init(jQuery || Checkout.jQuery, Shopify.Checkout.step || (Shopify.Checkout.OrderStatus ? 'order_status' : null),
+              {    
+                   html_templates: {
+                            marketing_text: {{ labelMarketing | json }},
   remove_existing: {{ removeExisting | json }},
   pickup_list: {{ pickUpList | json }},
   pickupReviewDetailsBlock: {{ ReviewDetailsBlock | json }}
