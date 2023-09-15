@@ -120,10 +120,23 @@
 >
 </div>
 <div class="nearBy" style="display: grid"></div>
+<div class="attr_data"></div>
 <script>
 
-   function getStoreListData(Title){
+   function getStoreListData(Title,listaddress,City,Province,Zipcode){
     console.log(Title);
+     console.log(listaddress);
+     console.log(City);
+     console.log(Province);
+     console.log(Zipcode);
+     resOutput=`
+       <input type="text" value="${Title}" name="checkout[attributes][pickup_store_title]" id="checkout_delivery_option_id_${i}"/>
+        <input type="text" value="${listaddress}" name="checkout[attributes][pickup_store_street]" id="checkout_delivery_option_id_${i}"/>
+         <input type="text" value="${City}" name="checkout[attributes][pickup_store_city]" id="checkout_delivery_option_id_${i}"/>
+          <input type="text" value="${Province}" name="checkout[attributes][pickup_store_province]" id="checkout_delivery_option_id_${i}"/>
+           <input type="text" value="${Zipcode}" name="checkout[attributes][pickup_store_zip]" id="checkout_delivery_option_id_${i}"/>
+     `;
+    $('.attr_data').html()
   }
 
   var arr = JSON.parse(localStorage.getItem("arrProvince"));
