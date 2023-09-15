@@ -130,11 +130,11 @@
      console.log(Province);
      console.log(Zipcode);
      resOutput=`
-       <input type="text" value="${Title}" name="checkout[attributes][pickup_store_title]" id="checkout_delivery_option_id_${i}"/>
-        <input type="text" value="${listaddress}" name="checkout[attributes][pickup_store_street]" id="checkout_delivery_option_id_${i}"/>
-         <input type="text" value="${City}" name="checkout[attributes][pickup_store_city]" id="checkout_delivery_option_id_${i}"/>
-          <input type="text" value="${Province}" name="checkout[attributes][pickup_store_province]" id="checkout_delivery_option_id_${i}"/>
-           <input type="text" value="${Zipcode}" name="checkout[attributes][pickup_store_zip]" id="checkout_delivery_option_id_${i}"/>
+       <input type="text" value="${Title}" name="checkout[attributes][pickup_store_title]"/>
+        <input type="text" value="${listaddress}" name="checkout[attributes][pickup_store_street]"/>
+         <input type="text" value="${City}" name="checkout[attributes][pickup_store_city]"/>
+          <input type="text" value="${Province}" name="checkout[attributes][pickup_store_province]"/>
+           <input type="text" value="${Zipcode}" name="checkout[attributes][pickup_store_zip]"/>
      `;
     $('.attr_data').html()
   }
