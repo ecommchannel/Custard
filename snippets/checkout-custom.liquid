@@ -11,7 +11,7 @@
  
   <script>
 if($('.review-block__label')[1].innerText != 'Ship to'){
-    shippingValue=`Pick up in store · <strong>1155 EDSA, Balintawak</strong><br><p class="small-text">1155 EDSA, Balintawak, Quezon City, 00</p>`;
+    shippingValue=localStorage.getItem('ShippingMethod');
  $('.review-block__content')[1].innerHTML=shippingValue;  
 }
   </script>
