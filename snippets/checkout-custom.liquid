@@ -8,10 +8,9 @@
   {% render 'modal' %}
 {% endcapture %}
 {% capture ReviewDetailsBlock %}
- <div id="ShippingMethodVal"></div>
   <script>
 if($('.review-block__label')[1].innerText != 'Ship to'){
- $('.review-block__content')[1].innerText="Ayala Trinoma"   
+ $('.review-block__content')[1].innerText=`<span id="ShippingMethodVal"></span>`  
 }
   </script>
 {% endcapture %}
