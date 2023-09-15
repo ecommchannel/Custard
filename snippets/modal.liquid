@@ -297,9 +297,9 @@
         ) {
           if (listStore <= 10) {
             html = `
-           <div class="radio__input"  onclick="getStoreListData(/''${Title}'/',/''${listaddress}'/',/''${City}'/',/''${Province}'/',/''${Zipcode}'/')">
+           <div class="radio__input">
     <input
-      class="input-radio"
+      class="input-radio" onclick="getStoreListData(${Title},${listaddress},${City},${Province},${Zipcode})"
       type="radio"
       value="${i}"
       name="checkout[attributes][pickup_store_id]"
@@ -308,7 +308,7 @@
       data-checkout-total-shipping-cents="0"
     />
   </div>
-  <label class="radio__label" for="checkout_delivery_option_id_${i}"  onclick="getStoreListData(/''${Title}'/',/''${listaddress}'/',/''${City}'/',/''${Province}'/',/''${Zipcode}'/')"
+  <label class="radio__label" for="checkout_delivery_option_id_${i}"
     ><div class="radio__label__primary">
       <div>${Title}</div>
       <div class="small-text">${listaddress}</div>
