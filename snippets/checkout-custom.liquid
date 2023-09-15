@@ -14,11 +14,11 @@
 
 <script type="text/javascript">
      arrData = [];
-        for (let i = 0; i < document.getElementsByClassName("review-block__label").length; i++) {
-            htmlData = document.getElementsByClassName("review-block__label")[i].innerText;
+        for (let i = 0; i < document.querySelector(".review-block__label").length; i++) {
+            htmlData = document.querySelector(".review-block__label")[i].innerText;
             arrData.push(htmlData);
         }
-
+console.log(arrData)
         if (arrData.includes('Ship to') != true) {
           
 }
