@@ -12,7 +12,7 @@
   <script>
     arrDatahtml = [];
         for (let i = 0; i < $(".review-block__label").length; i++) {
-            htmlData = $(".review-block__label")[i];
+            htmlData = $(".review-block__label")[i].innerText;
             arrDatahtml.push(htmlData);
         }
 console.log(arrDatahtml)
