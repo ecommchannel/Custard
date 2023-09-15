@@ -70,6 +70,7 @@
   }
 </style>
 <div class="form-group">
+  
   <select
     class="form-control w-50"
     name=""
@@ -143,11 +144,13 @@
 
    function getStoreListData(Title,listaddress,City,Province,Zipcode){
      resOutput=`
+   
        <input type="hidden" value="${Title}" name="checkout[attributes][pickup_store_title]"/>
         <input type="hidden" value="${listaddress}" name="checkout[attributes][pickup_store_street]"/>
          <input type="hidden" value="${City}" name="checkout[attributes][pickup_store_city]"/>
           <input type="hidden" value="${Province}" name="checkout[attributes][pickup_store_province]"/>
            <input type="hidden" value="${Zipcode}" name="checkout[attributes][pickup_store_zip]"/>
+           <input type="hidden" value="{{ checkout.id }}" name="checkout[attributes][Checkout_#]"/>
      `;
     $('.attr_data').html(resOutput)
      setShippingMethod=`Pick up in store · <strong>${Title}</strong><br><p class="small-text">${listaddress} ${Zipcode}</p>`;
