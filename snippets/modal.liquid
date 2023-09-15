@@ -308,7 +308,7 @@
           Title != "null"
         ) {
           if (listStore <= 10) {
-            html = `
+            html = `<div>
            <div class="radio__input">
     <input
       class="input-radio" onclick="getStoreListData('${Title}','${listaddress}','${City}','${Province}','${Zipcode}')"
@@ -335,7 +335,7 @@
       </div>
       <span style="font-size: small; width: 10%">${listStore} Km</span>
     </div></label
-  >
+  ></div>
               `;
             arr_data.push(html);
           }
