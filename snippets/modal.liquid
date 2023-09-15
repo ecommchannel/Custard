@@ -122,6 +122,10 @@
 <div class="nearBy" style="display: grid"></div>
 <script>
 
+   function getStoreListData(Title){
+    console.log(Title);
+  }
+
   var arr = JSON.parse(localStorage.getItem("arrProvince"));
 
   if (arr != null) {
@@ -299,7 +303,7 @@
             html = `
            <div class="radio__input">
     <input
-      class="input-radio" onclick="getStoreListData(${Title})"
+      class="input-radio" onclick="getStoreListData('${Title}')"
       type="radio"
       value="${i}"
       name="checkout[attributes][pickup_store_id]"
@@ -364,7 +368,5 @@
     }
   }
 
-  function getStoreListData(Title){
-    console.log(Title);
-  }
+ 
 </script>
