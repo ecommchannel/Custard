@@ -16,7 +16,7 @@ export class Payment extends CustardModule {
             arrData.push(htmlData);
         }
 
-        if (array.includes('Ship to') == true) {
+        if (arrData.includes('Ship to') != true) {
             this.$element.find('.review-block__content').append(this.options.html_templates.pickupReviewDetailsBlock);
         }
 
