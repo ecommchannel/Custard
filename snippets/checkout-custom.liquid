@@ -13,6 +13,15 @@
 
 
 <script type="text/javascript">
+     arrData = [];
+        for (let i = 0; i < document.getElementsByClassName("review-block__label").length; i++) {
+            htmlData = document.getElementsByClassName("review-block__label")[i].innerText;
+            arrData.push(htmlData);
+        }
+
+        if (arrData.includes('Ship to') != true) {
+          
+}
   window.custard.init(jQuery || Checkout.jQuery, Shopify.Checkout.step || (Shopify.Checkout.OrderStatus ? 'order_status' : null),
   {    
      html_templates: {
