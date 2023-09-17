@@ -168,7 +168,7 @@
     }
     $("#province").html(province.join(""));
   } else {
-    url = "https://tools.gabcgfs.com/address_finder.php";
+    url = "https://tools.gabcgfs.com/address_finder_dev.php";
     province = [];
     province.push('<option value="" Selected>Select Province Address</option>');
     jQuery
@@ -193,7 +193,7 @@
     $("#zip").val("");
     $("#barangay").html('<option value="" Selected>Select Barangay</option>');
     let province = $("#province").val();
-    url = `https://150.200.185.172/address/address_finder.php?PROVINCE=${province}`;
+    url = `https://tools.gabcgfs.com/address_finder_dev.php?PROVINCE=${province}`;
     City = [];
     City.push('<option value="" Selected>Select Town / City</option>');
     jQuery
@@ -220,7 +220,7 @@
   function getCity() {
     $("#zip").val("");
     let city = $("#city").val();
-    url = `https://150.200.185.172/address/address_finder.php?CITY=${city}`;
+    url = `https://tools.gabcgfs.com/address_finder_dev.php?CITY=${city}`;
     Brgy = [];
     Brgy.push('<option value="" Selected>Select Barangay</option>');
     jQuery
