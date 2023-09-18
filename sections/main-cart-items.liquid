@@ -46,7 +46,11 @@
     {%- endif -%}
   </div>
 
-
+{% for location in shop.locations %}
+  <p>{{ location.name }}</p>
+  <p>{{ location.address }}</p>
+  awdaw
+{% endfor %}
 
   <form action="{{ routes.cart_url }}" class="cart__contents critical-hidden" method="post" id="cart">
     <div class="cart__items" id="main-cart-items" data-id="{{ section.id }}">
@@ -57,11 +61,6 @@
               {{ 'sections.cart.title' | t }}
             </caption>
             <thead>
-              {% for location in shop.locations %}
-  <p>{{ location.name }}</p>
-  <p>{{ location.address }}</p>
-  awdaw
-{% endfor %}
               <tr>
                 <th class="caption-with-letter-spacing" colspan="2" scope="col">
                   {{ 'sections.cart.headings.product' | t }}
