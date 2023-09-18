@@ -92,7 +92,7 @@ xhttp.send();
          {%- if template == 'cart' -%}
   		    window.aod_JQuery('body').on('change', "input[name='updates[]'], input[id^='updates_'], input[id^='Updates_']", function(e){
    	  
-            window.aod_JQuery(".aod_checkout, input[form='Checkout'], button[form='Checkout'],[href$='Checkout'],input[form='Checkout'], button[form='Checkout'], [href$='checkout'], input[name='goto_pp'], button[name='goto_pp'], input[name='goto_gc'], button[name='goto_gc'], .additional-checkout-button, .google-wallet-button-holder, .amazon-payments-pay-button").attr("disabled", true);
+            window.aod_JQuery(".aod_checkout, input[form='cart'], button[form='cart'],[href$='Checkout'],input[form='cart'], button[form='cart'], [href$='checkout'], input[name='goto_pp'], button[name='goto_pp'], input[name='goto_gc'], button[name='goto_gc'], .additional-checkout-button, .google-wallet-button-holder, .amazon-payments-pay-button").attr("disabled", true);
             window.aod_JQuery("#dynamic-checkout-cart").hide();
             window.aod_JQuery(".additional-checkout-buttons").hide();
             window.aod_JQuery(".dynamic-checkout__content").hide();
@@ -111,7 +111,7 @@ xhttp.send();
   {%- if template != 'cart' -%}
   if(window.aod_goto_checkout_if_valid){
   document.addEventListener('DOMContentLoaded', function() {
-    window.aod_JQuery(".aod_checkout, input[form='Checkout'], button[form='Checkout'],[href$='Checkout'],input[form='Checkout'], button[form='Checkout'], [href$='checkout'], input[name='goto_pp'], button[name='goto_pp'], input[name='goto_gc'], button[name='goto_gc'], .additional-checkout-button, .google-wallet-button-holder, .amazon-payments-pay-button").click(function(){
+    window.aod_JQuery(".aod_checkout, input[form='cart'], button[form='cart'],[href$='Checkout'],input[form='cart'], button[form='cart'], [href$='checkout'], input[name='goto_pp'], button[name='goto_pp'], input[name='goto_gc'], button[name='goto_gc'], .additional-checkout-button, .google-wallet-button-holder, .amazon-payments-pay-button").click(function(){
      e.stopPropagation();
      e.preventDefault();
      
@@ -191,7 +191,7 @@ xhttp.send();
   }else{
     document.addEventListener('DOMContentLoaded', function() {
       let checkoutbtninterval = setInterval(function(){
-        var aod_selector=document.querySelectorAll("input[form='Checkout'], button[form='Checkout'], input[name='goto_pp'], button[name='goto_pp'], input[name='goto_gc'], button[name='goto_gc'], [href$='checkout']");
+        var aod_selector=document.querySelectorAll("input[form='cart'], button[form='cart'], input[name='goto_pp'], button[name='goto_pp'], input[name='goto_gc'], button[name='goto_gc'], [href$='checkout']");
         var aod_goto_cartpage = function(e) {
             e.stopPropagation();
             e.preventDefault();
