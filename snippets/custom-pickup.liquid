@@ -156,10 +156,6 @@
      setShippingMethod=`Pick up in store · <strong>${Title}</strong><br><p class="small-text">${listaddress} ${Zipcode}</p>`;
      localStorage.setItem('ShippingMethod', setShippingMethod)
 
-       fetch('https://tools.gabcgfs.com/shoplocation.php')
-        .then(response => response.json())
-        .then(data => console.log(data))
-
   }
 
   var arr = JSON.parse(localStorage.getItem("arrProvince"));
