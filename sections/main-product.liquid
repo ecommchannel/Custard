@@ -60,6 +60,7 @@
       onload="this.media='all'"
     >
   {%- endif -%}
+  {{ location.name }}
   {% for location in shop.locations %}
   <p>{{ location.name }}</p>
   <p>{{ location.address }}</p>
