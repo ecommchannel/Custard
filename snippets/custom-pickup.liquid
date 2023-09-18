@@ -147,7 +147,14 @@
        fetch('https://tools.gabcgfs.com/shoplocation.php')
         .then(response => response.json())
         .then(data => dataVal(data))
+.then(data => data.ok ? data : false).then(data => {
+    if (data) {
+        //res ok
+    } else {
+       //res not ok
+    }
 
+});
     function dataVal(data) {
         const jsonData = data;
         // Get the value of the 'name' parameter from the URL
@@ -163,13 +170,11 @@
         // Log the filtered data
       if(filteredData[0].id != ''){
          
-         try {
  resOutput= ` <input type="text" value="${filteredData[0].id}" name="checkout[attributes][pickup_store_id]"/>`
-     return $('.StoreId_Data').html(resOutput);
-  } catch {
-  resOutput= ``
-     return $('.StoreId_Data').html(resOutput);
-  }
+      $('.StoreId_Data').html(resOutput);
+
+      }else{
+         $('.StoreId_Data').html("");
       }
     }
      resOutput=`
