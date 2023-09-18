@@ -161,12 +161,15 @@
             }
         });
         // Log the filtered data
-      console.log(filteredData[0].id)
-      if(filteredData[0].id != undefined){
-          resOutput= ` <input type="text" value="${filteredData[0].id}" name="checkout[attributes][pickup_store_id]"/>`
+      if(filteredData[0].id != ''){
+         
+         try {
+ resOutput= ` <input type="text" value="${filteredData[0].id}" name="checkout[attributes][pickup_store_id]"/>`
      return $('.StoreId_Data').html(resOutput);
-      }else{
-        return $('.StoreId_Data').html("");
+  } catch {
+  resOutput= ``
+     return $('.StoreId_Data').html(resOutput);
+  }
       }
     }
      resOutput=`
