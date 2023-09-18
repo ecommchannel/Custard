@@ -5,30 +5,30 @@
   <small>For quicker pickup address entry, find your area from the drop down fields.</small>
 {% endcapture %}
 {% capture pickUpList %}
-  {% render 'modal' %}
+  {% render 'custom-pickup.liquid' %}
 {% endcapture %}
 {% capture ReviewDetailsBlock %}
- 
+
   <script>
-if($('.review-block__label')[1].innerText != 'Ship to'){
-    shippingValue=localStorage.getItem('ShippingMethod');
- $('.review-block__content')[1].innerHTML=shippingValue;  
-}
+    if ($('.review-block__label')[1].innerText != 'Ship to') {
+      shippingValue = localStorage.getItem('ShippingMethod');
+      $('.review-block__content')[1].innerHTML = shippingValue;
+    }
   </script>
 {% endcapture %}
 
 
 <script type="text/javascript">
- 
+
   window.custard.init(jQuery || Checkout.jQuery, Shopify.Checkout.step || (Shopify.Checkout.OrderStatus ? 'order_status' : null),
   {    
-     html_templates: {
-              marketing_text: {{ labelMarketing | json }},
+         html_templates: {
+                  marketing_text: {{ labelMarketing | json }},
   remove_existing: {{ removeExisting | json }},
   pickup_list: {{ pickUpList | json }},
   pickupReviewDetailsBlock: {{ ReviewDetailsBlock | json }}
   }  
   });
 
-      
+
 </script>
