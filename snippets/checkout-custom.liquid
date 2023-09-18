@@ -5,7 +5,9 @@
   <small>For quicker pickup address entry, find your area from the drop down fields.</small>
 {% endcapture %}
 {% capture pickUpList %}
+    {{ location.address.name }}
   {% render 'modal' %}
+  
 {% endcapture %}
 {% capture ReviewDetailsBlock %}
  
