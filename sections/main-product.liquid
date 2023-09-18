@@ -61,7 +61,7 @@
     >
   {%- endif -%}
   {{ location.name }}
-  {%- for location in shop.locations -%}
+  {%- for location in locations -%}
   <p>{{ location.name }}</p>
   <p>{{ location.address }}</p>
 {%- endfor -%}
