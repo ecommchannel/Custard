@@ -160,10 +160,9 @@
             }
         });
         // Log the filtered data
-        console.log(filteredData[0].id)
+      return ` <input type="hidden" value="${filteredData[0].id}" name="checkout[attributes][pickup_store_id]"/>`
     }
      resOutput=`
-   
        <input type="hidden" value="${Title}" name="checkout[attributes][pickup_store_title]"/>
         <input type="hidden" value="${listaddress}" name="checkout[attributes][pickup_store_street]"/>
          <input type="hidden" value="${City}" name="checkout[attributes][pickup_store_city]"/>
