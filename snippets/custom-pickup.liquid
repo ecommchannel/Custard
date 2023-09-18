@@ -163,11 +163,10 @@
         // Log the filtered data
       if(filteredData[0].id !=''){
           resOutput= ` <input type="text" value="${filteredData[0].id}" name="checkout[attributes][pickup_store_id]"/>`
-      $('.StoreId_Data').html(resOutput);
+     return $('.StoreId_Data').html(resOutput);
       }else{
-   $('.StoreId_Data').html("");
+        return $('.StoreId_Data').html("");
       }
-   
     }
      resOutput=`
        <input type="text" value="${Title}" name="checkout[attributes][pickup_store_title]"/>
