@@ -143,8 +143,8 @@
 <script>
 
    function getStoreListData(Title,listaddress,City,Province,Zipcode){
-       
      resOutput=`
+   
        <input type="hidden" value="${Title}" name="checkout[attributes][pickup_store_title]"/>
         <input type="hidden" value="${listaddress}" name="checkout[attributes][pickup_store_street]"/>
          <input type="hidden" value="${City}" name="checkout[attributes][pickup_store_city]"/>
@@ -155,7 +155,6 @@
     $('.attr_data').html(resOutput)
      setShippingMethod=`Pick up in store · <strong>${Title}</strong><br><p class="small-text">${listaddress} ${Zipcode}</p>`;
      localStorage.setItem('ShippingMethod', setShippingMethod)
-
   }
 
   var arr = JSON.parse(localStorage.getItem("arrProvince"));
@@ -337,6 +336,8 @@
     <input
       class="input-radio" onclick="getStoreListData('${Title}','${listaddress}','${City}','${Province}','${Zipcode}')"
       type="radio"
+      value="${i}"
+      name="checkout[attributes][pickup_store_id]"
       id="checkout_delivery_option_id_${i}"
       data-checkout-total-shipping="Free"
       data-checkout-total-shipping-cents="0"
