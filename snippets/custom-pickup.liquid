@@ -161,13 +161,11 @@
             }
         });
         // Log the filtered data
+       $('.StoreId_Data').html("");
       if(filteredData[0].id != ''){
-         
  resOutput= ` <input type="text" value="${filteredData[0].id}" name="checkout[attributes][pickup_store_id]"/>`
       $('.StoreId_Data').html(resOutput);
 
-      }else{
-         $('.StoreId_Data').html("");
       }
     }
      resOutput=`
