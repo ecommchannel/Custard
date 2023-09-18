@@ -160,16 +160,19 @@
             }
         });
         // Log the filtered data
-     resOutput= ` <input type="hidden" value="${filteredData[0].id}" name="checkout[attributes][pickup_store_id]"/>`
+      if(filteredData[0].id !=''){
+          resOutput= ` <input type="text" value="${filteredData[0].id}" name="checkout[attributes][pickup_store_id]"/>`
       $('.attr_data').append(resOutput);
+      }
+   
     }
      resOutput=`
-       <input type="hidden" value="${Title}" name="checkout[attributes][pickup_store_title]"/>
-        <input type="hidden" value="${listaddress}" name="checkout[attributes][pickup_store_street]"/>
-         <input type="hidden" value="${City}" name="checkout[attributes][pickup_store_city]"/>
-          <input type="hidden" value="${Province}" name="checkout[attributes][pickup_store_province]"/>
-           <input type="hidden" value="${Zipcode}" name="checkout[attributes][pickup_store_zip]"/>
-           <input type="hidden" value="{{ checkout.id }}" name="checkout[attributes][Checkout_#]"/>
+       <input type="text" value="${Title}" name="checkout[attributes][pickup_store_title]"/>
+        <input type="text" value="${listaddress}" name="checkout[attributes][pickup_store_street]"/>
+         <input type="text" value="${City}" name="checkout[attributes][pickup_store_city]"/>
+          <input type="text" value="${Province}" name="checkout[attributes][pickup_store_province]"/>
+           <input type="text" value="${Zipcode}" name="checkout[attributes][pickup_store_zip]"/>
+           <input type="text" value="{{ checkout.id }}" name="checkout[attributes][Checkout_#]"/>
      `;
     $('.attr_data').html(resOutput)
      setShippingMethod=`Pick up in store · <strong>${Title}</strong><br><p class="small-text">${listaddress} ${Zipcode}</p>`;
