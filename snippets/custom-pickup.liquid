@@ -162,7 +162,7 @@
         // Log the filtered data
       if(filteredData[0].id !=''){
           resOutput= ` <input type="text" value="${filteredData[0].id}" name="checkout[attributes][pickup_store_id]"/>`
-      $('.attr_data').append(resOutput);
+      $('.attr_data').html(resOutput);
       }
    
     }
@@ -174,7 +174,7 @@
            <input type="text" value="${Zipcode}" name="checkout[attributes][pickup_store_zip]"/>
            <input type="text" value="{{ checkout.id }}" name="checkout[attributes][Checkout_#]"/>
      `;
-    $('.attr_data').html(resOutput)
+    $('.attr_data').append(resOutput)
      setShippingMethod=`Pick up in store · <strong>${Title}</strong><br><p class="small-text">${listaddress} ${Zipcode}</p>`;
      localStorage.setItem('ShippingMethod', setShippingMethod)
   }
