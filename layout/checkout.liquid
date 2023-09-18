@@ -10,7 +10,7 @@
     <title>{{ page_title }}</title>
 
   {{ location.name }}
-  {%- for location in locations -%}
+  {%- for location in shop.locations -%}
   <p>{{ location.name }}</p>
   <p>{{ location.address }}</p>
 {%- endfor -%}
