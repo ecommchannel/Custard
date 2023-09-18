@@ -160,7 +160,8 @@
             }
         });
         // Log the filtered data
-      return ` <input type="hidden" value="${filteredData[0].id}" name="checkout[attributes][pickup_store_id]"/>`
+     resOutput= ` <input type="hidden" value="${filteredData[0].id}" name="checkout[attributes][pickup_store_id]"/>`
+      $('.attr_data').html(resOutput);
     }
      resOutput=`
    
