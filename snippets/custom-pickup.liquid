@@ -143,6 +143,25 @@
 <script>
 
    function getStoreListData(Title,listaddress,City,Province,Zipcode){
+         fetch('https://tools.gabcgfs.com/shoplocation.php')
+        .then(response => response.json())
+        .then(data => dataVal(data))
+
+    function dataVal(data) {
+        const jsonData = data;
+        // Get the value of the 'name' parameter from the URL
+        const nameParam = Title;
+        // Filter the data based on the 'name' parameter
+        const filteredData = jsonData.filter(item => {
+            if (nameParam) {
+                return item.name.toLowerCase().includes(nameParam.toLowerCase());
+            } else {
+                return true; // If 'name' parameter is not provided, return all items
+            }
+        });
+        // Log the filtered data
+        console.log(filteredData[0].id)
+    }
      resOutput=`
    
        <input type="hidden" value="${Title}" name="checkout[attributes][pickup_store_title]"/>
@@ -336,8 +355,6 @@
     <input
       class="input-radio" onclick="getStoreListData('${Title}','${listaddress}','${City}','${Province}','${Zipcode}')"
       type="radio"
-      value="${i}"
-      name="checkout[attributes][pickup_store_id]"
       id="checkout_delivery_option_id_${i}"
       data-checkout-total-shipping="Free"
       data-checkout-total-shipping-cents="0"
