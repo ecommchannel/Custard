@@ -203,6 +203,7 @@
           ZipBarangay.push(arrZ);
         }
       });
+          const customer_address = JSON.parse(localStorage.getItem("customer_address"));
         getBarangay(customer_address.barangay);
     }
  console.log(ZipBarangay)
