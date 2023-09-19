@@ -143,7 +143,7 @@
 
       const customer_address = JSON.parse(localStorage.getItem("customer_address"));
         getCity(customer_address.city);
-    getBarangay(customer_address.barangay);
+  
  
 
     
@@ -203,6 +203,7 @@
           ZipBarangay.push(arrZ);
         }
       });
+        getBarangay(customer_address.barangay);
     }
 
     function getBarangay(barangay) {
