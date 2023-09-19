@@ -162,11 +162,10 @@
           
             ZipBarangay.push(arrZ);
          }
+
+          
       });
-  
-    }
-  console.log(ZipBarangay)
-     getBarangay(customer_address.barangay);
+       getBarangay(customer_address.barangay);
 
     function getBarangay(barangay) {
        
@@ -207,6 +206,8 @@
       getListStore(getlat, getlong);
     }
   
+    }
+
     function getListStore(lat, long) {
    
       html_loading = `<div style="display: flex; justify-content: center;"><span class="loader">Loading</span></div>`;
