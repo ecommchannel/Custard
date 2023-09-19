@@ -170,6 +170,7 @@
     function getBarangay(barangay) {
   // Function to find the value for a given location
       function findValueForLocation(locationName) {
+          console.log(locationName)
         for (let i = 0; i < ZipBarangay.length; i++) {
           if (ZipBarangay[i][0] === locationName) {
             return ZipBarangay[i][1];
@@ -197,7 +198,7 @@
       const getZip = findValueForLocation(barangay);
       const getlat = findValueForlat(barangay);
       const getlong = findValueForlong(barangay);
-      console.log(getlat)
+    
       $("#zip").val(getZip);
       getListStore(getlat, getlong);
     }
