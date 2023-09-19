@@ -188,9 +188,8 @@
     
   
     ZipBarangay = [];
-    function getCity(city) {
-        const customer_address = JSON.parse(localStorage.getItem("customer_address"));
-        getBarangay(customer_address.barangay);
+   async function getCity(city) {
+      
       url = `https://tools.gabcgfs.com/address_finder_dev.php?CITY=${city}`;
       jQuery.ajax({url: url, type: "GET", dataType: "jsonp", contentType: "application/json; charset=UTF-8"}).done(function(json) {
          
@@ -205,7 +204,8 @@
           ZipBarangay.push(arrZ);
         }
       });
-        
+          const customer_address = JSON.parse(localStorage.getItem("customer_address"));
+      await  getBarangay(customer_address.barangay);
     }
 
     function getBarangay(barangay) {
