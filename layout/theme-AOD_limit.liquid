@@ -266,7 +266,7 @@
         document.documentElement.classList.add('shopify-design-mode');
       }
     </script>
-  
+ 
   {% render 'shogun-head' %}
 </head>
 
@@ -336,5 +336,8 @@
     {%- if settings.predictive_search_enabled -%}
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
+  <!--  AOD_OrderLimit Start  --> 
+{% include 'aodLimitValidator' %}
+ <!--  AOD_OrderLimit End  -->
   </body>
 </html>
