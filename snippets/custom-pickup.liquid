@@ -108,6 +108,7 @@
   getCity(customer_address.city);
 
   function getStoreListData(Title, listaddress, City, Province, Zipcode) {
+        $('.active-radio').click();
     fetch('https://tools.gabcgfs.com/shoplocation.php').then(response => response.json()).then(data => {
       const jsonData = data;
 
