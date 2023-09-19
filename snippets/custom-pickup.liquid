@@ -70,30 +70,7 @@
     }
   </style>
   <div class="form-group">
-  
-    <select
-      class="form-control w-50"
-      name=""
-      id="province"
-      onchange="getProvince()">
-      <option value="">Select Province Address</option>
-    </select>
-  
-    <select
-      class="form-control w-50"
-      name=""
-      id="city"
-      onchange="getCity()">
-      <option value="">Select Town / City</option>
-    </select>
-  
-    <select
-      class="form-control w-50"
-      name=""
-      id="barangay"
-      onchange="getBarangay()">
-      <option value="">Select Barangay</option>
-    </select>
+ 
   
     <input
       type="text"
@@ -144,9 +121,6 @@
       const customer_address = JSON.parse(localStorage.getItem("customer_address"));
         getCity(customer_address.city);
   
- 
-
-    
     function getStoreListData(Title, listaddress, City, Province, Zipcode) {
       fetch('https://tools.gabcgfs.com/shoplocation.php').then(response => response.json()).then(data => {
         const jsonData = data;
