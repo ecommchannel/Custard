@@ -198,13 +198,14 @@
             json[0].CITY[0].BARANGAY[i].latitude,
             json[0].CITY[0].BARANGAY[i].longitude
           ];
+            console.log(arrZ)
           ZipBarangay.push(arrZ);
         }
       });
     }
  
     function getBarangay(barangay) {
-       console.log(ZipBarangay)
+     
   // Function to find the value for a given location
       function findValueForLocation(locationName) {
         for (let i = 0; i < ZipBarangay.length; i++) {
