@@ -51,36 +51,39 @@
     margin: 2px 0;
   }
   /* Add Style in Scrollbar */
- .nearBy::-webkit-scrollbar {
+  .nearBy::-webkit-scrollbar {
     width: 10px;
   }
-  
+
   /* Track */
   .nearBy::-webkit-scrollbar-track {
-    background: #f1f1f1; 
+    background: #f1f1f1;
   }
   /* Handle */
   .nearBy::-webkit-scrollbar-thumb {
-    background: #888; 
+    background: #888;
   }
-  
+
   /* Handle on hover */
   .nearBy::-webkit-scrollbar-thumb:hover {
-    background: #555; 
+    background: #555;
   }
 </style>
 <div class="form-group">
-  
+
   <select
     class="form-control w-50"
     name=""
     id="province"
-    onchange="getProvince()"
-  >
+    onchange="getProvince()">
     <option value="">Select Province Address</option>
   </select>
 
-  <select class="form-control w-50" name="" id="city" onchange="getCity()">
+  <select
+    class="form-control w-50"
+    name=""
+    id="city"
+    onchange="getCity()">
     <option value="">Select Town / City</option>
   </select>
 
@@ -88,85 +91,83 @@
     class="form-control w-50"
     name=""
     id="barangay"
-    onchange="getBarangay()"
-  >
+    onchange="getBarangay()">
     <option value="">Select Barangay</option>
   </select>
 
   <input
     type="text"
     style="
-      width: 95.5%;
-      border: 1px solid;
-      padding: 12px;
-      margin: 2px 0;
-      background-color: mintcream;
-    "
+                        width: 95.5%;
+                        border: 1px solid;
+                        padding: 12px;
+                        margin: 2px 0;
+                        background-color: mintcream;
+                      "
     id="zip"
     placeholder="Zip"
-    readonly
-  />
+    readonly />
 </div>
 <div style="display:none;">
-<div class="radio__input">
-  <input
-    class="input-radio active-radio"
-    type="radio"
-    value="65625203dc4bf25a47865adc66f3892b"
-    name="checkout[pick_up_in_store][handle]"
-    id="checkout_delivery_option_id_65625203dc4bf25a47865adc66f3892b"
-    
-    data-checkout-total-shipping="Free"
-    data-checkout-total-shipping-cents="0"
-  />
-</div>
-<label
-  class="radio__label"
-  for="checkout_delivery_option_id_65625203dc4bf25a47865adc66f3892b"
-  ><div class="radio__label__primary">
-    <div>1155 EDSA, Balintawak</div>
-    <div class="small-text">1155 EDSA, Balintawak, Quezon City, 00</div>
-    <div class="small-text pickup-instructions show-on-mobile">
-      Usually ready in 24 hours
-    </div>
+  <div class="radio__input">
+    <input
+      class="input-radio active-radio"
+      type="radio"
+      value="65625203dc4bf25a47865adc66f3892b"
+      name="checkout[pick_up_in_store][handle]"
+      id="checkout_delivery_option_id_65625203dc4bf25a47865adc66f3892b"
+
+      data-checkout-total-shipping="Free"
+      data-checkout-total-shipping-cents="0" />
   </div>
-  <div class="radio__label__accessory">
-    <div class="content-box__emphasis">Free</div>
-    <div class="small-text pickup-instructions hide-on-mobile">
-      Usually ready in 24 hours
+  <label class="radio__label" for="checkout_delivery_option_id_65625203dc4bf25a47865adc66f3892b">
+    <div class="radio__label__primary">
+      <div>1155 EDSA, Balintawak</div>
+      <div class="small-text">1155 EDSA, Balintawak, Quezon City, 00</div>
+      <div class="small-text pickup-instructions show-on-mobile">
+        Usually ready in 24 hours
+      </div>
     </div>
-  </div></label
->
+    <div class="radio__label__accessory">
+      <div class="content-box__emphasis">Free</div>
+      <div class="small-text pickup-instructions hide-on-mobile">
+        Usually ready in 24 hours
+      </div>
+    </div>
+  </label>
 </div>
 <div class="nearBy" style="display: grid; overflow:scroll; max-height:300px; overflow-x:hidden; margin-top:10px; padding-right:15px;"></div>
 <div class="StoreId_Data"></div>
 <div class="attr_data"></div>
 <script>
 
-   function getStoreListData(Title,listaddress,City,Province,Zipcode){
-       fetch('https://tools.gabcgfs.com/shoplocation.php')
-        .then(response => response.json())
-        .then(data => {
-          const jsonData = data;
-        // Get the value of the 'name' parameter from the URL
-        const nameParam = Title;
-        // Filter the data based on the 'name' parameter
-        const filteredData = jsonData.filter(item => {
-            if (nameParam) {
-                return item.name.toLowerCase().includes(nameParam.toLowerCase());
-            } else {
-                return true; // If 'name' parameter is not provided, return all items
-            }
-        });
-        // Log the filtered data
-       $('.StoreId_Data').html("");
-      if(filteredData[0].id != ''){
- resOutput= ` <input type="hidden" value="${filteredData[0].id}" name="checkout[attributes][pickup_store_id]"/>`
-      $('.StoreId_Data').html(resOutput);
+  function getStoreListData(Title, listaddress, City, Province, Zipcode) {
+    fetch('https://tools.gabcgfs.com/shoplocation.php').then(response => response.json()).then(data => {
+      const jsonData = data;
+
+// Get the value of the 'name' parameter from the URL
+      const nameParam = Title;
+
+// Filter the data based on the 'name' parameter
+      const filteredData = jsonData.filter(item => {
+        if (nameParam) {
+          return item.name.toLowerCase().includes(nameParam.toLowerCase());
+        } else {
+          return true; // If 'name' parameter is not provided, return all items
+        }
+      });
+
+// Log the filtered data
+      $('.StoreId_Data').html("");
+      if (filteredData[0].id != '') {
+        resOutput = ` <input type="hidden" value="${
+          filteredData[0].id
+        }" name="checkout[attributes][pickup_store_id]"/>`
+        $('.StoreId_Data').html(resOutput);
 
       }
-        })
-     resOutput=`
+    })
+    resOutput = `
        <input type="hidden" value="${Title}" name="checkout[attributes][pickup_store_title]"/>
         <input type="hidden" value="${listaddress}" name="checkout[attributes][pickup_store_street]"/>
          <input type="hidden" value="${City}" name="checkout[attributes][pickup_store_city]"/>
@@ -175,8 +176,8 @@
            <input type="hidden" value="{{ checkout.id }}" name="checkout[attributes][Checkout_#]"/>
      `;
     $('.attr_data').html(resOutput)
-     setShippingMethod=`Pick up in store · <strong>${Title}</strong><br><p class="small-text">${listaddress} ${Zipcode}</p>`;
-     localStorage.setItem('ShippingMethod', setShippingMethod)
+    setShippingMethod = `Pick up in store · <strong>${Title}</strong><br><p class="small-text">${listaddress} ${Zipcode}</p>`;
+    localStorage.setItem('ShippingMethod', setShippingMethod)
   }
 
   var arr = JSON.parse(localStorage.getItem("arrProvince"));
@@ -185,7 +186,9 @@
     province = [];
     var data = JSON.parse(localStorage.arrProvince);
     for (let i = 0; i < data.province.length; i++) {
-      const arrP = `${data.province[i]}`;
+      const arrP = `${
+        data.province[i]
+      }`;
       province.push(arrP);
     }
     $("#province").html(province.join(""));
@@ -193,22 +196,19 @@
     url = "https://tools.gabcgfs.com/address_finder_dev.php";
     province = [];
     province.push('<option value="" Selected>Select Province Address</option>');
-    jQuery
-      .ajax({
-        url: url,
-        type: "GET",
-        dataType: "jsonp",
-        contentType: "application/json; charset=UTF-8",
-      })
-      .done(function (json) {
-        for (let i = 0; i < json.length; i++) {
-          const arrP = `<option value="${json[i].PROVINCE}">${json[i].PROVINCE}</option>`;
-          province.push(arrP);
-        }
+    jQuery.ajax({url: url, type: "GET", dataType: "jsonp", contentType: "application/json; charset=UTF-8"}).done(function(json) {
+      for (let i = 0; i < json.length; i++) {
+        const arrP = `<option value="${
+          json[i].PROVINCE
+        }">${
+          json[i].PROVINCE
+        }</option>`;
+        province.push(arrP);
+      }
 
-        $("#province").html(province.join(""));
-        localStorage.setItem("arrProvince", JSON.stringify({ province }));
-      });
+      $("#province").html(province.join(""));
+      localStorage.setItem("arrProvince", JSON.stringify({province}));
+    });
   }
 
   function getProvince() {
@@ -218,25 +218,22 @@
     url = `https://tools.gabcgfs.com/address_finder_dev.php?PROVINCE=${province}`;
     City = [];
     City.push('<option value="" Selected>Select Town / City</option>');
-    jQuery
-      .ajax({
-        url: url,
-        type: "GET",
-        dataType: "jsonp",
-        contentType: "application/json; charset=UTF-8",
-      })
-      .done(function (json) {
-        if (json != "") {
-          for (let i = 0; i < json[0].CITY.length; i++) {
-            const arrC = `<option value="${json[0].CITY[i].CITY}">${json[0].CITY[i].CITY}</option>`;
-            City.push(arrC);
-          }
-        } else {
-          City.push();
+    jQuery.ajax({url: url, type: "GET", dataType: "jsonp", contentType: "application/json; charset=UTF-8"}).done(function(json) {
+      if (json != "") {
+        for (let i = 0; i < json[0].CITY.length; i++) {
+          const arrC = `<option value="${
+            json[0].CITY[i].CITY
+          }">${
+            json[0].CITY[i].CITY
+          }</option>`;
+          City.push(arrC);
         }
+      } else {
+        City.push();
+      }
 
-        $("#city").html(City.join(""));
-      });
+      $("#city").html(City.join(""));
+    });
   }
   ZipBarangay = [];
   function getCity() {
@@ -245,34 +242,31 @@
     url = `https://tools.gabcgfs.com/address_finder_dev.php?CITY=${city}`;
     Brgy = [];
     Brgy.push('<option value="" Selected>Select Barangay</option>');
-    jQuery
-      .ajax({
-        url: url,
-        type: "GET",
-        dataType: "jsonp",
-        contentType: "application/json; charset=UTF-8",
-      })
-      .done(function (json) {
-        for (let i = 0; i < json[0].CITY[0].BARANGAY.length; i++) {
-          const arrC = `<option value="${json[0].CITY[0].BARANGAY[i].BARANGAY}">${json[0].CITY[0].BARANGAY[i].BARANGAY}</option>`;
-          const arrZ = [
-            json[0].CITY[0].BARANGAY[i].BARANGAY,
-            json[0].CITY[0].BARANGAY[i].ZIP,
-            json[0].CITY[0].BARANGAY[i].latitude,
-            json[0].CITY[0].BARANGAY[i].longitude,
-          ];
-          Brgy.push(arrC);
-          ZipBarangay.push(arrZ);
-        }
+    jQuery.ajax({url: url, type: "GET", dataType: "jsonp", contentType: "application/json; charset=UTF-8"}).done(function(json) {
+      for (let i = 0; i < json[0].CITY[0].BARANGAY.length; i++) {
+        const arrC = `<option value="${
+          json[0].CITY[0].BARANGAY[i].BARANGAY
+        }">${
+          json[0].CITY[0].BARANGAY[i].BARANGAY
+        }</option>`;
+        const arrZ = [
+          json[0].CITY[0].BARANGAY[i].BARANGAY,
+          json[0].CITY[0].BARANGAY[i].ZIP,
+          json[0].CITY[0].BARANGAY[i].latitude,
+          json[0].CITY[0].BARANGAY[i].longitude
+        ];
+        Brgy.push(arrC);
+        ZipBarangay.push(arrZ);
+      }
 
-        $("#barangay").html(Brgy.join(""));
-      });
+      $("#barangay").html(Brgy.join(""));
+    });
   }
 
   function getBarangay() {
     let barangay = $("#barangay").val();
 
-    // Function to find the value for a given location
+// Function to find the value for a given location
     function findValueForLocation(locationName) {
       for (let i = 0; i < ZipBarangay.length; i++) {
         if (ZipBarangay[i][0] === locationName) {
@@ -280,16 +274,14 @@
         }
       }
       return null; // Return null if location is not found
-    }
-    function findValueForlat(locationName) {
+    }function findValueForlat(locationName) {
       for (let i = 0; i < ZipBarangay.length; i++) {
         if (ZipBarangay[i][0] === locationName) {
           return ZipBarangay[i][2];
         }
       }
       return null; // Return null if location is not found
-    }
-    function findValueForlong(locationName) {
+    }function findValueForlong(locationName) {
       for (let i = 0; i < ZipBarangay.length; i++) {
         if (ZipBarangay[i][0] === locationName) {
           return ZipBarangay[i][3];
@@ -303,6 +295,17 @@
     const getlong = findValueForlong(barangay);
     $("#zip").val(getZip);
     getListStore(getlat, getlong);
+
+    customer_address = `{"province":${
+      $('#province').val()
+    },"city":${
+      $('#city').val()
+    },"barangay":${
+      $('#barangay').val()
+    },"zip":${
+      $('#zip').val()
+    }}`;
+    localStorage.setItem('customer_address', customer_address);
   }
 
   function getListStore(lat, long) {
@@ -313,12 +316,7 @@
       const R = 6371; // Radius of the earth in km
       const dLat = deg2rad(lat2 - lat1);
       const dLon = deg2rad(lon2 - lon1);
-      const a =
-        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-        Math.cos(deg2rad(lat1)) *
-          Math.cos(deg2rad(lat2)) *
-          Math.sin(dLon / 2) *
-          Math.sin(dLon / 2);
+      const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
       const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
       const distance = R * c; // Distance in km
       return distance.toFixed(2);
@@ -326,11 +324,8 @@
 
     const lat1 = lat;
     const lon1 = long;
-    let url =
-      "https://omniproxy.goldenabc.com/storelocations/Shopify/Api/GetStoreLocations?brand=penshoppe";
-    fetch(url)
-      .then((response) => response.json())
-      .then((json) => getlocation(json));
+    let url = "https://omniproxy.goldenabc.com/storelocations/Shopify/Api/GetStoreLocations?brand=penshoppe";
+    fetch(url).then((response) => response.json()).then((json) => getlocation(json));
 
     function getlocation(data) {
       let arr_data = [];
@@ -344,14 +339,15 @@
         const Latitude = arr[i].Latitude;
         const Longitude = arr[i].Longitude;
         const listStore = nearbydata(lat1, lon1, Latitude, Longitude);
-        const listaddress = `${arr[i].Street} ${arr[i].City} ${arr[i].Country}`;
+        const listaddress = `${
+          arr[i].Street
+        } ${
+          arr[i].City
+        } ${
+          arr[i].Country
+        }`;
 
-        if (
-          Longitude != null &&
-          Latitude != null &&
-          Title != "" &&
-          Title != "null"
-        ) {
+        if (Longitude != null && Latitude != null && Title != "" && Title != "null") {
           if (listStore <= 10) {
             html = `<div>
            <div class="radio__input">
@@ -390,23 +386,20 @@
       const locationData = arr_data.map((htmlString) => {
         const tempDiv = document.createElement("div");
         tempDiv.innerHTML = htmlString;
-        const distanceText =
-          tempDiv.querySelector("span:last-child").textContent;
+        const distanceText = tempDiv.querySelector("span:last-child").textContent;
         const distanceKm = parseFloat(distanceText.replace(" Km", ""));
-        return { html: htmlString, distance: distanceKm };
+        return {html: htmlString, distance: distanceKm};
       });
 
-      // Sort the location data by distance
+// Sort the location data by distance
       locationData.sort((a, b) => a.distance - b.distance);
 
-      // Rebuild the sorted HTML elements
+// Rebuild the sorted HTML elements
       const sortedLocationElements = locationData.map((data) => data.html);
 
-      // Now you can use sortedLocationElements to update your HTML container
+// Now you can use sortedLocationElements to update your HTML container
       if (sortedLocationElements.join("") == "") {
-        document.querySelector(
-          ".nearBy"
-        ).innerHTML = `<div style="display: flex; justify-content: center;"><h1 style="
+        document.querySelector(".nearBy").innerHTML = `<div style="display: flex; justify-content: center;"><h1 style="
           padding: 0 12px;
           background-color: red;
           color: white;
@@ -416,10 +409,8 @@
           ">There is no store near you</h1></div>`;
       } else {
         document.querySelector(".nearBy").innerHTML = sortedLocationElements.join('');
-          $('.active-radio').click();
+        $('.active-radio').click();
       }
     }
   }
-
- 
 </script>
