@@ -193,7 +193,6 @@
       jQuery.ajax({url: url, type: "GET", dataType: "jsonp", contentType: "application/json; charset=UTF-8"}).done(function(json) {
          
         for (let i = 0; i < json[0].CITY[0].BARANGAY.length; i++) {
-                console.log(json[0].CITY[0].BARANGAY)
           const arrZ = [
             json[0].CITY[0].BARANGAY[i].BARANGAY,
             json[0].CITY[0].BARANGAY[i].ZIP,
@@ -205,7 +204,7 @@
         }
       });
     }
- 
+ console.log(ZipBarangay)
     function getBarangay(barangay) {
      
   // Function to find the value for a given location
