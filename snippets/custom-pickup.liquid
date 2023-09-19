@@ -140,7 +140,14 @@
   <div class="StoreId_Data"></div>
   <div class="attr_data"></div>
   <script>
-  
+
+      const customer_address = JSON.parse(localStorage.getItem("customer_address"));
+  if (customer_address != null) {
+    getCity(customer_address.city);
+    getBarangay(customer_address.barangay);
+  }
+
+    
     function getStoreListData(Title, listaddress, City, Province, Zipcode) {
       fetch('https://tools.gabcgfs.com/shoplocation.php').then(response => response.json()).then(data => {
         const jsonData = data;
