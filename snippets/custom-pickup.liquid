@@ -103,6 +103,7 @@
   <div class="attr_data"></div>
   <script>
 
+     ZipBarangay =[];
       const customer_address = JSON.parse(localStorage.getItem("customer_address"));
         getCity(customer_address.city);
   
@@ -146,7 +147,6 @@
     }
     
   
-     ZipBarangay =[];
     function getCity(city) {
       
       url = `https://tools.gabcgfs.com/address_finder_dev.php?CITY=${city}`;
