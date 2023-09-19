@@ -296,15 +296,15 @@
     $("#zip").val(getZip);
     getListStore(getlat, getlong);
 
-    customer_address = `{"province":${
+    customer_address = `{"province":"${
       $('#province').val()
-    },"city":${
+    }","city":"${
       $('#city').val()
-    },"barangay":${
+    }","barangay":"${
       $('#barangay').val()
-    },"zip":${
+    }","zip":"${
       $('#zip').val()
-    }}`;
+    }"}`;
     localStorage.setItem('customer_address', customer_address);
   }
 
