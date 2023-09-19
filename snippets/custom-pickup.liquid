@@ -147,7 +147,6 @@
     
   
      ZipBarangay =[];
-    domain_expansion;
     function getCity(city) {
       
       url = `https://tools.gabcgfs.com/address_finder_dev.php?CITY=${city}`;
@@ -163,11 +162,10 @@
           
             ZipBarangay.push(arrZ);
          }
-          domain_expansion.push(ZipBarangay)
       });
   
     }
-    console.log(domain_expansion)
+    console.log(ZipBarangay)
      getBarangay(customer_address.barangay);
 
     function getBarangay(barangay) {
