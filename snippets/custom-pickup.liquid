@@ -165,7 +165,7 @@
       });
   
     }
-    console.log(ZipBarangay)
+  
      getBarangay(customer_address.barangay);
 
     function getBarangay(barangay) {
@@ -173,9 +173,9 @@
         console.log(ZipBarangay.length)
   // Function to find the value for a given location
       function findValueForLocation(locationName) {
-          
+          console.log(ZipBarangay)
         for (let i = 0; i < ZipBarangay.length; i++) {
-          
+            
           if (ZipBarangay[i][0] === locationName) {
             return ZipBarangay[i][1];
           }
