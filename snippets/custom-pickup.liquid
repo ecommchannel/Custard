@@ -174,7 +174,7 @@
         for (let i = 0; i < ZipBarangay.length; i++) {
           if (ZipBarangay[i][0] === locationName) {
             return ZipBarangay[i][1];
-          
+            console.log(ZipBarangay[i][1])
           }
         }
         return null; // Return null if location is not found
@@ -195,7 +195,7 @@
         }
         return null; // Return null if location is not found
       }
-    console.log(findValueForLocation(barangay))
+  
       const getZip = findValueForLocation(barangay);
       const getlat = findValueForlat(barangay);
       const getlong = findValueForlong(barangay);
