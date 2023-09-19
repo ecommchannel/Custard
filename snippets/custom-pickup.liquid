@@ -204,6 +204,7 @@
     }
   
     function getBarangay(barangay) {
+      console.log(barangay)
   // Function to find the value for a given location
       function findValueForLocation(locationName) {
         for (let i = 0; i < ZipBarangay.length; i++) {
@@ -233,7 +234,6 @@
       const getlong = findValueForlong(barangay);
       $("#zip").val(getZip);
       getListStore(getlat, getlong);
-  console.log(getZip)
         customer_address= `{"province":"${$('#province').val()}","city":"${$('#city').val()}","barangay":"${$('#barangay').val()}","zip":"${$('#zip').val()}"}`;
   localStorage.setItem('customer_address',customer_address);
     }
