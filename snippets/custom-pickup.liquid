@@ -191,9 +191,9 @@
     function getCity(city) {
       url = `https://tools.gabcgfs.com/address_finder_dev.php?CITY=${city}`;
       jQuery.ajax({url: url, type: "GET", dataType: "jsonp", contentType: "application/json; charset=UTF-8"}).done(function(json) {
-          console.log(json[0].CITY[0])
+         
         for (let i = 0; i < json[0].CITY[0].BARANGAY.length; i++) {
-                
+                console.log(json[0].CITY[0].BARANGAY)
           const arrZ = [
             json[0].CITY[0].BARANGAY[i].BARANGAY,
             json[0].CITY[0].BARANGAY[i].ZIP,
