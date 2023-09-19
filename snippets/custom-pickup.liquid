@@ -106,9 +106,8 @@
   ZipBarangay = [];
   const customer_address = JSON.parse(localStorage.getItem("customer_address"));
   getCity(customer_address.city);
-
+$('.active-radio').click();
   function getStoreListData(Title, listaddress, City, Province, Zipcode) {
-        $('.active-radio').click();
     fetch('https://tools.gabcgfs.com/shoplocation.php').then(response => response.json()).then(data => {
       const jsonData = data;
 
