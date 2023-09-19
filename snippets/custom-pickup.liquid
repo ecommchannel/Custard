@@ -146,7 +146,7 @@
     }
     
   
-    ZipBarangay = [];
+    ZipBarangay = array;
     function getCity(city) {
       
       url = `https://tools.gabcgfs.com/address_finder_dev.php?CITY=${city}`;
@@ -166,7 +166,7 @@
    
     }
      getBarangay(customer_address.barangay);
-       console.log(ZipBarangay[].length)
+       console.log(ZipBarangay.length)
     function getBarangay(barangay) {
   // Function to find the value for a given location
       function findValueForLocation(locationName) {
