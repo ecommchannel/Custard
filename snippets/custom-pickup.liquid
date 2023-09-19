@@ -142,11 +142,9 @@
   <script>
 
       const customer_address = JSON.parse(localStorage.getItem("customer_address"));
-  if (customer_address != null) {
-    console.log(customer_address.barangay)
-    getCity(customer_address.city);
+        getCity(customer_address.city);
     getBarangay(customer_address.barangay);
-  }
+ 
 
     
     function getStoreListData(Title, listaddress, City, Province, Zipcode) {
