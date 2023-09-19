@@ -167,10 +167,10 @@
     }
      getBarangay(customer_address.barangay);
        
-    function getBarangay(barangay) {
+   async function getBarangay(barangay) {
   // Function to find the value for a given location
-      function findValueForLocation(locationName) {
-           console.log(ZipBarangay.join('').length)
+     await function findValueForLocation(locationName) {
+           console.log(ZipBarangay.length)
         for (let i = 0; i < ZipBarangay.length; i++) {
           
           if (ZipBarangay[i][0] === locationName) {
