@@ -204,10 +204,9 @@
           ZipBarangay.push(arrZ);
         }
       });
-          const customer_address1 = JSON.parse(localStorage.getItem("customer_address"));
-        getBarangay(customer_address1.barangay);
+   
     }
-
+     getBarangay(customer_address.barangay);
     function getBarangay(barangay) {
       console.log(ZipBarangay)
   // Function to find the value for a given location
