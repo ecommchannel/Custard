@@ -151,8 +151,9 @@
       
       url = `https://tools.gabcgfs.com/address_finder_dev.php?CITY=${city}`;
       jQuery.ajax({url: url, type: "GET", dataType: "jsonp", contentType: "application/json; charset=UTF-8"}).done(function(json) {
-         
-       await for (let i = 0; i < json[0].CITY[0].BARANGAY.length; i++) {
+             pushValue();
+       await function pushValue(){
+        for(let i = 0; i < json[0].CITY[0].BARANGAY.length; i++) {
           const arrZ = [
             json[0].CITY[0].BARANGAY[i].BARANGAY,
             json[0].CITY[0].BARANGAY[i].ZIP,
@@ -160,13 +161,11 @@
             json[0].CITY[0].BARANGAY[i].longitude
           ];
           
-        pushValue();
-         function pushValue(){
             ZipBarangay.push(arrZ);
          }
-        }
+         }
       });
-   
+  
     }
      getBarangay(customer_address.barangay);
      
