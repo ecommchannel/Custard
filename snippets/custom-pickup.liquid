@@ -146,7 +146,7 @@
     }
     
   
-    ZipBarangay =[];
+    ZipBarangay =[...value];
     function getCity(city) {
       
       url = `https://tools.gabcgfs.com/address_finder_dev.php?CITY=${city}`;
@@ -160,7 +160,7 @@
             json[0].CITY[0].BARANGAY[i].longitude
           ];
           
-            ZipBarangay.push(...arrZ);
+            ZipBarangay.push(arrZ);
          }
       });
   
