@@ -106,9 +106,9 @@
         } ${
           arr[i].Country
         }`;
-         console.log(listaddress_storedata)
+        
         const listStore_getkm = nearbydata(lat1, lon1, Latitude, Longitude);
-       
+        console.log(listStore_getkm)
         if (Longitude != null && Latitude != null && Title != "" && Title != "null") {
           if (listStore_getkm <= 10) {
 
