@@ -132,9 +132,9 @@
       </div></label
     ></div>
                 `;
-           
+              console.log(html)
             arr_data.push(html);
-            console.log(arr_data)
+         
           }
         }
       }
