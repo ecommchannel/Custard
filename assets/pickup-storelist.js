@@ -123,7 +123,7 @@
             </div>
             <div class="radio__label__accessory">
             <div class="content-box__emphasis">Free</div>
-            <div class="small-text pickup-instructions hide-on-mobile">
+            <div class="small-text pickup-instructions hide-on-mobile" style="font-size: small;">
             Usually ready in 24 hours
             </div>
             <span style="font-size: small; width: 10%">${listStore_getkm} Km</span>
