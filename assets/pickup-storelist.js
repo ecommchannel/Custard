@@ -108,31 +108,29 @@
         }`;
         
         const listStore_getkm = nearbydata(lat1, lon1, Latitude, Longitude);
-          console.log(Title)
+       
         if (Longitude != null && Latitude != null && Title != "" && Title != "null") {
           if (listStore_getkm <= 10) {
 
             html = `<div>
-             <div class="radio__input">
-    </div>
-    <label class="radio__label" for="checkout_delivery_option_id_${i}"
-      ><div class="radio__label__primary">
-        <div>${Title}</div>
-        <div class="small-text">${listaddress_data}</div>
-        <div class="small-text pickup-instructions show-on-mobile">
-          Usually ready in 24 hours
-        </div>
-      </div>
-      <div class="radio__label__accessory">
-        <div class="content-box__emphasis">Free</div>
-        <div class="small-text pickup-instructions hide-on-mobile">
-          Usually ready in 24 hours
-        </div>
-        <span style="font-size: small; width: 10%">${listStore_getkm} Km</span>
-      </div></label
-    ></div>
+<label class="radio__label" for="checkout_delivery_option_id_${i}"
+><div class="radio__label__primary">
+<div>${Title}</div>
+<div class="small-text">${listaddress_data}</div>
+<div class="small-text pickup-instructions show-on-mobile">
+Usually ready in 24 hours
+</div>
+</div>
+<div class="radio__label__accessory">
+<div class="content-box__emphasis">Free</div>
+<div class="small-text pickup-instructions hide-on-mobile">
+Usually ready in 24 hours
+</div>
+<span style="font-size: small; width: 10%">${listStore_getkm} Km</span>
+</div></label
+></div>
                 `;
-            
+               console.log(html)
             arr_data.push(html);
          
           }
