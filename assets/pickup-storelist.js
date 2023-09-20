@@ -79,10 +79,9 @@
       return distance.toFixed(2);
     }
 
-    // html_loading = `<div style="display: flex; justify-content: center;"><span class="loader">Loading</span></div>`;
-    // document.querySelector(".nearBy").innerHTML = html_loading;
+    html_loading = `<div style="display: flex; justify-content: center;"><span class="loader">Loading</span></div>`;
+    document.querySelector(".listStore").innerHTML = html_loading;
 
-   
     let url = "https://omniproxy.goldenabc.com/storelocations/Shopify/Api/GetStoreLocations?brand=penshoppe";
     fetch(url).then((response) => response.json()).then((json) => getlocation(json));
 
