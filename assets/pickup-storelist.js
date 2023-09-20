@@ -141,7 +141,6 @@
           }
         }
       }
-console.log(arr_data)
       const locationData = arr_data.map((htmlString) => {
         const tempDiv = document.createElement("div");
         tempDiv.innerHTML = htmlString;
