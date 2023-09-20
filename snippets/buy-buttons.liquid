@@ -169,8 +169,10 @@
   
   if(arrCustomerAddress != null){
   document.querySelector(".purchaseButton").style.display = "block";
+    document.querySelector("#myBtn").style.display = "none";
   }else{
       document.querySelector(".purchaseButton").style.display = "none";
+     document.querySelector("#myBtn").style.display = "block";
   }
   // Get the modal
 var modal = document.getElementById("myModal");
