@@ -140,6 +140,44 @@
           ZipBarangay.push(arrZ);
         }
         $("#barangay").html(Brgy.join(""));
+
+            getBarangay(customer_address.barangay);
+
+      function getBarangay(barangay) {
+
+// Function to find the value for a given location
+        function findValueForLocation(locationName) {
+          for (let i = 0; i < ZipBarangay.length; i++) {
+
+            if (ZipBarangay[i][0] === locationName) {
+              return ZipBarangay[i][1];
+            }
+          }
+          return null; // Return null if location is not found
+        }
+        function findValueForlat(locationName) {
+          for (let i = 0; i < ZipBarangay.length; i++) {
+            if (ZipBarangay[i][0] === locationName) {
+              return ZipBarangay[i][2];
+            }
+          }
+          return null; // Return null if location is not found
+        }
+        function findValueForlong(locationName) {
+          for (let i = 0; i < ZipBarangay.length; i++) {
+            if (ZipBarangay[i][0] === locationName) {
+              return ZipBarangay[i][3];
+            }
+          }
+          return null; // Return null if location is not found
+        }
+
+        const getZip = findValueForLocation(barangay);
+        const getlat = findValueForlat(barangay);
+        const getlong = findValueForlong(barangay);
+        $("#zip").val(getZip);
+        getListStore(getlat, getlong);
+      }
       });
     });
 
