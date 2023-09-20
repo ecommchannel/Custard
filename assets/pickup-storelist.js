@@ -99,9 +99,10 @@
         const Latitude = arr[i].Latitude;
         
         const Longitude = arr[i].Longitude;
+         console.log(arr[i])
         const listStore = nearbydata(lat1, lon1, Latitude, Longitude);
         
-        console.log(arr[i])
+       
         const listaddress_storedata = `${
           arr[i].Street
         } ${
