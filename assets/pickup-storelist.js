@@ -2,45 +2,6 @@
   const customer_address = JSON.parse(localStorage.getItem("customer_address"));
 
   getCity(customer_address.city);
-  function getStoreListData(Title, listaddress, City, Province, Zipcode) {
-$('.active-radio').click();
-    fetch('https://tools.gabcgfs.com/shoplocation.php').then(response => response.json()).then(data => {
-      const jsonData = data;
-
-// Get the value of the 'name' parameter from the URL
-      const nameParam = Title;
-
-// Filter the data based on the 'name' parameter
-      const filteredData = jsonData.filter(item => {
-        if (nameParam) {
-          return item.name.toLowerCase().includes(nameParam.toLowerCase());
-        } else {
-          return true; // If 'name' parameter is not provided, return all items
-        }
-      });
-
-// Log the filtered data
-      $('.StoreId_Data').html("");
-      if (filteredData[0].id != '') {
-        resOutput = ` <input type="hidden" value="${
-          filteredData[0].id
-        }" name="checkout[attributes][pickup_store_id]"/>`
-        $('.StoreId_Data').html(resOutput);
-
-      }
-    })
-    resOutput = `
-         <input type="hidden" value="${Title}" name="checkout[attributes][pickup_store_title]"/>
-          <input type="hidden" value="${listaddress}" name="checkout[attributes][pickup_store_street]"/>
-           <input type="hidden" value="${City}" name="checkout[attributes][pickup_store_city]"/>
-            <input type="hidden" value="${Province}" name="checkout[attributes][pickup_store_province]"/>
-             <input type="hidden" value="${Zipcode}" name="checkout[attributes][pickup_store_zip]"/>
-             <input type="hidden" value="{{ checkout.id }}" name="checkout[attributes][Checkout_#]"/>
-       `;
-    $('.attr_data').html(resOutput)
-    setShippingMethod = `Pick up in store · <strong>${Title}</strong><br><p class="small-text">${listaddress} ${Zipcode}</p>`;
-    localStorage.setItem('ShippingMethod', setShippingMethod)
-  }
 
 
   function getCity(city) {
@@ -60,7 +21,7 @@ $('.active-radio').click();
       }
 
       getBarangay(customer_address.barangay);
-
+console.log(customer_address.barangay)
       function getBarangay(barangay) {
 
 // Function to find the value for a given location
