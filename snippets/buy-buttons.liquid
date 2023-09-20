@@ -163,18 +163,7 @@
 
             
 <script>
-  let arrCustomerAddress=JSON.parse(localStorage.getItem("customer_address"));
-  console.log(arrCustomerAddress.street_address)
-  if(arrCustomerAddress != null){
-  document.querySelector(".purchaseButton").style.display = "block";
-    document.querySelector(".myBtn").style.display = "none";
-    fullAddress=`${arrCustomerAddress.street_address}, ${arrCustomerAddress.barangay}, ${arrCustomerAddress.city}, ${arrCustomerAddress.province}, ${arrCustomerAddress.zip}`;
-       document.querySelector("#getAddress").innerHTML=fullAddress;
-  }else{
-    
-      document.querySelector(".purchaseButton").style.display = "none";
-     document.querySelector(".myBtn").style.display = "block";
-  }
+
   // Get the modal
 var modal = document.getElementById("myModal");
 
