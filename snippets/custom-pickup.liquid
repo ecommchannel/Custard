@@ -70,34 +70,34 @@
   }
 </style>
 
-  <div style="display:block;">
-    <div class="radio__input">
-      <input
-        class="input-radio active-radio"
-        type="radio"
-        value="65625203dc4bf25a47865adc66f3892b"
-        name="checkout[pick_up_in_store][handle]"
-        id="checkout_delivery_option_id_65625203dc4bf25a47865adc66f3892b"
-  
-        data-checkout-total-shipping="Free"
-        data-checkout-total-shipping-cents="0" />
-    </div>
-    <label class="radio__label" for="checkout_delivery_option_id_65625203dc4bf25a47865adc66f3892b">
-      <div class="radio__label__primary">
-        <div>1155 EDSA, Balintawak</div>
-        <div class="small-text">1155 EDSA, Balintawak, Quezon City, 00</div>
-        <div class="small-text pickup-instructions show-on-mobile">
-          Usually ready in 24 hours
-        </div>
-      </div>
-      <div class="radio__label__accessory">
-        <div class="content-box__emphasis">Free</div>
-        <div class="small-text pickup-instructions hide-on-mobile">
-          Usually ready in 24 hours
-        </div>
-      </div>
-    </label>
+<div style="display:block;">
+  <div class="radio__input">
+    <input
+      class="input-radio active-radio"
+      type="radio"
+      value="65625203dc4bf25a47865adc66f3892b"
+      name="checkout[pick_up_in_store][handle]"
+      id="checkout_delivery_option_id_65625203dc4bf25a47865adc66f3892b"
+
+      data-checkout-total-shipping="Free"
+      data-checkout-total-shipping-cents="0" />
   </div>
+  <label class="radio__label" for="checkout_delivery_option_id_65625203dc4bf25a47865adc66f3892b">
+    <div class="radio__label__primary">
+      <div>1155 EDSA, Balintawak</div>
+      <div class="small-text">1155 EDSA, Balintawak, Quezon City, 00</div>
+      <div class="small-text pickup-instructions show-on-mobile">
+        Usually ready in 24 hours
+      </div>
+    </div>
+    <div class="radio__label__accessory">
+      <div class="content-box__emphasis">Free</div>
+      <div class="small-text pickup-instructions hide-on-mobile">
+        Usually ready in 24 hours
+      </div>
+    </div>
+  </label>
+</div>
 <div class="nearBy" style="display: grid; overflow:scroll; max-height:300px; overflow-x:hidden; margin-top:10px; padding-right:15px;"></div>
 <div class="StoreId_Data"></div>
 <div class="attr_data"></div>
@@ -107,7 +107,7 @@
   const customer_address = JSON.parse(localStorage.getItem("customer_address"));
   getCity(customer_address.city);
   function getStoreListData(Title, listaddress, City, Province, Zipcode) {
-$('.active-radio').click();
+    $('.active-radio').click();
     fetch('https://tools.gabcgfs.com/shoplocation.php').then(response => response.json()).then(data => {
       const jsonData = data;
 
@@ -176,16 +176,14 @@ $('.active-radio').click();
             }
           }
           return null; // Return null if location is not found
-        }
-        function findValueForlat(locationName) {
+        }function findValueForlat(locationName) {
           for (let i = 0; i < ZipBarangay.length; i++) {
             if (ZipBarangay[i][0] === locationName) {
               return ZipBarangay[i][2];
             }
           }
           return null; // Return null if location is not found
-        }
-        function findValueForlong(locationName) {
+        }function findValueForlong(locationName) {
           for (let i = 0; i < ZipBarangay.length; i++) {
             if (ZipBarangay[i][0] === locationName) {
               return ZipBarangay[i][3];
