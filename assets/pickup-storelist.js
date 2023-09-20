@@ -117,12 +117,12 @@
             ><div class="radio__label__primary">
             <div>${Title}</div>
             <div class="small-text" style="font-size: small; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${listaddress_storedata}</div>
+            <div class="small-text pickup-instructions show-on-mobile">
+            Usually ready in 24 hours
+            </div>
             </div>
             <div class="radio__label__accessory" style="width: 100%; text-align: end;">
             <div class="content-box__emphasis">Free</div>
-            <div class="small-text pickup-instructions hide-on-mobile" style="font-size: small;">
-            Usually ready in 24 hours
-            </div>
             <span style="font-size: small; width: 10%">${listStore_getkm} Km</span>
             </div></label
             ></div>
