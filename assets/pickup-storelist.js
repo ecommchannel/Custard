@@ -77,7 +77,7 @@
       const distance = R * c; // Distance in km
       return distance.toFixed(2);
     }
-
+console.log(lat)
     const lat1 = lat;
     const lon1 = long;
     let url = "https://omniproxy.goldenabc.com/storelocations/Shopify/Api/GetStoreLocations?brand=penshoppe";
@@ -139,7 +139,7 @@
           }
         }
       }
-console.log(arr_data)
+
       const locationData = arr_data.map((htmlString) => {
         const tempDiv = document.createElement("div");
         tempDiv.innerHTML = htmlString;
