@@ -90,7 +90,9 @@
       let arr_data = [];
       let arr = data.message;
 
+                   console.log(arr)
       for (let i = 0; i < arr.length; i++) {
+        
         const Title = arr[i].Title;
         const City = arr[i].City;
         const Province = arr[i].Province;
@@ -106,7 +108,6 @@
           arr[i].Country
         }`;
 
-                   console.log(Longitude)
         if (Longitude != null && Latitude != null && Title != "" && Title != "null") {
           if (listStore <= 10) {
 
