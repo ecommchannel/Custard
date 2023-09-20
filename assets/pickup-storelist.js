@@ -108,6 +108,8 @@
 
         if (Longitude != null && Latitude != null && Title != "" && Title != "null") {
           if (listStore <= 10) {
+
+                   console.log(listStore)
             html = `<div>
              <div class="radio__input">
     </div>
@@ -128,7 +130,7 @@
       </div></label
     ></div>
                 `;
-                  console.log(html)
+           
             arr_data.push(html);
           }
         }
