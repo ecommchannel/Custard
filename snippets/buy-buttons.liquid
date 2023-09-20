@@ -62,8 +62,7 @@
         {%- if gift_card_recipient_feature_active -%}
           {%- render 'gift-card-recipient-form', product: product, form: form, section: section -%}
         {%- endif -%}
-
-        <div class="product-form__buttons">
+        <div class="product-form__buttons" style="display:none;">
           {%- liquid
             assign check_against_inventory = true
             if product.selected_or_first_available_variant.inventory_management != 'shopify' or product.selected_or_first_available_variant.inventory_policy == 'continue'
@@ -103,9 +102,9 @@
         
           </button>
           {%- if show_dynamic_checkout -%}
-            <div style="display:none;">
+          
                {{ form | payment_button }}
-            </div>
+   
            
           {%- endif -%}
         </div>
