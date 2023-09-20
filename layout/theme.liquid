@@ -416,7 +416,11 @@
         document.documentElement.classList.add('shopify-design-mode');
       }
     </script>
-
+  <link
+        rel="stylesheet"
+        href="{{ 'pickup-address.css' | asset_url }}"
+        media="print"
+        onload="this.media='all'">
     {% render 'shogun-head' %}
   </head>
 
