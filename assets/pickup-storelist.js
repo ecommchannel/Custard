@@ -111,12 +111,12 @@
        
         if (Longitude != null && Latitude != null && Title != "" && Title != "null") {
           if (listStore_getkm <= 10) {
-   console.log(listStore_getkm)
+   
             html = `<div>
 <label class="radio__label" for="checkout_delivery_option_id_${i}"
 ><div class="radio__label__primary">
 <div>${Title}</div>
-<div class="small-text">${listaddress_data}</div>
+<div class="small-text">${listaddress_storedata}</div>
 <div class="small-text pickup-instructions show-on-mobile">
 Usually ready in 24 hours
 </div>
