@@ -106,10 +106,10 @@
           arr[i].Country
         }`;
 
+                   console.log(Longitude)
         if (Longitude != null && Latitude != null && Title != "" && Title != "null") {
           if (listStore <= 10) {
 
-                   console.log(listStore)
             html = `<div>
              <div class="radio__input">
     </div>
