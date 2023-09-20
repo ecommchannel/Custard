@@ -193,4 +193,15 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+
+    let arrCustomerAddress=JSON.parse(localStorage.getItem("customer_address"));
+  if(arrCustomerAddress != null){
+  document.querySelector(".purchaseButton").style.display = "block";
+    document.querySelector(".myBtn").style.display = "none";
+    fullAddress=`${arrCustomerAddress.street_address}, ${arrCustomerAddress.barangay}, ${arrCustomerAddress.city}, ${arrCustomerAddress.province}, ${arrCustomerAddress.zip}`;
+       document.querySelector("#getAddress").innerHTML=fullAddress;
+  }else{
+      document.querySelector(".purchaseButton").style.display = "none";
+     document.querySelector(".myBtn").style.display = "block";
+  }
 </script>
