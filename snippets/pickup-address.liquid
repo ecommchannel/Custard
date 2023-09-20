@@ -88,8 +88,9 @@
         $("#province").html(province.join(""));
         localStorage.setItem("arrProvince", JSON.stringify({province}));
       });
+
     }
-  $('#province').addEventListener('onchange',getProvince());
+        $('#province').addEventListener('onchange',getProvince());
     function getProvince() {
       $("#zip").val("");
       $("#barangay").html('<option value="" Selected>Select Barangay</option>');
