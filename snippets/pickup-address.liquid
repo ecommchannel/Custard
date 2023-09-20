@@ -141,6 +141,9 @@
         }
         $("#barangay").html(Brgy.join(""));
 
+           customer_address= `{"province":"${$('#province').val()}","city":"${$('#city').val()}","barangay":"${$('#barangay').val()}"}`;
+         localStorage.setItem('customer_address',customer_address);
+        
             getBarangay(customer_address.barangay);
       function getBarangay(barangay) {
 
@@ -175,7 +178,6 @@
         const getlat = findValueForlat(barangay);
         const getlong = findValueForlong(barangay);
         
-console.log(getlong);
         $("#zip").val(getZip);
         getListStore(getlat, getlong);
       }
