@@ -14,13 +14,27 @@
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-/* Modal Content */
+
+@media only screen and (min-width: 200px) {
+/* Mobile Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+}
+
+@media only screen and (min-width: 992px) {
+  /* Desktop Modal Content */
 .modal-content {
   background-color: #fefefe;
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
   width: 50%;
+}
 }
 
 /* The Close Button */
