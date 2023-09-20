@@ -101,14 +101,14 @@
         
         const Longitude = arr[i].Longitude;
         const listStore = nearbydata(lat1, lon1, Latitude, Longitude);
-        const listaddress = `${
+        const listaddressStore = `${
           arr[i].Street
         } ${
           arr[i].City
         } ${
           arr[i].Country
         }`;
-
+  console.log(listaddressStore)
         if (Longitude != null && Latitude != null && Title != "" && Title != "null") {
           if (listStore <= 10) {
 
@@ -118,7 +118,7 @@
     <label class="radio__label" for="checkout_delivery_option_id_${i}"
       ><div class="radio__label__primary">
         <div>${Title}</div>
-        <div class="small-text">${listaddress}</div>
+        <div class="small-text">${listaddressStore}</div>
         <div class="small-text pickup-instructions show-on-mobile">
           Usually ready in 24 hours
         </div>
