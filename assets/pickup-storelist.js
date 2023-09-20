@@ -99,6 +99,7 @@
         const Latitude = arr[i].Latitude;
         
         const Longitude = arr[i].Longitude;
+        console.log(lat1)
         const listStore = nearbydata(lat1, lon1, Latitude, Longitude);
         const listaddress_storedata = `${
           arr[i].Street
@@ -107,7 +108,7 @@
         } ${
           arr[i].Country
         }`;
-  console.log(listaddress_storedata)
+  
         if (Longitude != null && Latitude != null && Title != "" && Title != "null") {
           if (listStore <= 10) {
 
