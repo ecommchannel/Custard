@@ -106,10 +106,10 @@
         } ${
           arr[i].Country
         }`;
-        const listStore = nearbydata(lat1, lon1, Latitude, Longitude);
+        const listStore_getkm = nearbydata(lat1, lon1, Latitude, Longitude);
         console.log(listaddress_storedata)
         if (Longitude != null && Latitude != null && Title != "" && Title != "null") {
-          if (listStore <= 10) {
+          if (listStore_getkm <= 10) {
 
             html = `<div>
              <div class="radio__input">
@@ -127,7 +127,7 @@
         <div class="small-text pickup-instructions hide-on-mobile">
           Usually ready in 24 hours
         </div>
-        <span style="font-size: small; width: 10%">${listStore} Km</span>
+        <span style="font-size: small; width: 10%">${listStore_getkm} Km</span>
       </div></label
     ></div>
                 `;
