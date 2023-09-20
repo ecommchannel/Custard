@@ -111,7 +111,7 @@
        
         if (Longitude != null && Latitude != null && Title != "" && Title != "null") {
           if (listStore_getkm <= 10) {
-
+   console.log(listStore_getkm)
             html = `<div>
 <label class="radio__label" for="checkout_delivery_option_id_${i}"
 ><div class="radio__label__primary">
@@ -130,7 +130,7 @@ Usually ready in 24 hours
 </div></label
 ></div>
                 `;
-               console.log(html)
+            
             arr_data.push(html);
          
           }
