@@ -86,7 +86,7 @@
     fetch(url).then((response) => response.json()).then((json) => getlocation(json));
 
     function getlocation(data) {
-      console.log(data)
+    
       let arr_data = [];
       let arr = data.message;
 
@@ -141,7 +141,7 @@
           }
         }
       }
-
+console.log(arr_data)
       const locationData = arr_data.map((htmlString) => {
         const tempDiv = document.createElement("div");
         tempDiv.innerHTML = htmlString;
