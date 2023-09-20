@@ -56,13 +56,14 @@
         const getlong = findValueForlong(barangay);
         $("#zip").val(getZip);
         getList_Store(getlat, getlong);
+        console.log(getlat)
       }
 
     });
 
   }
 
-console.log(lat)
+
   function getList_Store(lat, long) {
 
     html_loading = `<div style="display: flex; justify-content: center;"><span class="loader">Loading</span></div>`;
