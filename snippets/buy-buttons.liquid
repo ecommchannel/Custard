@@ -160,7 +160,7 @@
 
 <!-- Trigger/Open The Modal -->
 <button class="myBtn" style="background-color: white; width: 100%; padding: 12px;">Verify Address</button>
-<div class="nearBy"></div>
+<div class="nearBy" style="display: grid; overflow:scroll; max-height:300px; overflow-x:hidden; margin-top:10px; padding-right:15px;"></div>
             
 <script>
 
@@ -207,5 +207,5 @@ window.onclick = function(event) {
 
   
 </script>
-             <script src="{{ 'pickup-storelist.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'pickup-storelist.js' | asset_url }}" defer="defer"></script>
 
