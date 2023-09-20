@@ -121,7 +121,7 @@
             Usually ready in 24 hours
             </div>
             </div>
-            <div class="radio__label__accessory">
+            <div class="radio__label__accessory" style="width: 100%; text-align: end;">
             <div class="content-box__emphasis">Free</div>
             <div class="small-text pickup-instructions hide-on-mobile" style="font-size: small;">
             Usually ready in 24 hours
