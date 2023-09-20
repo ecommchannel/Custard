@@ -72,7 +72,7 @@
               assign quantity_rule_soldout = true
             endif
           -%}
-        <span style="font-size:16px;">Current Address: <span style=" font-weight:800;"> NO ADDRESS SELECTED.</span> <br/><a id="myBtn">Please find your location first.</a></span>
+        <span style="font-size:16px;">Current Address: <span style=" font-weight:800;"> NO ADDRESS SELECTED.</span> <br/><a class="myBtn">Please find your location first.</a></span>
           <button
             id="ProductSubmitButton-{{ section_id }}"
             type="submit"
@@ -161,23 +161,23 @@
 
             
 <!-- Trigger/Open The Modal -->
-<button id="myBtn">Open Modal</button>
+<button class="myBtn">Open Modal</button>
 
             
 <script>
   let arrCustomerAddress=JSON.parse(localStorage.getItem("customer_address"));
   if(arrCustomerAddress != null){
   document.querySelector(".purchaseButton").style.display = "block";
-    document.querySelector("#myBtn").style.display = "none";
+    document.querySelector(".myBtn").style.display = "none";
   }else{
       document.querySelector(".purchaseButton").style.display = "none";
-     document.querySelector("#myBtn").style.display = "block";
+     document.querySelector(".myBtn").style.display = "block";
   }
   // Get the modal
 var modal = document.getElementById("myModal");
 
 // Get the button that opens the modal
-var btn = document.getElementById("myBtn");
+var btn = document.querySelector(".myBtn");
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
