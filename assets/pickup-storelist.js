@@ -66,7 +66,7 @@
 
 
   function getList_Store(lat, long) {
-    console.log(long)
+
     html_loading = `<div style="display: flex; justify-content: center;"><span class="loader">Loading</span></div>`;
     document.querySelector(".nearBy").innerHTML = html_loading;
 
@@ -82,6 +82,7 @@
 
     const lat1 = lat;
     const lon1 = long;
+        console.log(lon1)
     let url = "https://omniproxy.goldenabc.com/storelocations/Shopify/Api/GetStoreLocations?brand=penshoppe";
     fetch(url).then((response) => response.json()).then((json) => getlocation(json));
 
