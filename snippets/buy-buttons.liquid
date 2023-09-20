@@ -166,6 +166,10 @@
 
             
 <script>
+  let arrCustomerAddress=JSON.parse(localStorage.getItem("customer_address"));
+  if(arrCustomerAddress !=null){
+    $('.purchaseButton').style.display='block';
+  }
   // Get the modal
 var modal = document.getElementById("myModal");
 
