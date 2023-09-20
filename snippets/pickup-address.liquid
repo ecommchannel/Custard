@@ -47,7 +47,7 @@
         <select class="select-address" id="barangay">
         <option>select Barangay</option>
            </select>
-    <input type="text" class="select-address" placeholder="Zip Code" disabled>
+    <input type="text" class="select-address" placeholder="Zip Code" id="zip" disabled>
   </div>
     
   </div>
@@ -56,12 +56,8 @@
 
 
 <script>
-  const GetProvince = document.querySelector("#province");
- const GetCity = document.querySelector("#city");
-  const GetBarangay = document.querySelector("#barangay");
-  
+  const GetProvince = document.querySelector("#province"),GetCity = document.querySelector("#city"),GetBarangay = document.querySelector("#barangay");
    var arr = JSON.parse(localStorage.getItem("arrProvince"));
-  
     if (arr != null) {
       province = [];
       var data = JSON.parse(localStorage.arrProvince);
@@ -155,10 +151,11 @@
       }
       return null; // Return null if location is not found
     }
-    customer_address= `{"province":"${$('#province').val()}","city":"${$('#city').val()}","barangay":"${$('#barangay').val()}","zip":"${$('#zip').val()}"}`;
-  localStorage.setItem('customer_address',customer_address);
+
     const value = findValueForLocation(barangay);
     $("#zip").val(value);
-
+     
+    customer_address= `{"province":"${$('#province').val()}","city":"${$('#city').val()}","barangay":"${$('#barangay').val()}","zip":"${$('#zip').val()}"}`;
+  localStorage.setItem('customer_address',customer_address);
   });
 </script>
