@@ -65,12 +65,6 @@
   }
 
 
-  function getList_Store(lat, long) {
- const lat1 = lat;
-    const lon1 = long;
-    html_loading = `<div style="display: flex; justify-content: center;"><span class="loader">Loading</span></div>`;
-    document.querySelector(".nearBy").innerHTML = html_loading;
-
     function nearbydata(lat1, lon1, lat2, lon2) {
       const R = 6371; // Radius of the earth in km
       const dLat = deg2rad(lat2 - lat1);
@@ -80,6 +74,14 @@
       const distance = R * c; // Distance in km
       return distance.toFixed(2);
     }
+
+  function getList_Store(lat, long) {
+ const lat1 = lat;
+    const lon1 = long;
+    // html_loading = `<div style="display: flex; justify-content: center;"><span class="loader">Loading</span></div>`;
+    // document.querySelector(".nearBy").innerHTML = html_loading;
+
+
 
         console.log(lon1)
    
