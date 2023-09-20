@@ -55,7 +55,7 @@
         const getlat = findValueForlat(barangay);
         const getlong = findValueForlong(barangay);
         $("#zip").val(getZip);
-        getListStore(getlat, getlong);
+        getList_Store(getlat, getlong);
       }
 
     });
@@ -63,7 +63,7 @@
   }
 
 
-  function getListStore(lat, long) {
+  function getList_Store(lat, long) {
 
     html_loading = `<div style="display: flex; justify-content: center;"><span class="loader">Loading</span></div>`;
     document.querySelector(".nearBy").innerHTML = html_loading;
