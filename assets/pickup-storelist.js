@@ -54,9 +54,10 @@
         const getZip = findValueForLocation(barangay);
         const getlat = findValueForlat(barangay);
         const getlong = findValueForlong(barangay);
+          console.log(getlong)
         $("#zip").val(getZip);
         getList_Store(getlat, getlong);
-        console.log(getlat)
+      
       }
 
     });
