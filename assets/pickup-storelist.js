@@ -110,15 +110,6 @@
           if (listStore <= 10) {
             html = `<div>
              <div class="radio__input">
-      <input
-        class="input-radio"
-        type="radio"
-        value="${i}"
-        name="checkout[attributes][id]"
-        id="checkout_delivery_option_id_${i}"
-        data-checkout-total-shipping="Free"
-        data-checkout-total-shipping-cents="0"
-      />
     </div>
     <label class="radio__label" for="checkout_delivery_option_id_${i}"
       ><div class="radio__label__primary">
