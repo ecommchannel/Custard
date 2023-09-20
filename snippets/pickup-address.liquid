@@ -159,7 +159,7 @@
    
   });
 
-  gatherAddressbtn.addEventListener("click", function gatherAddressbtn(){
+  gatherAddressbtn.addEventListener("click", function gatherAddress(){
      customer_address= `{"province":"${$('#province').val()}","city":"${$('#city').val()}","barangay":"${$('#barangay').val()}","zip":"${$('#zip').val()}","street_address":"${$('#street_address').val()}"}`;
   localStorage.setItem('customer_address',customer_address);
   })
