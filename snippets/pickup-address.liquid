@@ -120,7 +120,7 @@
     });
 
     ZipBarangay = [];
-    function getCity() {
+   GetCity.addEventListener("change", function getCity() {
       $("#zip").val("");
       let city = $("#city").val();
       url = `https://tools.gabcgfs.com/address_finder_dev.php?CITY=${city}`;
@@ -145,5 +145,5 @@
   
         $("#barangay").html(Brgy.join(""));
       });
-    }
+    });
 </script>
