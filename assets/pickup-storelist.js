@@ -1,10 +1,10 @@
   ZipBarangay = [];
   const customer_address = JSON.parse(localStorage.getItem("customer_address"));
 
-  getCity(customer_address.city);
+  getCitystore(customer_address.city);
 
 
-  function getCity(city) {
+  function getCitystore(city) {
 
     url = `https://tools.gabcgfs.com/address_finder_dev.php?CITY=${city}`;
     jQuery.ajax({url: url, type: "GET", dataType: "jsonp", contentType: "application/json; charset=UTF-8"}).done(function(json) {
@@ -20,9 +20,9 @@
         ZipBarangay.push(arrZ);
       }
 
-      getBarangay(customer_address.barangay);
+      getBarangaystore(customer_address.barangay);
 
-      function getBarangay(barangay) {
+      function getBarangaystore(barangay) {
 
 // Function to find the value for a given location
         function findValueForLocation(locationName) {
