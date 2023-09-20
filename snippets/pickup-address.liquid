@@ -47,7 +47,7 @@
         <select class="select-address" id="barangay">
         <option>select Barangay</option>
            </select>
-    <input type="text" class="select-address" placeholder="Zip Code" id="zip" disabled>
+    <input type="text" class="select-address" placeholder="Zip Code" disabled>
   </div>
     
   </div>
@@ -56,7 +56,9 @@
 
 
 <script>
-  const GetProvince = document.querySelector("#province"),GetCity = document.querySelector("#city"),GetBarangay = document.querySelector("#barangay");
+  const GetProvince = document.querySelector("#province");
+ const GetCity = document.querySelector("#city");
+  const GetBarangay = document.querySelector("#barangay");
   
    var arr = JSON.parse(localStorage.getItem("arrProvince"));
   
