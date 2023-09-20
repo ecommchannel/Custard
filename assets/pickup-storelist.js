@@ -21,7 +21,7 @@
       }
 
       getBarangay(customer_address.barangay);
-console.log(customer_address.barangay)
+
       function getBarangay(barangay) {
 
 // Function to find the value for a given location
