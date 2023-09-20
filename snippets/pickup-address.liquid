@@ -58,6 +58,7 @@
 <script>
   const GetProvince = document.querySelector("#province");
  const GetCity = document.querySelector("#city");
+  const GetBarangay = document.querySelector("#barangay");
   
    var arr = JSON.parse(localStorage.getItem("arrProvince"));
   
@@ -143,7 +144,7 @@
       });
     });
 
-   function getBarangay() {
+   GetBarangay.addEventListener("change",function getBarangay() {
     let barangay = $("#barangay").val();
     // Function to find the value for a given location
     function findValueForLocation(locationName) {
@@ -159,5 +160,5 @@
     const value = findValueForLocation(barangay);
     $("#zip").val(value);
 
-  }
+  });
 </script>
