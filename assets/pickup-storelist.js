@@ -108,7 +108,7 @@
         }`;
         
         const listStore_getkm = nearbydata(lat1, lon1, Latitude, Longitude);
-        
+          console.log(Longitude)
         if (Longitude != null && Latitude != null && Title != "" && Title != "null") {
           if (listStore_getkm <= 10) {
 
@@ -132,7 +132,7 @@
       </div></label
     ></div>
                 `;
-              console.log(html)
+            
             arr_data.push(html);
          
           }
