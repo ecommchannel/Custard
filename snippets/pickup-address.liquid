@@ -59,8 +59,9 @@
 
 
 <script>
-  const selectElement = document.querySelector("#province");
-selectElement.addEventListener("change",getProvince());
+  const GetProvince = document.querySelector("#province");
+  GetProvince.addEventListener("change",getProvince());
+  
    var arr = JSON.parse(localStorage.getItem("arrProvince"));
   
     if (arr != null) {
