@@ -59,6 +59,7 @@
 
 
 <script>
+        $('#province').addEventListener('change',getProvince());
    var arr = JSON.parse(localStorage.getItem("arrProvince"));
   
     if (arr != null) {
@@ -90,7 +91,7 @@
       });
 
     }
-        $('#province').addEventListener('onchange',getProvince());
+  
     function getProvince() {
       $("#zip").val("");
       $("#barangay").html('<option value="" Selected>Select Barangay</option>');
