@@ -43,112 +43,6 @@
       transform: translateX(-100%);
     }
   }
-<<<<<<< HEAD
-
-  .form-control {
-    width: 100%;
-    border: 1px solid;
-    padding: 12px;
-    margin: 2px 0;
-  }
-  /* Add Style in Scrollbar */
-  .nearBy::-webkit-scrollbar {
-    width: 10px;
-  }
-
-  /* Track */
-  .nearBy::-webkit-scrollbar-track {
-    background: #f1f1f1;
-  }
-  /* Handle */
-  .nearBy::-webkit-scrollbar-thumb {
-    background: #888;
-  }
-
-  /* Handle on hover */
-  .nearBy::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
-</style>
-
-<div style="display:none;">
-  <div class="radio__input">
-    <input
-      class="input-radio active-radio"
-      type="radio"
-      value="65625203dc4bf25a47865adc66f3892b"
-      name="checkout[pick_up_in_store][handle]"
-      id="checkout_delivery_option_id_65625203dc4bf25a47865adc66f3892b"
-
-      data-checkout-total-shipping="Free"
-      data-checkout-total-shipping-cents="0" />
-  </div>
-  <label class="radio__label" for="checkout_delivery_option_id_65625203dc4bf25a47865adc66f3892b">
-    <div class="radio__label__primary">
-      <div>1155 EDSA, Balintawak</div>
-      <div class="small-text">1155 EDSA, Balintawak, Quezon City, 00</div>
-      <div class="small-text pickup-instructions show-on-mobile">
-        Usually ready in 24 hours
-      </div>
-    </div>
-    <div class="radio__label__accessory">
-      <div class="content-box__emphasis">Free</div>
-      <div class="small-text pickup-instructions hide-on-mobile">
-        Usually ready in 24 hours
-      </div>
-    </div>
-  </label>
-</div>
-<div class="nearBy" style="display: grid; overflow:scroll; max-height:300px; overflow-x:hidden; margin-top:10px; padding-right:15px;"></div>
-<div class="StoreId_Data"></div>
-<div class="attr_data"></div>
-<script>
-
-  ZipBarangay = [];
-  const customer_address = JSON.parse(localStorage.getItem("customer_address"));
-  getCity(customer_address.city);
-
-  function getStoreListData(Title, listaddress, City, Province, Zipcode) {
-    fetch('https://tools.gabcgfs.com/shoplocation.php').then(response => response.json()).then(data => {
-      const jsonData = data;
-
-// Get the value of the 'name' parameter from the URL
-      const nameParam = Title;
-
-// Filter the data based on the 'name' parameter
-      const filteredData = jsonData.filter(item => {
-        if (nameParam) {
-          return item.name.toLowerCase().includes(nameParam.toLowerCase());
-        } else {
-          return true; // If 'name' parameter is not provided, return all items
-        }
-      });
-
-// Log the filtered data
-      $('.StoreId_Data').html("");
-      if (filteredData[0].id != '') {
-        resOutput = ` <input type="hidden" value="${
-          filteredData[0].id
-        }" name="checkout[attributes][pickup_store_id]"/>`
-        $('.StoreId_Data').html(resOutput);
-
-      }
-    })
-    resOutput = `
-         <input type="hidden" value="${Title}" name="checkout[attributes][pickup_store_title]"/>
-          <input type="hidden" value="${listaddress}" name="checkout[attributes][pickup_store_street]"/>
-           <input type="hidden" value="${City}" name="checkout[attributes][pickup_store_city]"/>
-            <input type="hidden" value="${Province}" name="checkout[attributes][pickup_store_province]"/>
-             <input type="hidden" value="${Zipcode}" name="checkout[attributes][pickup_store_zip]"/>
-             <input type="hidden" value="{{ checkout.id }}" name="checkout[attributes][Checkout_#]"/>
-       `;
-    $('.attr_data').html(resOutput)
-    setShippingMethod = `Pick up in store · <strong>${Title}</strong><br><p class="small-text">${listaddress} ${Zipcode}</p>`;
-    localStorage.setItem('ShippingMethod', setShippingMethod)
-  }
-
-
-=======
 
   .form-control {
     width: 100%;
@@ -253,7 +147,6 @@ $('.active-radio').click();
   }
 
 
->>>>>>> a11dbe9b8764a37a6e667842584f2a423fa8cd1a
   function getCity(city) {
 
     url = `https://tools.gabcgfs.com/address_finder_dev.php?CITY=${city}`;
@@ -283,24 +176,16 @@ $('.active-radio').click();
             }
           }
           return null; // Return null if location is not found
-<<<<<<< HEAD
-        }function findValueForlat(locationName) {
-=======
         }
         function findValueForlat(locationName) {
->>>>>>> a11dbe9b8764a37a6e667842584f2a423fa8cd1a
           for (let i = 0; i < ZipBarangay.length; i++) {
             if (ZipBarangay[i][0] === locationName) {
               return ZipBarangay[i][2];
             }
           }
           return null; // Return null if location is not found
-<<<<<<< HEAD
-        }function findValueForlong(locationName) {
-=======
         }
         function findValueForlong(locationName) {
->>>>>>> a11dbe9b8764a37a6e667842584f2a423fa8cd1a
           for (let i = 0; i < ZipBarangay.length; i++) {
             if (ZipBarangay[i][0] === locationName) {
               return ZipBarangay[i][3];
@@ -312,10 +197,6 @@ $('.active-radio').click();
         const getZip = findValueForLocation(barangay);
         const getlat = findValueForlat(barangay);
         const getlong = findValueForlong(barangay);
-<<<<<<< HEAD
-
-=======
->>>>>>> a11dbe9b8764a37a6e667842584f2a423fa8cd1a
         $("#zip").val(getZip);
         getListStore(getlat, getlong);
       }
@@ -427,10 +308,6 @@ $('.active-radio').click();
             ">There is no store near you</h1></div>`;
       } else {
         document.querySelector(".nearBy").innerHTML = sortedLocationElements.join('');
-<<<<<<< HEAD
-        $('.active-radio').click();
-=======
->>>>>>> a11dbe9b8764a37a6e667842584f2a423fa8cd1a
       }
     }
   }
