@@ -111,7 +111,7 @@
             html = `<div>
              <div class="radio__input">
       <input
-        class="input-radio" onclick="getStoreListData('${Title}','${listaddress}','${City}','${Province}','${Zipcode}')"
+        class="input-radio"
         type="radio"
         value="${i}"
         name="checkout[attributes][id]"
