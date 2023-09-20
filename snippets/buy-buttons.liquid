@@ -164,6 +164,7 @@
             
 <script>
   let arrCustomerAddress=JSON.parse(localStorage.getItem("customer_address"));
+  console.log(arrCustomerAddress.street_address)
   if(arrCustomerAddress != null){
   document.querySelector(".purchaseButton").style.display = "block";
     document.querySelector(".myBtn").style.display = "none";
