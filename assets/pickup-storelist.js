@@ -1,7 +1,7 @@
   ZipBarangay = [];
-  const customer_address = JSON.parse(localStorage.getItem("customer_address"));
+  const customer_address_store = JSON.parse(localStorage.getItem("customer_address"));
 
-  getCitystore(customer_address.city);
+  getCitystore(customer_address_store.city);
 
 
   function getCitystore(city) {
@@ -20,7 +20,7 @@
         ZipBarangay.push(arrZ);
       }
 
-      getBarangaystore(customer_address.barangay);
+      getBarangaystore(customer_address_store.barangay);
 
       function getBarangaystore(barangay) {
 
