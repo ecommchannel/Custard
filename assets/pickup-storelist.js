@@ -116,7 +116,7 @@
             <label class="radio__label" for="checkout_delivery_option_id_${i}" style="display: flex; border-bottom: 1px solid; margin-bottom: 10px;"
             ><div class="radio__label__primary">
             <div>${Title}</div>
-            <div class="small-text">${listaddress_storedata}</div>
+            <div class="small-text" style="font-size: small;">${listaddress_storedata}</div>
             <div class="small-text pickup-instructions show-on-mobile">
             Usually ready in 24 hours
             </div>
