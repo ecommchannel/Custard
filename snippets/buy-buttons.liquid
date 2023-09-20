@@ -86,7 +86,7 @@
               {%- if product.selected_or_first_available_variant.available == false or quantity_rule_soldout -%}
                 {{ 'products.product.sold_out' | t }}
               {%- else -%}
-              awdadw  {{ 'products.product.add_to_cart' | t }}
+                {{ 'products.product.add_to_cart' | t }}
               {%- endif -%}
             </span>
             <div class="loading-overlay__spinner hidden">
@@ -116,7 +116,7 @@
           class="product-form__submit button button--full-width button--primary"
           disabled
         >
-          {{ 'products.product.sold_out' | t }}
+          {{ 'products.product.sold_out' | t }}awdawd
         </button>
       </div>
     </div>
