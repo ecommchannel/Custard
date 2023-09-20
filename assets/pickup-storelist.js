@@ -156,7 +156,7 @@
 
 // Now you can use sortedLocationElements to update your HTML container
       if (sortedLocationElements.join("") == "") {
-        document.querySelector(".nearBy").innerHTML = `<div style="display: flex; justify-content: center;"><h1 style="
+        document.querySelector(".listStore").innerHTML = `<div style="display: flex; justify-content: center;"><h1 style="
             padding: 0 12px;
             background-color: red;
             color: white;
@@ -165,7 +165,7 @@
             text-align: -webkit-center;
             ">There is no store near you</h1></div>`;
       } else {
-        document.querySelector(".nearBy").innerHTML = sortedLocationElements.join('');
+        document.querySelector(".listStore").innerHTML = sortedLocationElements.join('');
       }
     }
   }
