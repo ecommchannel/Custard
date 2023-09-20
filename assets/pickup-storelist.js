@@ -62,7 +62,7 @@
 
   }
 
-
+console.log(lat)
   function getList_Store(lat, long) {
 
     html_loading = `<div style="display: flex; justify-content: center;"><span class="loader">Loading</span></div>`;
@@ -77,7 +77,7 @@
       const distance = R * c; // Distance in km
       return distance.toFixed(2);
     }
-console.log(lat)
+
     const lat1 = lat;
     const lon1 = long;
     let url = "https://omniproxy.goldenabc.com/storelocations/Shopify/Api/GetStoreLocations?brand=penshoppe";
