@@ -108,7 +108,7 @@
         }`;
         
         const listStore_getkm = nearbydata(lat1, lon1, Latitude, Longitude);
-          console.log(Longitude)
+          console.log(Title)
         if (Longitude != null && Latitude != null && Title != "" && Title != "null") {
           if (listStore_getkm <= 10) {
 
