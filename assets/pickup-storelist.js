@@ -1,5 +1,6 @@
   ZipBarangay = [];
   const customer_address = JSON.parse(localStorage.getItem("customer_address"));
+console.log(customer_address.city)
   getCity(customer_address.city);
   function getStoreListData(Title, listaddress, City, Province, Zipcode) {
 $('.active-radio').click();
