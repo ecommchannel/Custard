@@ -62,7 +62,7 @@
         {%- if gift_card_recipient_feature_active -%}
           {%- render 'gift-card-recipient-form', product: product, form: form, section: section -%}
         {%- endif -%}
-        <div class="product-form__buttons purchaseButton" style="display:none;">
+        <div class="product-form__buttons purchaseButton" style="display:block;">
           {%- liquid
             assign check_against_inventory = true
             if product.selected_or_first_available_variant.inventory_management != 'shopify' or product.selected_or_first_available_variant.inventory_policy == 'continue'
@@ -108,7 +108,6 @@
            
           {%- endif -%}
         </div>
-          {{ form | payment_button }}
       {%- endform -%}
     </product-form>
   {%- else -%}
