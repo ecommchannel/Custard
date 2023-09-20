@@ -59,9 +59,8 @@
 
 
 <script>
-  const GetProvince = document.querySelector("#province");
-
-  
+  const selectElement = document.querySelector("#province");
+selectElement.addEventListener("change",getProvince());
    var arr = JSON.parse(localStorage.getItem("arrProvince"));
   
     if (arr != null) {
@@ -93,8 +92,8 @@
       });
 
     }
-
-    GetProvince.addEventListener("change",function getProvince() {
+  
+    function getProvince() {
       $("#zip").val("");
       $("#barangay").html('<option value="" Selected>Select Barangay</option>');
       let province = $("#province").val();
@@ -117,8 +116,7 @@
   
         $("#city").html(City.join(""));
       });
-    });
-
+    }
     ZipBarangay = [];
     function getCity() {
       $("#zip").val("");
