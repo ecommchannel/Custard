@@ -37,6 +37,7 @@
     <span class="close">&times;</span>
   <div class="modal-body">
     <h2 class="title-address">Address Finder</h2>
+    <div id="msgError"></div>
     <div class="description-address"><span>For quicker shipping address entry, find your area from the drop down fields.</span></div>
       <select class="select-address" id="province">
         <option>select Province</option>
@@ -161,7 +162,7 @@
 
   gatherAddressbtn.addEventListener("click", function gatherAddress(){
     if($('#province').val() == '' or $('#city').val() == '' or $('#barangay').val() == '' or $('#street_address').val() == ''){
-      
+      $('#msgError').html('Please complete the field.');
     }else{
         customer_address= `{"province":"${$('#province').val()}","city":"${$('#city').val()}","barangay":"${$('#barangay').val()}","zip":"${$('#zip').val()}","street_address":"${$('#street_address').val()}"}`;
      localStorage.setItem('customer_address',customer_address);
