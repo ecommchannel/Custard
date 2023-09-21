@@ -155,7 +155,7 @@
           >
             <span>
               {%- if product.selected_or_first_available_variant.available == false or quantity_rule_soldout -%}
-                {{ 'products.product.sold_out' | t }}
+                {{ 'products.product.sold_out' | t }}awdawd
               {%- else -%}
                 {{ 'products.product.add_to_cart' | t }}
               {%- endif -%}
@@ -231,7 +231,7 @@
 
 <!-- Trigger/Open The Modal -->
 <button class="myBtn" style="background-color: white; width: 100%; padding: 12px;">Verify Address</button>
-<div class="nearBy" style="display: grid; overflow:scroll; max-height:300px; overflow-x:hidden; margin-top:10px; padding-right:15px;"></div>
+<div class="listStore" style="display: grid; overflow:scroll; max-height:300px; overflow-x:hidden; margin-top:10px; padding-right:15px;"></div>
             
 <script>
 
@@ -274,6 +274,7 @@ window.onclick = function(event) {
   }else{
       document.querySelector(".purchaseButton").style.display = "none";
      document.querySelector(".myBtn").style.display = "block";
+    
   }
 
   
