@@ -1,150 +1,164 @@
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <style>
   @media only screen and (min-width: 200px) {
-    .modal-body{
-      padding:50px 0;
+    .modal-body {
+      padding: 50px 0;
     }
-    .select-address{
-      width:100%;
-      margin:2px;
-      padding:12px;
-    } 
-}
+    .select-address {
+      width: 100%;
+      margin: 2px;
+      padding: 12px;
+    }
+  }
 
-@media only screen and (min-width: 992px) {
-    .modal-body{
-      padding:50px 0;
+  @media only screen and (min-width: 992px) {
+    .modal-body {
+      padding: 50px 0;
     }
-    .select-address{
-      width:100%;
-      margin:2px;
-      padding:12px;
+    .select-address {
+      width: 100%;
+      margin: 2px;
+      padding: 12px;
     }
-}
+  }
 
-  .title-address{
+  .title-address {
     text-align: center;
     font-weight: 800;
     font-size: 40px;
   }
-
 </style>
 <!-- The Modal -->
-<div id="myModal" class="modal" style="z-index:100;">
+<div id="myModal"
+  class="modal"
+  style="z-index:100;">
 
   <!-- Modal content -->
   <div class="modal-content">
     <span class="close">&times;</span>
-  <div class="modal-body">
-    <h2 class="title-address">Address Finder</h2>
-    <div style="color:red;" id="msgError"></div>
-    <div class="description-address"><span>For quicker shipping address entry, find your area from the drop down fields.</span></div>
+    <div class="modal-body">
+      <h2 class="title-address">Address Finder</h2>
+      <div style="color:red;" id="msgError"></div>
+      <div class="description-address">
+        <span>For quicker shipping address entry, find your area from the drop down fields.</span>
+      </div>
       <select class="select-address" id="province">
         <option>select Province</option>
       </select>
-        <select class="select-address" id="city">
+      <select class="select-address" id="city">
         <option>select City</option>
       </select>
-        <select class="select-address" id="barangay">
+      <select class="select-address" id="barangay">
         <option>select Barangay</option>
-           </select>
-    <input type="text" class="select-address" placeholder="Zip Code" id="zip" disabled>
-     <input type="text" class="select-address" placeholder="House or Unit Number / Street Name / Landmark" id="street_address">
-   <button id="gatherAddressbtn" style="background-color: white; padding: 12px; float: right; width: 20%;">Submit</button>
-  </div>
+      </select>
+      <input
+        type="text"
+        class="select-address"
+        placeholder="Zip Code"
+        id="zip"
+        disabled>
+      <input
+        type="text"
+        class="select-address"
+        placeholder="House or Unit Number / Street Name / Landmark"
+        id="street_address">
+      <button id="gatherAddressbtn" style="background-color: white; padding: 12px; float: right; width: 20%;">Submit</button>
+    </div>
   </div>
 
 </div>
 
 
 <script>
-  const GetProvince = document.querySelector("#province"),GetCity = document.querySelector("#city"),GetBarangay = document.querySelector("#barangay"), gatherAddressbtn=document.querySelector("#gatherAddressbtn");
-   var arr = JSON.parse(localStorage.getItem("arrProvince"));
-    if (arr != null) {
-      province = [];
-      var data = JSON.parse(localStorage.arrProvince);
-      for (let i = 0; i < data.province.length; i++) {
-        const arrP = `${
-          data.province[i]
-        }`;
+  const GetProvince = document.querySelector("#province"),
+    GetCity = document.querySelector("#city"),
+    GetBarangay = document.querySelector("#barangay"),
+    gatherAddressbtn = document.querySelector("#gatherAddressbtn");
+  var arr = JSON.parse(localStorage.getItem("arrProvince"));
+  if (arr != null) {
+    province = [];
+    var data = JSON.parse(localStorage.arrProvince);
+    for (let i = 0; i < data.province.length; i++) {
+      const arrP = `${
+        data.province[i]
+      }`;
+      province.push(arrP);
+    }
+    $("#province").html(province.join(""));
+  } else {
+    url = "https://tools.gabcgfs.com/address_finder_dev.php";
+    province = [];
+    province.push('<option value="" Selected>Select Province Address</option>');
+    jQuery.ajax({url: url, type: "GET", dataType: "jsonp", contentType: "application/json; charset=UTF-8"}).done(function(json) {
+      for (let i = 0; i < json.length; i++) {
+        const arrP = `<option value="${
+          json[i].PROVINCE
+        }">${
+          json[i].PROVINCE
+        }</option>`;
         province.push(arrP);
       }
+
       $("#province").html(province.join(""));
-    } else {
-      url = "https://tools.gabcgfs.com/address_finder_dev.php";
-      province = [];
-      province.push('<option value="" Selected>Select Province Address</option>');
-      jQuery.ajax({url: url, type: "GET", dataType: "jsonp", contentType: "application/json; charset=UTF-8"}).done(function(json) {
-        for (let i = 0; i < json.length; i++) {
-          const arrP = `<option value="${
-            json[i].PROVINCE
-          }">${
-            json[i].PROVINCE
-          }</option>`;
-          province.push(arrP);
-        }
-  
-        $("#province").html(province.join(""));
-        localStorage.setItem("arrProvince", JSON.stringify({province}));
-      });
-
-    }
-
-    GetProvince.addEventListener("change",function getProvince() {
-      $("#zip").val("");
-      $("#barangay").html('<option value="" Selected>Select Barangay</option>');
-      let province = $("#province").val();
-      url = `https://tools.gabcgfs.com/address_finder_dev.php?PROVINCE=${province}`;
-      City = [];
-      City.push('<option value="" Selected>Select Town / City</option>');
-      jQuery.ajax({url: url, type: "GET", dataType: "jsonp", contentType: "application/json; charset=UTF-8"}).done(function(json) {
-        if (json != "") {
-          for (let i = 0; i < json[0].CITY.length; i++) {
-            const arrC = `<option value="${
-              json[0].CITY[i].CITY
-            }">${
-              json[0].CITY[i].CITY
-            }</option>`;
-            City.push(arrC);
-          }
-        } else {
-          City.push();
-        }
-  
-        $("#city").html(City.join(""));
-      });
+      localStorage.setItem("arrProvince", JSON.stringify({province}));
     });
 
-    ZipBarangay = [];
-   GetCity.addEventListener("change", function getCity() {
-      $("#zip").val("");
-      let city = $("#city").val();
-      url = `https://tools.gabcgfs.com/address_finder_dev.php?CITY=${city}`;
-      Brgy = [];
-      Brgy.push('<option value="" Selected>Select Barangay</option>');
-      jQuery.ajax({url: url, type: "GET", dataType: "jsonp", contentType: "application/json; charset=UTF-8"}).done(function(json) {
-        for (let i = 0; i < json[0].CITY[0].BARANGAY.length; i++) {
+  } GetProvince.addEventListener("change", function getProvince() {
+    $("#zip").val("");
+    $("#barangay").html('<option value="" Selected>Select Barangay</option>');
+    let province = $("#province").val();
+    url = `https://tools.gabcgfs.com/address_finder_dev.php?PROVINCE=${province}`;
+    City = [];
+    City.push('<option value="" Selected>Select Town / City</option>');
+    jQuery.ajax({url: url, type: "GET", dataType: "jsonp", contentType: "application/json; charset=UTF-8"}).done(function(json) {
+      if (json != "") {
+        for (let i = 0; i < json[0].CITY.length; i++) {
           const arrC = `<option value="${
-            json[0].CITY[0].BARANGAY[i].BARANGAY
+            json[0].CITY[i].CITY
           }">${
-            json[0].CITY[0].BARANGAY[i].BARANGAY
+            json[0].CITY[i].CITY
           }</option>`;
-          const arrZ = [
-            json[0].CITY[0].BARANGAY[i].BARANGAY,
-            json[0].CITY[0].BARANGAY[i].ZIP,
-            json[0].CITY[0].BARANGAY[i].latitude,
-            json[0].CITY[0].BARANGAY[i].longitude
-          ];
-          Brgy.push(arrC);
-          ZipBarangay.push(arrZ);
+          City.push(arrC);
         }
-        $("#barangay").html(Brgy.join(""));
-      });
-    });
+      } else {
+        City.push();
+      }
 
-   GetBarangay.addEventListener("change",function getBarangay() {
+      $("#city").html(City.join(""));
+    });
+  });
+
+  ZipBarangay = [];
+  GetCity.addEventListener("change", function getCity() {
+    $("#zip").val("");
+    let city = $("#city").val();
+    url = `https://tools.gabcgfs.com/address_finder_dev.php?CITY=${city}`;
+    Brgy = [];
+    Brgy.push('<option value="" Selected>Select Barangay</option>');
+    jQuery.ajax({url: url, type: "GET", dataType: "jsonp", contentType: "application/json; charset=UTF-8"}).done(function(json) {
+      for (let i = 0; i < json[0].CITY[0].BARANGAY.length; i++) {
+        const arrC = `<option value="${
+          json[0].CITY[0].BARANGAY[i].BARANGAY
+        }">${
+          json[0].CITY[0].BARANGAY[i].BARANGAY
+        }</option>`;
+        const arrZ = [
+          json[0].CITY[0].BARANGAY[i].BARANGAY,
+          json[0].CITY[0].BARANGAY[i].ZIP,
+          json[0].CITY[0].BARANGAY[i].latitude,
+          json[0].CITY[0].BARANGAY[i].longitude
+        ];
+        Brgy.push(arrC);
+        ZipBarangay.push(arrZ);
+      }
+      $("#barangay").html(Brgy.join(""));
+    });
+  });
+
+  GetBarangay.addEventListener("change", function getBarangay() {
     let barangay = $("#barangay").val();
-    // Function to find the value for a given location
+
+// Function to find the value for a given location
     function findValueForLocation(locationName) {
       for (let i = 0; i < ZipBarangay.length; i++) {
         if (ZipBarangay[i][0] === locationName) {
@@ -158,14 +172,25 @@
     $("#zip").val(value);
   });
 
-  gatherAddressbtn.addEventListener("click", function gatherAddress(){
-    if($('#province').val() == '' || $('#city').val() == '' || $('#barangay').val() == '' || $('#street_address').val() == ''){
+  gatherAddressbtn.addEventListener("click", function gatherAddress() {
+    if ($('#province').val() == '' || $('#city').val() == '' || $('#barangay').val() == '' || $('#street_address').val() == '') {
       $('#msgError').html('Please complete the field.');
-    }else{
-        customer_address= `{"province":"${$('#province').val()}","city":"${$('#city').val()}","barangay":"${$('#barangay').val()}","zip":"${$('#zip').val()}","street_address":"${$('#street_address').val()}"}`;
-         localStorage.setItem('customer_address',customer_address);
-          window.location.reload();
+    } else {
+      customer_address = `{"province":"${
+        $('#province').val()
+      }","city":"${
+        $('#city').val()
+      }","barangay":"${
+        $('#barangay').val()
+      }","zip":"${
+        $('#zip').val()
+      }","street_address":"${
+        $('#street_address').val()
+      }"}`;
+      localStorage.setItem('customer_address', customer_address);
+
+// window.location.reload();
     }
-   
+
   });
 </script>
